@@ -9,3 +9,7 @@ db = db_connection.cursor()
 
 db.execute("SELECT prezime, ime FROM ucitelji ORDER BY prezime")
 rows = db.fetchall()
+
+for row in rows:
+  puno_ime = " ".join(row)
+  popis_ucitelja.append(puno_ime)
