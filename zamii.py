@@ -22,6 +22,10 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     mylabel = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
     mylabel.grid(row=0, column=0, padx=(40, 0), pady=20)
 
+    mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
+    mycombo.set("Odaberi ime")
+    mycombo.grid(row=0, column=1, padx=60, pady=20)
+    mycombo.grid_columnconfigure(0, weight=1)
 
 class App(customtkinter.CTk):
   def __init__(self):
