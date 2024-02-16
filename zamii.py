@@ -36,7 +36,14 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_i_prezime_zamjene = " ".join(prezime_ime.split()[::-1])
 
   def primijeni_btn_callback(self):
+    update_context()
+    render_document()
 
+
+def update_context():
+  global ime_i_prezime_zamjene
+  global context
+  context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
 
 
 class App(customtkinter.CTk):
@@ -53,6 +60,8 @@ class App(customtkinter.CTk):
     self.zamjena_frame = ZamjenaFrame(self)
     self.zamjena_frame.grid(row=0, column=0, padx=10, pady=10, sticky="new")
 
+
+context = {}
 
 zamii = App()
 zamii.mainloop()
