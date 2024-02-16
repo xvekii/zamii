@@ -30,6 +30,11 @@ class ZamjenaFrame(customtkinter.CTkFrame):
                                                         variable=self.radio_rad_vrem_var1, value="punog")
     self.radnog_vremena_radio1.grid(row=1, column=1, padx=10, pady=10)
     
+    self.radio_rad_vrem_var2 = customtkinter.IntVar(value=0)
+    self.radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
+                                                        variable=self.radio_rad_vrem_var2, value="nepunog")
+    self.radnog_vremena_radio1.grid(row=1, column=2, padx=10, pady=10)
+    
     
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
     mycombo.set("odaberi ime")
