@@ -27,7 +27,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     mycombo.grid(row=0, column=1, padx=60, pady=20)
     mycombo.grid_columnconfigure(0, weight=1)
 
-    primijeni_btn = customtkinter.CTk.Button(self, text="primijeni", fg_color="#110329", command=self.primijeni_btn_callback)
+    primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=self.primijeni_btn_callback)
     primijeni_btn.grid(row=1, column=1, padx=5, pady=5)
 
   def combobox_callback(self, izbor):
@@ -50,7 +50,7 @@ def render_document():
   doc = DocxTemplate("word.docx")
   doc.render(context)
   doc.save(f"{ime_i_prezime_zamjene}.docx")
-  
+
 
 class App(customtkinter.CTk):
   def __init__(self):
