@@ -25,10 +25,11 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
     radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=0)
 
-    self.radnog_vremena_var1 = customtkinter.StringVar(value="punog")
-    radnog_vremena_checkbox1 = customtkinter.CTkCheckBox(self, text="punog", command=self.checkbox_event, 
-                                                        variable=self.radnog_vremena_var1, onvalue="punog")
-    radnog_vremena_checkbox1.grid(row=1, column=1, padx=(40, 0), pady=0)
+    self.radio_rad_vrem_var1 = customtkinter.IntVar(value=0)
+    self.radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="punog", command=self.radiobtn_event, 
+                                                        variable=self.radio_rad_vrem_var1, value="punog")
+    self.radnog_vremena_radio1.grid(row=1, column=1, padx=10, pady=10)
+    
     
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
     mycombo.set("odaberi ime")
@@ -40,9 +41,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     primijeni_btn.grid(row=3, column=1, padx=5, pady=5)
 
 
-  def checkbox_event(self):
-   if self.radnog_vremena_var1.get() == "punog":   
-    konačnog_radnog_vremena = self.radnog_vremena_var1.get()
+  def radiobtn_event(self):
+    konačnog_radnog_vremena = self.radnog_vremena_radio1.cget("text") 
     print(konačnog_radnog_vremena)
 
   
