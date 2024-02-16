@@ -23,7 +23,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     mylabel.grid(row=0, column=0, padx=(40, 0), pady=20)
 
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
-    mycombo.set("Odaberi ime")
+    mycombo.set("odaberi ime")
     mycombo.grid(row=0, column=1, padx=60, pady=20)
     mycombo.grid_columnconfigure(0, weight=1)
 
