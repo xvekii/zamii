@@ -19,6 +19,9 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
 
+    mylabel = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
+    mylabel.grid(row=0, column=0, padx=(40, 0), pady=20)
+
 
 class App(customtkinter.CTk):
   def __init__(self):
