@@ -30,6 +30,14 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     primijeni_btn = customtkinter.CTk.Button(self, text="primijeni", fg_color="#110329", command=self.primijeni_btn_callback)
     primijeni_btn.grid(row=1, column=1, padx=5, pady=5)
 
+  def combobox_callback(self, izbor):
+    global ime_i_prezime_zamjene
+    prezime_ime = izbor
+    ime_i_prezime_zamjene = " ".join(prezime_ime.split()[::-1])
+    
+
+
+
 class App(customtkinter.CTk):
   def __init__(self):
     super().__init__()
