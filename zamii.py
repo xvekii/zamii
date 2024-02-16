@@ -15,6 +15,11 @@ for row in rows:
   popis_ucitelja.append(puno_ime)
 
 
+class ZamjenaFrame(customtkinter.CTkFrame):
+  def __init__(self, master):
+    super().__init__(master)
+
+
 class App(customtkinter.CTk):
   def __init__(self):
     super().__init__()
@@ -25,6 +30,9 @@ class App(customtkinter.CTk):
     self.grid_rowconfigure(0, weight=1)
     self.resizable(width=0, height=0)
     customtkinter.set_appearance_mode("system")
+
+    self.zamjena_frame = ZamjenaFrame(self)
+    self.zamjena_frame.grid(row=0, column=0, padx=10, pady=10, sticky="new")
 
 
 zamii = App()
