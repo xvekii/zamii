@@ -34,7 +34,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     global ime_i_prezime_zamjene
     prezime_ime = izbor
     ime_i_prezime_zamjene = " ".join(prezime_ime.split()[::-1])
-    
+
+  def primijeni_btn_callback(self):
 
 
 
