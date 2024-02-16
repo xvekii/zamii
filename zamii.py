@@ -21,6 +21,9 @@ class ZamjenaFrame(customtkinter.CTkFrame):
 
     ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
     ime_prezime_zamjene_label.grid(row=0, column=0, padx=(40, 0), pady=20)
+
+    radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
+    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=20)
     
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
     mycombo.set("odaberi ime")
@@ -28,7 +31,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     mycombo.grid_columnconfigure(0, weight=1)
 
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=self.primijeni_btn_callback)
-    primijeni_btn.grid(row=1, column=1, padx=5, pady=5)
+    primijeni_btn.grid(row=3, column=1, padx=5, pady=5)
 
   def combobox_callback(self, izbor):
     global ime_i_prezime_zamjene
