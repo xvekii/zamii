@@ -20,10 +20,10 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     super().__init__(master)
 
     ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
-    ime_prezime_zamjene_label.grid(row=0, column=0, padx=(40, 0), pady=20)
+    ime_prezime_zamjene_label.grid(row=0, column=0, padx=(40, 0), pady=0)
 
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
-    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=20)
+    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=0)
     
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
     mycombo.set("odaberi ime")
