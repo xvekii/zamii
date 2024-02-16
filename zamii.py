@@ -40,9 +40,10 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     primijeni_btn.grid(row=3, column=1, padx=5, pady=5)
 
 
-  def checkbox_event():
-    global radno_vrijeme
-    
+  def checkbox_event(self):
+   global radno_vrijeme
+   radno_vrijeme = self.radnog_vremena_checkbox1.cget("punog")
+   print(radno_vrijeme)
   
   def combobox_callback(self, izbor):
     global ime_i_prezime_zamjene
