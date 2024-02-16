@@ -24,15 +24,26 @@ class ZamjenaFrame(customtkinter.CTkFrame):
 
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
     radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=0)
+
+    radnog_vremena_var1 = customtkinter.StringVar(value="on")
+    radnog_vremena_checkbox1 = customtkinter.CTkCheckBox(self, text="punog", command=self.checkbox_event, 
+                                                        variable=radnog_vremena_var1, onvalue="on", offvalue="off")
+    radnog_vremena_checkbox1.grid(row=1, column=1, padx=(40, 0), pady=0)
     
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
     mycombo.set("odaberi ime")
     mycombo.grid(row=0, column=1, padx=60, pady=20)
     mycombo.grid_columnconfigure(0, weight=1)
+    
 
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=self.primijeni_btn_callback)
     primijeni_btn.grid(row=3, column=1, padx=5, pady=5)
 
+
+  def checkbox_event():
+    global radno_vrijeme
+    
+  
   def combobox_callback(self, izbor):
     global ime_i_prezime_zamjene
     prezime_ime = izbor
