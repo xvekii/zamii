@@ -46,6 +46,12 @@ def update_context():
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
 
 
+def render_document():
+  doc = DocxTemplate("word.docx")
+  doc.render(context)
+  doc.save(f"{ime_i_prezime_zamjene}.docx")
+  
+
 class App(customtkinter.CTk):
   def __init__(self):
     super().__init__()
