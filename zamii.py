@@ -23,22 +23,21 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_prezime_zamjene_label.grid(row=0, column=0, padx=(40, 0), pady=0)
 
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
-    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=0)
+    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=0, sticky="w")
 
-    self.radio_rad_vrem_var1 = customtkinter.IntVar(value=0)
+    self.radio_rad_vrem_var = customtkinter.StringVar(value=0)
     self.radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="punog", command=self.radiobtn_event, 
-                                                        variable=self.radio_rad_vrem_var1, value="punog")
-    self.radnog_vremena_radio1.grid(row=1, column=1, padx=10, pady=10)
+                                                        variable=self.radio_rad_vrem_var, value="punog")
+    self.radnog_vremena_radio1.grid(row=1, column=1, padx=(85, 0), pady=10, sticky="w")
     
-    self.radio_rad_vrem_var2 = customtkinter.IntVar(value=0)
-    self.radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
-                                                        variable=self.radio_rad_vrem_var2, value="nepunog")
-    self.radnog_vremena_radio1.grid(row=1, column=2, padx=10, pady=10)
+    self.radnog_vremena_radio2 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
+                                                        variable=self.radio_rad_vrem_var, value="nepunog")
+    self.radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
     
     
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
     mycombo.set("odaberi ime")
-    mycombo.grid(row=0, column=1, padx=60, pady=20)
+    mycombo.grid(row=0, column=1, padx=60, pady=20, columnspan=2)
     mycombo.grid_columnconfigure(0, weight=1)
     
 
@@ -47,7 +46,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
 
 
   def radiobtn_event(self):
-    konačnog_radnog_vremena = self.radnog_vremena_radio1.cget("text") 
+    konačnog_radnog_vremena = self.radio_rad_vrem_var.get() 
     print(konačnog_radnog_vremena)
 
   
