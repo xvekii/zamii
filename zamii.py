@@ -22,8 +22,6 @@ for row_G in rows_G:
   puno_ime_G = " ".join(row_G)
   popis_ucitelja_G.append(puno_ime_G)
 
-print(popis_ucitelja_G)
-
 class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
