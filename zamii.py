@@ -56,6 +56,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   def radiobtn_event(self):
     konačnog_radnog_vremena = self.radio_rad_vrem_var.get() 
     print(konačnog_radnog_vremena)
+    context["radnog_vremena"] = konačnog_radnog_vremena
 
   
   def combobox_callback(self, izbor):
