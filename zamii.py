@@ -48,8 +48,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
                                                         variable=self.radio_rad_vrem_var, value="nepunog")
     self.radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
 
-    zamjenjuje_label = customtkinter.CTkLabel(self, text="zamjenjuje", fg_color="transparent")
-    zamjenjuje_label.grid(row=3, column=0, padx=(75, 0), pady=0)
+    umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
+    umjesto_label.grid(row=3, column=0, padx=(75, 0), pady=0)
     
 
     
