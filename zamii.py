@@ -38,14 +38,13 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     zamjenjuje_label.grid(row=3, column=0, padx=(75, 0), pady=0)
     
     
-    mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
-    mycombo.set("odaberi ime")
-    mycombo.grid(row=0, column=1, padx=60, pady=20, columnspan=2)
-    mycombo.grid_columnconfigure(0, weight=1)
-    
 
-    
 
+    ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, width=300)
+    ime_prezime_combo.set("odaberi ime")
+    ime_prezime_combo.grid(row=0, column=1, padx=60, pady=20, columnspan=2)
+    ime_prezime_combo.grid_columnconfigure(0, weight=1)
+    
 
   def radiobtn_event(self):
     konačnog_radnog_vremena = self.radio_rad_vrem_var.get() 
