@@ -28,7 +28,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_prezime_combo.grid_columnconfigure(0, weight=1)
 
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
-    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=0, sticky="w")
+    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=20, sticky="w")
 
     self.radio_rad_vrem_var = customtkinter.StringVar(value=0)
     self.radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="punog", command=self.radiobtn_event, 
