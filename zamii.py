@@ -42,7 +42,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     
 
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=self.primijeni_btn_callback)
-    primijeni_btn.grid(row=3, column=1, padx=5, pady=5)
+    primijeni_btn.grid(row=3, column=2, padx=5, pady=5)
 
 
   def radiobtn_event(self):
