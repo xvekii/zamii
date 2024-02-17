@@ -29,7 +29,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     super().__init__(master)
 
     ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
-    ime_prezime_zamjene_label.grid(row=0, column=0, padx=(40, 0), pady=0)
+    ime_prezime_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
 
     ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, width=300)
     ime_prezime_combo.set("odaberi ime")
@@ -49,7 +49,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     self.radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
 
     umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
-    umjesto_label.grid(row=3, column=0, padx=(75, 0), pady=0)
+    umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=20)
     
 
     
