@@ -67,7 +67,14 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_i_prezime_zamjene = " ".join([split_prezime_ime[-1]] + split_prezime_ime[:-1])
     print(ime_i_prezime_zamjene)
 
-  
+  def combobox_callback_G(self, izbor_G):
+    global ime_i_prezime_zamijenjenog_G
+    prezime_ime_G = izbor_G
+    split_prezime_ime_G = prezime_ime_G.split()
+    ime_i_prezime_zamijenjenog_G = " ".join([split_prezime_ime_G[-1]] + split_prezime_ime_G[:-1])
+    print(ime_i_prezime_zamijenjenog_G)
+
+
 def primijeni_btn_callback():
   update_context()
   render_document()
@@ -75,8 +82,10 @@ def primijeni_btn_callback():
 
 def update_context():
   global ime_i_prezime_zamjene
+  global ime_i_prezime_zamijenjenog_G
   global context
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
+  context["ime_i_prezime_zamijenjenog"] = ime_i_prezime_zamijenjenog_G
 
 
 def render_document():
