@@ -51,8 +51,9 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
     umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=20)
     
-
-    
+    umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combobox_callback_G, width=300)
+    umjesto_combo.set("odaberi zamijenjenog učitelja")
+    umjesto_combo.grid(row=3, column=1, padx=60, pady=20, columnspan=2)
 
   def radiobtn_event(self):
     konačnog_radnog_vremena = self.radio_rad_vrem_var.get() 
