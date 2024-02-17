@@ -15,6 +15,13 @@ for row in rows:
   puno_ime = " ".join(row)
   popis_ucitelja.append(puno_ime)
 
+db.execute("SELECT prezime, ime FROM ucitelji_G ORDER BY prezime_G")
+rows_G = db.fetchall()
+
+for row_G in rows_G:
+  puno_ime_G = " ".join(row_G)
+  popis_ucitelja_G.append(puno_ime_G)
+
 
 class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
