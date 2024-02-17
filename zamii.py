@@ -33,6 +33,9 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     self.radnog_vremena_radio2 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
                                                         variable=self.radio_rad_vrem_var, value="nepunog")
     self.radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
+
+    zamjenjuje_label = customtkinter.CTkLabel(self, text="zamjenjuje", fg_color="transparent")
+    zamjenjuje_label.grid(row=3, column=0, padx=(75, 0), pady=0)
     
     
     mycombo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command = self.combobox_callback, width=300)
