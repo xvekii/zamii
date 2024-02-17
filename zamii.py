@@ -22,6 +22,11 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
     ime_prezime_zamjene_label.grid(row=0, column=0, padx=(40, 0), pady=0)
 
+    ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, width=300)
+    ime_prezime_combo.set("odaberi ime")
+    ime_prezime_combo.grid(row=0, column=1, padx=60, pady=20, columnspan=2)
+    ime_prezime_combo.grid_columnconfigure(0, weight=1)
+
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
     radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=0, sticky="w")
 
@@ -37,13 +42,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     zamjenjuje_label = customtkinter.CTkLabel(self, text="zamjenjuje", fg_color="transparent")
     zamjenjuje_label.grid(row=3, column=0, padx=(75, 0), pady=0)
     
-    
 
-
-    ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, width=300)
-    ime_prezime_combo.set("odaberi ime")
-    ime_prezime_combo.grid(row=0, column=1, padx=60, pady=20, columnspan=2)
-    ime_prezime_combo.grid_columnconfigure(0, weight=1)
     
 
   def radiobtn_event(self):
@@ -54,7 +53,9 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   def combobox_callback(self, izbor):
     global ime_i_prezime_zamjene
     prezime_ime = izbor
-    ime_i_prezime_zamjene = " ".join(prezime_ime.split()[::-1])
+    split_prezime_ime = prezime_ime.split()
+    ime_i_prezime_zamjene = " ".join([split_prezime_ime[-1]] + split_prezime_ime[:-1])
+    print(ime_i_prezime_zamjene)
 
   
 def primijeni_btn_callback():
