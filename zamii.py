@@ -85,6 +85,33 @@ def update_context():
   global context
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
   context["ime_i_prezime_zamijenjenog"] = ime_i_prezime_zamijenjenog_G
+  
+  spol_zaposlen_a = zaposlen_a(ime_i_prezime_zamjene)
+  context["spol_zaposlen_a"] = spol_zaposlen_a
+
+
+def zaposlen_a(ime_i_prezime_zamjene):
+  split_ime = ime_i_prezime_zamjene.split()
+  ime = split_ime[0]
+  prezime = split_ime[1]
+  print(ime, prezime)
+  
+  db.execute("SELECT spol FROM ucitelji WHERE ime = ? AND prezime = ?", (ime, prezime))
+  res = db.fetchone()
+  
+  if res is not None:
+    spol = res[0]
+    if spol == "m":
+      return "zaposlen"
+    elif spol == "ž":
+      return "zaposlena"
+
+
+  
+
+
+
+
 
 
 def render_document():
