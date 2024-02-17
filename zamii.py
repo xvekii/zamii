@@ -32,7 +32,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_prezime_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
 
     ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, width=300)
-    ime_prezime_combo.set("odaberi ime")
+    ime_prezime_combo.set("odaberi ime i prezime")
     ime_prezime_combo.grid(row=0, column=1, padx=60, pady=20, columnspan=2)
     ime_prezime_combo.grid_columnconfigure(0, weight=1)
 
@@ -52,7 +52,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=20)
     
     umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combobox_callback_G, width=300)
-    umjesto_combo.set("odaberi zamijenjenog učitelja")
+    umjesto_combo.set("odaberi ime i prezime")
     umjesto_combo.grid(row=3, column=1, padx=60, pady=20, columnspan=2)
 
   def radiobtn_event(self):
