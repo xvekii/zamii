@@ -55,6 +55,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     prezime_ime = izbor
     ime_i_prezime_zamjene = " ".join(prezime_ime.split()[::-1])
 
+  
   def primijeni_btn_callback(self):
     update_context()
     render_document()
