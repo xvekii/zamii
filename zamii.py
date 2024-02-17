@@ -44,8 +44,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     mycombo.grid_columnconfigure(0, weight=1)
     
 
-    primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=self.primijeni_btn_callback)
-    primijeni_btn.grid(row=3, column=2, padx=5, pady=5)
+    
 
 
   def radiobtn_event(self):
@@ -59,9 +58,9 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_i_prezime_zamjene = " ".join(prezime_ime.split()[::-1])
 
   
-  def primijeni_btn_callback(self):
-    update_context()
-    render_document()
+def primijeni_btn_callback():
+  update_context()
+  render_document()
 
 
 def update_context():
@@ -90,6 +89,8 @@ class App(customtkinter.CTk):
     self.zamjena_frame = ZamjenaFrame(self)
     self.zamjena_frame.grid(row=0, column=0, padx=10, pady=10, sticky="new")
 
+    primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=primijeni_btn_callback)
+    primijeni_btn.grid(row=0, column=0, padx=5, pady=5)
 
 context = {}
 
