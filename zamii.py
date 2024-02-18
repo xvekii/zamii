@@ -150,6 +150,14 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     context["šk_sat_z"] = šk_sat_z
 
 
+class ObrazloženjeFrame(customtkinter.CTkFrame):
+  def __init__(self, master):
+    super().__init__(master)
+
+    obrazl_label = customtkinter.CTkLabel(self, text="obrazloženje", fg_color="transparent")
+    obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
+
+
 def primijeni_btn_callback():
   update_context()
   render_document()
@@ -207,8 +215,11 @@ class App(customtkinter.CTk):
     self.vrijeme_zamjene_frame = VrijemeZamjeneFrame(self)
     self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(15, 5), sticky="ew")
     
+    self.obrazloženje_frame = ObrazloženjeFrame(self)
+    self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
+    
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=primijeni_btn_callback)
-    primijeni_btn.grid(row=2, column=0, padx=55, pady=5, sticky="e")
+    primijeni_btn.grid(row=3, column=0, padx=55, pady=5, sticky="e")
 
 context = {}
 
