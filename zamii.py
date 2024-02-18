@@ -31,7 +31,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
     ime_prezime_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
 
-    ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, width=300)
+    ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, 
+                                                  state="readonly", width=300)
     ime_prezime_combo.set("odaberi ime i prezime")
     ime_prezime_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=2)
     ime_prezime_combo.grid_columnconfigure(0, weight=1)
@@ -51,7 +52,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
     umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=10)
     
-    umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combobox_callback_G, width=300)
+    umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combobox_callback_G, 
+                                              state="readonly", width=300)
     umjesto_combo.set("odaberi ime i prezime")
     umjesto_combo.grid(row=3, column=1, padx=60, pady=10, columnspan=2)
 
@@ -84,7 +86,8 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     nadnevak_zamjene_label = customtkinter.CTkLabel(self, text="nadnevak zamjene", fg_color="transparent")
     nadnevak_zamjene_label.grid(row=0, column=0, padx=(62, 0), pady=0)
 
-    nadnevak_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_z_callback, width=80)
+    nadnevak_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_z_callback, 
+                                                       state="readonly", width=80)
     nadnevak_zamjene_combo.set("dan")
     nadnevak_zamjene_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=1)
 
