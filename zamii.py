@@ -148,13 +148,13 @@ class App(customtkinter.CTk):
     customtkinter.set_appearance_mode("system")
 
     self.zamjena_frame = ZamjenaFrame(self)
-    self.zamjena_frame.grid(row=0, column=0, padx=10, pady=(10, 1), sticky="new")
+    self.zamjena_frame.grid(row=0, column=0, padx=10, pady=(15, 0), sticky="new")
 
     self.vrijeme_zamjene_frame = VrijemeZamjeneFrame(self)
-    self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(15, 1), sticky="ew")
+    self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(15, 5), sticky="ew")
     
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=primijeni_btn_callback)
-    primijeni_btn.grid(row=2, column=0, padx=5, pady=5)
+    primijeni_btn.grid(row=2, column=0, padx=80, pady=5, sticky="e")
 
 context = {}
 
