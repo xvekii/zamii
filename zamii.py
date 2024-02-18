@@ -79,6 +79,8 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
 
+    nadnevak_zamjene_label = customtkinter.CTkLabel(self, text="nadnevak zamjene", fg_color="transparent")
+    nadnevak_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
 
 def primijeni_btn_callback():
   update_context()
@@ -132,10 +134,10 @@ class App(customtkinter.CTk):
     customtkinter.set_appearance_mode("system")
 
     self.zamjena_frame = ZamjenaFrame(self)
-    self.zamjena_frame.grid(row=0, column=0, padx=10, pady=10, sticky="new")
+    self.zamjena_frame.grid(row=0, column=0, padx=10, pady=(10, 1), sticky="new")
 
     self.vrijeme_zamjene_frame = VrijemeZamjeneFrame(self)
-    self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=10, sticky="new")
+    self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(0, 1), sticky="new")
     
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=primijeni_btn_callback)
     primijeni_btn.grid(row=2, column=0, padx=5, pady=5)
