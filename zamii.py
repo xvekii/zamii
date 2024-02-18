@@ -157,7 +157,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     obrazl_label = customtkinter.CTkLabel(self, text="obrazloženje", fg_color="transparent")
     obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
 
-    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0)
+    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, border_color=("black"))
     obrazl_textbox.grid(row=0, column=1, padx=(60, 0), pady=(15, 0), sticky="ew")
     obrazl_textbox.insert("0.0", "")
 
