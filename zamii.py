@@ -91,14 +91,14 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     nadnevak_zamjene_label.grid(row=0, column=0, padx=(62, 0), pady=0)
 
     dan_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_z_callback, 
-                                                       state="readonly", width=80)
+                                                       state="readonly", width=120)
     dan_zamjene_combo.set("dan")
     dan_zamjene_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=1)
     
     mjesec_zamjene_combo = customtkinter.CTkComboBox(self, values=mjeseci_z_str, command=self.combo_mjeseci_z_callback, 
-                                                       state="readonly", width=80)
+                                                       state="readonly", width=120)
     mjesec_zamjene_combo.set("mjesec")
-    mjesec_zamjene_combo.grid(row=0, column=2, padx=5, pady=10, columnspan=1)
+    mjesec_zamjene_combo.grid(row=0, column=2, padx=0, pady=10, columnspan=1)
 
 
   def combo_dani_z_callback(self, izbor):
