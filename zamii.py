@@ -89,9 +89,10 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     nadnevak_zamjene_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=1)
 
   def combo_dani_callback(self, izbor):
-    global dan
-    dan = izbor
-    print(dan)
+    global dan_zamjene
+    dan_zamjene = izbor
+    context["dan_z"] = dan_zamjene
+    print(dan_zamjene)
 
 
 
