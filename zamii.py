@@ -121,7 +121,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     šk_sat_zamjene_combo = customtkinter.CTkComboBox(self, values=šk_sat_z_str, 
                                                        command=self.combo_šk_sat_z_callback, state="normal", 
                                                        button_hover_color=("plum"), width=120)
-    šk_sat_zamjene_combo.grid(row=3, column=1, padx=0, pady=10, columnspan=1)
+    šk_sat_zamjene_combo.grid(row=2, column=1, padx=0, pady=10, columnspan=1)
     šk_sat_zamjene_combo.set("koji sat")
   
 
@@ -131,16 +131,23 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     context["dan_z"] = dan_zamjene
     print(dan_zamjene)
 
+
   def combo_mjeseci_z_callback(self, izbor):
     global mjesec_zamjene
     mjesec_zamjene = izbor
     context["mjesec_z"] = mjesec_zamjene
     print(mjesec_zamjene)
 
+
   def combo_trajanje_sati_z_callback(self, izbor):
     global trajanje_zamjene
     trajanje_zamjene = izbor
     context["trajanje_zamjene"] = trajanje_zamjene
+
+
+  def combo_šk_sat_z_callback(self, izbor):
+    šk_sat_z = izbor
+    context["šk_sat_z"] = šk_sat_z
 
 
 def primijeni_btn_callback():
