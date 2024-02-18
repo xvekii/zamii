@@ -14,6 +14,9 @@ mjeseci_z_str = [str(mjesec) for mjesec in mjeseci]
 trajanje_sati_z = list(range(1, 6))
 trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
 
+šk_sati_z = list(range(1, 9))
+šk_sat_z_str = [str(sat) for sat in šk_sati_z]
+
 db_connection = sqlite3.connect("ucitelji.db")
 db = db_connection.cursor()
 
