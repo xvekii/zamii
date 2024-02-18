@@ -104,7 +104,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     mjesec_zamjene_combo.grid(row=0, column=2, padx=0, pady=10, columnspan=1)
 
     trajanje_zamjene_label = customtkinter.CTkLabel(self, text="trajanje zamjene", fg_color="transparent")
-    trajanje_zamjene_label.grid(row=1, column=0, padx=(62, 0), pady=0)
+    trajanje_zamjene_label.grid(row=1, column=0, padx=(76, 0), pady=0)
 
     trajanje_zamjene_combo = customtkinter.CTkComboBox(self, values=trajanje_sati_z_str, 
                                                        command=self.combo_trajanje_sati_z_callback, state="normal", 
@@ -113,7 +113,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     trajanje_zamjene_combo.set("koliko sati")
 
     šk_sat_zamjene_label = customtkinter.CTkLabel(self, text="školski sat zamjene", fg_color="transparent")
-    šk_sat_zamjene_label.grid(row=2, column=0, padx=(62, 0), pady=0)
+    šk_sat_zamjene_label.grid(row=2, column=0, padx=(57, 0), pady=0)
   
 
   def combo_dani_z_callback(self, izbor):
