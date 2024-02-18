@@ -5,6 +5,7 @@ from docxtpl import DocxTemplate
 popis_ucitelja = []
 popis_ucitelja_G = []
 dani = list(range(1, 32))
+dani_str = [str(dan) for dan in dani]
 
 db_connection = sqlite3.connect("ucitelji.db")
 db = db_connection.cursor()
@@ -81,11 +82,18 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     super().__init__(master)
 
     nadnevak_zamjene_label = customtkinter.CTkLabel(self, text="nadnevak zamjene", fg_color="transparent")
-    nadnevak_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
+    nadnevak_zamjene_label.grid(row=0, column=0, padx=(62, 0), pady=0)
 
-    nadnevak_zamjene_combo = customtkinter.CTkComboBox(self, values=dani,  width=30)
+    nadnevak_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_callback, width=80)
     nadnevak_zamjene_combo.set("dan")
-    nadnevak_zamjene_combo.grid(row=0, colum=1, padx=60, pady=10, columnspan=1)
+    nadnevak_zamjene_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=1)
+
+  def combo_dani_callback(self, izbor):
+    global dan
+    dan = izbor
+    print(dan)
+
+
 
 
 def primijeni_btn_callback():
