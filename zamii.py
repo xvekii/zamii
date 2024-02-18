@@ -11,6 +11,9 @@ dani_str = [str(dan) for dan in dani]
 mjeseci = list(range(1, 13))
 mjeseci_z_str = [str(mjesec) for mjesec in mjeseci]
 
+trajanje_sati_z = list(range(1, 6))
+trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
+
 db_connection = sqlite3.connect("ucitelji.db")
 db = db_connection.cursor()
 
@@ -100,6 +103,15 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     mjesec_zamjene_combo.set("mjesec")
     mjesec_zamjene_combo.grid(row=0, column=2, padx=0, pady=10, columnspan=1)
 
+    trajanje_zamjene_label = customtkinter.CTkLabel(self, text="trajanje zamjene", fg_color="transparent")
+    trajanje_zamjene_label.grid(row=1, column=0, padx=(62, 0), pady=0)
+
+    trajanje_zamjene_combo = customtkinter.CTkComboBox(self, values=trajanje_sati_z_str, 
+                                                       command=self.combo_trajanje_sati_z_callback, state="normal", 
+                                                       button_hover_color=("plum"), width=120)
+    trajanje_zamjene_combo.grid(row=1, column=1, padx=0, pady=10, columnspan=1)
+    trajanje_zamjene_combo.set("koliko sati")
+  
 
   def combo_dani_z_callback(self, izbor):
     global dan_zamjene
@@ -112,6 +124,11 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     mjesec_zamjene = izbor
     context["mjesec_z"] = mjesec_zamjene
     print(mjesec_zamjene)
+
+  def combo_trajanje_sati_z_callback(self, izbor):
+    global trajanje_zamjene
+    trajanje_zamjene = izbor
+    context["trajanje_zamjene"] = trajanje_zamjene
 
 
 def primijeni_btn_callback():
