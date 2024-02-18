@@ -4,8 +4,12 @@ from docxtpl import DocxTemplate
 
 popis_ucitelja = []
 popis_ucitelja_G = []
+
 dani = list(range(1, 32))
 dani_str = [str(dan) for dan in dani]
+
+mjeseci = list(range(1, 13))
+mjeseci_z_str = [str(mjesec) for mjesec in mjeseci]
 
 db_connection = sqlite3.connect("ucitelji.db")
 db = db_connection.cursor()
@@ -90,7 +94,11 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
                                                        state="readonly", width=80)
     dan_zamjene_combo.set("dan")
     dan_zamjene_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=1)
-
+    
+    mjesec_zamjene_combo = customtkinter.CTkComboBox(self, values=mjeseci_z_str, command=self.combo_mjeseci_z_callback, 
+                                                       state="readonly", width=80)
+    mjesec_zamjene_combo.set("mjesec")
+    mjesec_zamjene_combo.grid(row=0, column=2, padx=5, pady=10, columnspan=1)
 
 
   def combo_dani_z_callback(self, izbor):
@@ -99,7 +107,11 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     context["dan_z"] = dan_zamjene
     print(dan_zamjene)
 
-
+  def combo_mjeseci_z_callback(self, izbor):
+    global mjesec_zamjene
+    mjesec_zamjene = izbor
+    context["mjesec_z"] = mjesec_zamjene
+    print(mjesec_zamjene)
 
 
 def primijeni_btn_callback():
