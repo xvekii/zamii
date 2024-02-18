@@ -164,6 +164,15 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
     nadnevak_naloga_label.grid(row=1, column=0, padx=(72, 0), pady=0)
 
+    dan_naloga_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_n_callback, 
+                                                  state="normal", button_hover_color=("plum"), width=120)
+    dan_naloga_combo.set("dan")
+    dan_naloga_combo.grid(row=1, column=1, padx=62, pady=10, columnspan=1)
+
+  def combo_dani_n_callback(self, izbor):
+    dan_naloga = izbor
+    context["dan_naloga"] = dan_naloga
+  
 
 def primijeni_btn_callback():
   update_context()
