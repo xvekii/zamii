@@ -86,10 +86,12 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     nadnevak_zamjene_label = customtkinter.CTkLabel(self, text="nadnevak zamjene", fg_color="transparent")
     nadnevak_zamjene_label.grid(row=0, column=0, padx=(62, 0), pady=0)
 
-    nadnevak_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_z_callback, 
+    dan_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_z_callback, 
                                                        state="readonly", width=80)
-    nadnevak_zamjene_combo.set("dan")
-    nadnevak_zamjene_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=1)
+    dan_zamjene_combo.set("dan")
+    dan_zamjene_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=1)
+
+
 
   def combo_dani_z_callback(self, izbor):
     global dan_zamjene
