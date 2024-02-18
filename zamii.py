@@ -109,13 +109,6 @@ def get_gender_zaposlen_a(ime_i_prezime_zamjene):
       return "zaposlena"
 
 
-  
-
-
-
-
-
-
 def render_document():
   doc = DocxTemplate("word.docx")
   doc.render(context)
