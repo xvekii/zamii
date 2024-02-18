@@ -111,6 +111,9 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
                                                        button_hover_color=("plum"), width=120)
     trajanje_zamjene_combo.grid(row=1, column=1, padx=0, pady=10, columnspan=1)
     trajanje_zamjene_combo.set("koliko sati")
+
+    šk_sat_zamjene_label = customtkinter.CTkLabel(self, text="školski sat zamjene", fg_color="transparent")
+    šk_sat_zamjene_label.grid(row=2, column=0, padx=(62, 0), pady=0)
   
 
   def combo_dani_z_callback(self, izbor):
