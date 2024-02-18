@@ -172,7 +172,7 @@ class App(customtkinter.CTk):
     self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(15, 5), sticky="ew")
     
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=primijeni_btn_callback)
-    primijeni_btn.grid(row=2, column=0, padx=120, pady=5, sticky="e")
+    primijeni_btn.grid(row=2, column=0, padx=55, pady=5, sticky="e")
 
 context = {}
 
