@@ -75,6 +75,11 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     print(ime_i_prezime_zamijenjenog_G)
 
 
+class VrijemeZamjeneFrame(customtkinter.CTkFrame):
+  def __init__(self, master):
+    super().__init__(master)
+
+
 def primijeni_btn_callback():
   update_context()
   render_document()
@@ -122,15 +127,18 @@ class App(customtkinter.CTk):
 
     self.geometry("600x500+300+100")
     self.grid_columnconfigure(0, weight=1)
-    self.grid_rowconfigure(0, weight=1)
+    self.grid_rowconfigure((0, 1), weight=1)
     self.resizable(width=0, height=0)
     customtkinter.set_appearance_mode("system")
 
     self.zamjena_frame = ZamjenaFrame(self)
     self.zamjena_frame.grid(row=0, column=0, padx=10, pady=10, sticky="new")
 
+    self.vrijeme_zamjene_frame = VrijemeZamjeneFrame(self)
+    self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=10, sticky="new")
+    
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=primijeni_btn_callback)
-    primijeni_btn.grid(row=0, column=0, padx=5, pady=5)
+    primijeni_btn.grid(row=2, column=0, padx=5, pady=5)
 
 context = {}
 
