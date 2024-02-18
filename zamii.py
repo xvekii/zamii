@@ -66,6 +66,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_i_prezime_zamjene = " ".join([split_prezime_ime[-1]] + split_prezime_ime[:-1])
     print(ime_i_prezime_zamjene)
 
+
   def combobox_callback_G(self, izbor_G):
     global ime_i_prezime_zamijenjenog_G
     prezime_ime_G = izbor_G
@@ -86,12 +87,12 @@ def update_context():
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
   context["ime_i_prezime_zamijenjenog"] = ime_i_prezime_zamijenjenog_G
   
-  spol_zaposlen_a = zaposlen_a(ime_i_prezime_zamjene)
+  spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
   print(spol_zaposlen_a)
   context["spol_zaposlen_a"] = spol_zaposlen_a
 
 
-def zaposlen_a(ime_i_prezime_zamjene):
+def get_gender_zaposlen_a(ime_i_prezime_zamjene):
   split_ime = ime_i_prezime_zamjene.split()
   ime = split_ime[0]
   prezime = " ".join(split_ime[1:])
