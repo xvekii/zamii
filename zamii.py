@@ -4,6 +4,7 @@ from docxtpl import DocxTemplate
 
 popis_ucitelja = []
 popis_ucitelja_G = []
+dani = list(range(1, 32))
 
 db_connection = sqlite3.connect("ucitelji.db")
 db = db_connection.cursor()
