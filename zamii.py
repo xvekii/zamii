@@ -245,7 +245,7 @@ class App(customtkinter.CTk):
     super().__init__()
     self.title("Zamii")
 
-    self.geometry("600x500+300+100")
+    self.geometry("600x600+300+100")
     self.grid_columnconfigure(0, weight=1)
     self.grid_rowconfigure(0, weight=0)
     self.resizable(width=0, height=0)
