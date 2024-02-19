@@ -182,6 +182,11 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
                                                     state="normal", button_hover_color=("plum"), width=120)
     mjesec_naloga_combo.set("mjesec")
     mjesec_naloga_combo.grid(row=1, column=1, padx=(180, 0), pady=10)
+
+    klasa_label = customtkinter.CTkLabel(self, text="KLASA", fg_color="transparent")
+    klasa_label.grid(row=2, column=0, padx=(132, 0), pady=0)
+
+  
   
   
   def combo_dani_n_callback(self, izbor):
