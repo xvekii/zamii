@@ -184,9 +184,11 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     mjesec_naloga_combo.grid(row=1, column=1, padx=(180, 0), pady=10)
 
     klasa_label = customtkinter.CTkLabel(self, text="KLASA", fg_color="transparent")
-    klasa_label.grid(row=2, column=0, padx=(132, 0), pady=0)
+    klasa_label.grid(row=2, column=0, padx=(132, 0), pady=(0, 10))
 
-  
+    klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, border_color=("black"))
+    klasa_textbox.grid(row=2, column=1, padx=(0, 240), pady=(0, 10), sticky="e")
+    klasa_textbox.insert("0.0", "")
   
   
   def combo_dani_n_callback(self, izbor):
