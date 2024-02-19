@@ -167,21 +167,21 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
 
     obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, border_color=("black"))
-    obrazl_textbox.grid(row=0, column=1, padx=60, pady=(15, 0), sticky="e")
+    obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 10), sticky="e")
     obrazl_textbox.insert("0.0", "")
 
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
-    nadnevak_naloga_label.grid(row=1, column=0, padx=(72, 0), pady=0)
+    nadnevak_naloga_label.grid(row=1, column=0, padx=(72, 0), pady=(0, 10))
 
     dan_naloga_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_n_callback, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     dan_naloga_combo.set("dan")
-    dan_naloga_combo.grid(row=1, column=1, padx=(0, 182), pady=10)
+    dan_naloga_combo.grid(row=1, column=1, padx=(0, 182), pady=(0, 10))
 
     mjesec_naloga_combo = customtkinter.CTkComboBox(self, values=mjeseci_z_str, command=self.combo_mjeseci_n_callback, 
                                                     state="normal", button_hover_color=("plum"), width=120)
     mjesec_naloga_combo.set("mjesec")
-    mjesec_naloga_combo.grid(row=1, column=1, padx=(180, 0), pady=10)
+    mjesec_naloga_combo.grid(row=1, column=1, padx=(180, 0), pady=(0, 10))
 
     klasa_label = customtkinter.CTkLabel(self, text="KLASA", fg_color="transparent")
     klasa_label.grid(row=2, column=0, padx=(132, 0), pady=(0, 10))
