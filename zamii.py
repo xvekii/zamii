@@ -197,7 +197,8 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     klasa_label.grid(row=2, column=0, padx=(132, 0), pady=(0, 10))
 
     global klasa_textbox
-    klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, border_color=("black"))
+    klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, 
+                                             wrap="word", border_color=("black"))
     klasa_textbox.grid(row=2, column=1, padx=(0, 240), pady=(0, 10), sticky="e")
   
   
@@ -213,6 +214,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
 
 def primijeni_btn_callback():
   get_obrazl_textbox()
+  get_klasa_textbox()
   update_context()
   render_document()
 
@@ -234,7 +236,14 @@ def get_obrazl_textbox():
   obrazl_txt = obrazl_textbox.get("0.0", "end-1c")
   context["obrazl"] = obrazl_txt
   print(obrazl_txt)
-  
+
+
+def get_klasa_textbox():
+  global klasa_textbox
+  klasa_txt = klasa_textbox.get("0.0", "end-1c")
+  context["klasa"] = klasa_txt
+  print(klasa_txt)
+
 
 def get_gender_zaposlen_a(ime_i_prezime_zamjene):
   split_ime = ime_i_prezime_zamjene.split()
