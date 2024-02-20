@@ -212,6 +212,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
   
 
 def primijeni_btn_callback():
+  get_obrazl_textbox()
   update_context()
   render_document()
 
@@ -222,16 +223,18 @@ def update_context():
   global context
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
   context["ime_i_prezime_zamijenjenog"] = ime_i_prezime_zamijenjenog_G
+  
+  spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
+  print(spol_zaposlen_a)
+  context["spol_zaposlen_a"] = spol_zaposlen_a
+  
+
+def get_obrazl_textbox():
   global obrazl_textbox
   obrazl_txt = obrazl_textbox.get("0.0", "end-1c")
   context["obrazl"] = obrazl_txt
   print(obrazl_txt)
- 
-
-  spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
-  print(spol_zaposlen_a)
-  context["spol_zaposlen_a"] = spol_zaposlen_a
-
+  
 
 def get_gender_zaposlen_a(ime_i_prezime_zamjene):
   split_ime = ime_i_prezime_zamjene.split()
