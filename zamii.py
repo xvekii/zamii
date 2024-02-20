@@ -18,6 +18,8 @@ trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
 šk_sati_z = list(range(1, 9))
 šk_sat_z_str = [str(sat) for sat in šk_sati_z]
 
+obrazl_textbox = None
+
 file_dir = os.path.dirname(os.path.abspath(__file__))
 db_name = "ucitelji.db"
 db_path = os.path.join(file_dir, db_name)
@@ -172,11 +174,11 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     obrazl_label = customtkinter.CTkLabel(self, text="obrazloženje", fg_color="transparent")
     obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
 
+    global obrazl_textbox
     obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, 
                                               border_color=("black"))
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 10), sticky="e")
-
-
+    
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
     nadnevak_naloga_label.grid(row=1, column=0, padx=(72, 0), pady=(0, 10))
 
@@ -202,6 +204,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     dan_naloga = izbor
     context["dan_naloga"] = dan_naloga
 
+
   def combo_mjeseci_n_callback(self, izbor):
     mj_naloga = izbor
     context["mj_naloga"] = mj_naloga
@@ -218,7 +221,12 @@ def update_context():
   global context
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
   context["ime_i_prezime_zamijenjenog"] = ime_i_prezime_zamijenjenog_G
-  
+  global obrazl_textbox
+  obrazl_txt = obrazl_textbox.get("0.0", "end-1c")
+  context["obrazl"] = obrazl_txt
+  print(obrazl_txt)
+ 
+
   spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
   print(spol_zaposlen_a)
   context["spol_zaposlen_a"] = spol_zaposlen_a
