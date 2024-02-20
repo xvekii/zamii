@@ -72,6 +72,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     umjesto_combo.set("odaberi prezime i ime")
     umjesto_combo.grid(row=3, column=1, padx=60, pady=10, columnspan=2)
 
+
   def radiobtn_event(self):
     konačnog_radnog_vremena = self.radio_rad_vrem_var.get() 
     print(konačnog_radnog_vremena)
@@ -171,9 +172,10 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     obrazl_label = customtkinter.CTkLabel(self, text="obrazloženje", fg_color="transparent")
     obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
 
-    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, border_color=("black"))
+    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, 
+                                              border_color=("black"))
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 10), sticky="e")
-    obrazl_textbox.insert("0.0", "")
+
 
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
     nadnevak_naloga_label.grid(row=1, column=0, padx=(72, 0), pady=(0, 10))
