@@ -265,7 +265,8 @@ class App(customtkinter.CTk):
     self.obrazloženje_frame = ObrazloženjeFrame(self)
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
     
-    primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", command=primijeni_btn_callback)
+    primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", 
+                                            hover_color=("#38A282"), command=primijeni_btn_callback)
     primijeni_btn.grid(row=3, column=0, padx=55, pady=5, sticky="e")
 
 context = {}
