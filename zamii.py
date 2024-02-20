@@ -176,7 +176,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
 
     global obrazl_textbox
     obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, 
-                                              border_color=("black"))
+                                              wrap="word", border_color=("black"))
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 10), sticky="e")
     
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
