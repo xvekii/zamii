@@ -19,6 +19,7 @@ trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
 šk_sat_z_str = [str(sat) for sat in šk_sati_z]
 
 obrazl_textbox = None
+klasa_textbox = None
 
 file_dir = os.path.dirname(os.path.abspath(__file__))
 db_name = "ucitelji.db"
@@ -195,9 +196,9 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     klasa_label = customtkinter.CTkLabel(self, text="KLASA", fg_color="transparent")
     klasa_label.grid(row=2, column=0, padx=(132, 0), pady=(0, 10))
 
+    global klasa_textbox
     klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, border_color=("black"))
     klasa_textbox.grid(row=2, column=1, padx=(0, 240), pady=(0, 10), sticky="e")
-    klasa_textbox.insert("0.0", "")
   
   
   def combo_dani_n_callback(self, izbor):
