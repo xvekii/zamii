@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import customtkinter
 from docxtpl import DocxTemplate
@@ -17,7 +18,11 @@ trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
 šk_sati_z = list(range(1, 9))
 šk_sat_z_str = [str(sat) for sat in šk_sati_z]
 
-db_connection = sqlite3.connect("ucitelji.db")
+file_dir = os.path.dirname(os.path.abspath(__file__))
+db_name = "ucitelji.db"
+db_path = os.path.join(file_dir, db_name)
+
+db_connection = sqlite3.connect(db_path)
 db = db_connection.cursor()
 
 db.execute("SELECT prezime, ime FROM ucitelji ORDER BY prezime")
@@ -38,12 +43,12 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
 
-    ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="ime i prezime zamjene", fg_color="transparent")
+    ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="prezime i ime zamjene", fg_color="transparent")
     ime_prezime_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
 
     ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, 
                                                   state="normal", button_hover_color=("plum"), width=300)
-    ime_prezime_combo.set("odaberi ime i prezime")
+    ime_prezime_combo.set("odaberi prezime i ime")
     ime_prezime_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=2)
     ime_prezime_combo.grid_columnconfigure(0, weight=1)
 
@@ -64,7 +69,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     
     umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combobox_callback_G, 
                                               state="normal", button_hover_color=("plum"), width=300)
-    umjesto_combo.set("odaberi ime i prezime")
+    umjesto_combo.set("odaberi prezime i ime")
     umjesto_combo.grid(row=3, column=1, padx=60, pady=10, columnspan=2)
 
   def radiobtn_event(self):
