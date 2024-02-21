@@ -98,8 +98,12 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_i_prezime_zamjene = " ".join([split_prezime_ime[-1]] + split_prezime_ime[:-1])
     print(ime_i_prezime_zamjene)
 
+    ime = ime_i_prezime_zamjene.split()[-1]
+    prezime = " ".join(ime_i_prezime_zamjene.split()[:-1])
 
-    # get_ime_ucitelja_D(prezime_zamjene, ime_zamjene)
+    print(ime, prezime)
+
+    get_ime_ucitelja_D(prezime, ime)
 
 
   def combobox_callback_G(self, izbor_G):
@@ -115,14 +119,17 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     get_radno_mjesto_zamijenjenog(prezime_G, ime_G)
 
 
-def get_ime_ucitelja_D(prezime_zamjene, ime_zamjene):
+def get_ime_ucitelja_D(prezime, ime):
   db.execute("SELECT ime_D, prezime_D FROM ucitelji_D WHERE id_ucitelja_D = ( \
-             SELECT id_ucitelja_N FROM ucitelji WHERE ime = ? AND prezime = ?)", (ime_zamjene[0], prezime_zamjene[0]))
+             SELECT id_ucitelja_N FROM ucitelji WHERE ime = ? AND prezime = ?)", (prezime, ime))
   rows_D = db.fetchone()
-  print(rows_D)
+  ime_D = rows_D[0]
+  prez_D = rows_D[1] 
+  ime_prez_D = ime_D + " " + prez_D
+  print(ime_prez_D)
+  context["ime_prez_z_D"] = ime_prez_D
 
 def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
-  
     db.execute("SELECT na_radnom_mjestu FROM radno_mjesto WHERE id_radnog_mjesta = ( \
                SELECT radno_mjesto FROM ucitelji WHERE id_ucitelja_N = ( \
                SELECT id_ucitelja_G FROM ucitelji_G \
