@@ -5,21 +5,7 @@ from docxtpl import DocxTemplate
 
 popis_ucitelja = []
 popis_ucitelja_G = []
-
-dani = list(range(1, 32))
-dani_str = [str(dan) for dan in dani]
-
-mjeseci = list(range(1, 13))
-mjeseci_z_str = [str(mjesec) for mjesec in mjeseci]
-
-trajanje_sati_z = list(range(1, 6))
-trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
-
-šk_sati_z = list(range(1, 9))
-šk_sat_z_str = [str(sat) for sat in šk_sati_z]
-
-obrazl_textbox = None
-klasa_textbox = None
+popis_ucitelja_G_dict = {}
 
 file_dir = os.path.dirname(os.path.abspath(__file__))
 db_name = "ucitelji.db"
@@ -41,6 +27,23 @@ rows_G = db.fetchall()
 for row_G in rows_G:
   puno_ime_G = " ".join(row_G)
   popis_ucitelja_G.append(puno_ime_G)
+
+
+dani = list(range(1, 32))
+dani_str = [str(dan) for dan in dani]
+
+mjeseci = list(range(1, 13))
+mjeseci_z_str = [str(mjesec) for mjesec in mjeseci]
+
+trajanje_sati_z = list(range(1, 6))
+trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
+
+šk_sati_z = list(range(1, 9))
+šk_sat_z_str = [str(sat) for sat in šk_sati_z]
+
+obrazl_textbox = None
+klasa_textbox = None
+
 
 class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
