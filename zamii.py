@@ -235,7 +235,15 @@ def update_context():
 def set_gender(spol_zaposlen_a):
   if spol_zaposlen_a == "zaposlen":
     context["dužan_na"] = "dužan"
-    print(context["dužan_na"])
+    context["radnik_ca"] = "Radnik"
+    context["radniku_ci"] = "Radniku"
+    context["sam_a"] = "sam"
+  elif spol_zaposlen_a == "zaposlena":
+    context["dužan_na"] = "dužna" 
+    context["radnik_ca"] = "Radnica"
+    context["radniku_ci"] = "Radnici"
+    context["sam_a"] = "sama"
+  
 
 def get_obrazl_textbox():
   global obrazl_textbox
