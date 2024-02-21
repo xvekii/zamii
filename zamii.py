@@ -106,7 +106,22 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     print(ime_i_prezime_zamijenjenog_G)
 
     prezime_ime_G_tuples = find_surname_name_G(prezime_ime_G)
-    print(prezime_ime_G_tuples)
+    prezime_G = prezime_ime_G_tuples[0]
+    ime_G = prezime_ime_G_tuples[1]
+    get_radno_mjesto_zamijenjenog(prezime_G, ime_G)
+    
+
+def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
+  
+    db.execute("SELECT na_radnom_mjestu FROM radno_mjesto WHERE id_radnog_mjesta = ( \
+               SELECT radno_mjesto FROM ucitelji WHERE id_ucitelja_N = ( \
+               SELECT id_ucitelja_G FROM ucitelji_G \
+               WHERE prezime_G = ? AND ime_G = ?))", (prezime_G, ime_G))
+    rows_G = db.fetchone()
+    radno_mj = rows_G[0]
+    context["r_mj_zamijenj_G"] = radno_mj
+    print(radno_mj)
+
 
   
 def find_surname_name_G(prezime_ime_G):
