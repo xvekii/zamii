@@ -105,6 +105,13 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     ime_i_prezime_zamijenjenog_G = " ".join([split_prezime_ime_G[-1]] + split_prezime_ime_G[:-1])
     print(ime_i_prezime_zamijenjenog_G)
 
+    prezime_ime_G_tuples = find_surname_name_G(prezime_ime_G)
+    print(prezime_ime_G_tuples)
+
+  
+def find_surname_name_G(prezime_ime_G):
+  return popis_ucitelja_G_dict.get(prezime_ime_G)
+
 
 class VrijemeZamjeneFrame(customtkinter.CTkFrame):
   def __init__(self, master):
