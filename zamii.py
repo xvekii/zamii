@@ -268,6 +268,7 @@ def get_radno_mjesto(ime, prezime):
     context["radno_mj"] = res[0]
     print(res[0])
 
+
 def get_gender_zaposlen_a(ime_i_prezime_zamjene):
   split_ime = ime_i_prezime_zamjene.split()
   ime = split_ime[0]
