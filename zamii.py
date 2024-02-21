@@ -94,8 +94,12 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     global ime_i_prezime_zamjene
     prezime_ime = izbor
     split_prezime_ime = prezime_ime.split()
+
     ime_i_prezime_zamjene = " ".join([split_prezime_ime[-1]] + split_prezime_ime[:-1])
     print(ime_i_prezime_zamjene)
+
+
+    # get_ime_ucitelja_D(prezime_zamjene, ime_zamjene)
 
 
   def combobox_callback_G(self, izbor_G):
@@ -109,7 +113,13 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     prezime_G = prezime_ime_G_tuples[0]
     ime_G = prezime_ime_G_tuples[1]
     get_radno_mjesto_zamijenjenog(prezime_G, ime_G)
-    
+
+
+def get_ime_ucitelja_D(prezime_zamjene, ime_zamjene):
+  db.execute("SELECT ime_D, prezime_D FROM ucitelji_D WHERE id_ucitelja_D = ( \
+             SELECT id_ucitelja_N FROM ucitelji WHERE ime = ? AND prezime = ?)", (ime_zamjene[0], prezime_zamjene[0]))
+  rows_D = db.fetchone()
+  print(rows_D)
 
 def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
   
@@ -123,7 +133,6 @@ def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
     print(radno_mj)
 
 
-  
 def find_surname_name_G(prezime_ime_G):
   return popis_ucitelja_G_dict.get(prezime_ime_G)
 
