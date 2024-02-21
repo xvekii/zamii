@@ -259,11 +259,22 @@ def get_klasa_textbox():
   print(klasa_txt)
 
 
+def get_radno_mjesto(ime, prezime):
+  db.execute("SELECT na_radnom_mjestu FROM radno_mjesto WHERE id_radnog_mjesta = \
+             (SELECT radno_mjesto FROM ucitelji WHERE ime = ? AND prezime = ?)", (ime, prezime))
+  res = db.fetchone()
+
+  if res is not None:
+    context["radno_mj"] = res[0]
+    print(res[0])
+
 def get_gender_zaposlen_a(ime_i_prezime_zamjene):
   split_ime = ime_i_prezime_zamjene.split()
   ime = split_ime[0]
   prezime = " ".join(split_ime[1:])
   print(ime, prezime)
+  
+  get_radno_mjesto(ime, prezime)
   
   db.execute("SELECT spol FROM ucitelji WHERE ime = ? AND prezime = ?", (ime, prezime))
   res = db.fetchone()
