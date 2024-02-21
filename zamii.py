@@ -227,9 +227,15 @@ def update_context():
   context["ime_i_prezime_zamijenjenog"] = ime_i_prezime_zamijenjenog_G
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
+  set_gender(spol_zaposlen_a)
   print(spol_zaposlen_a)
   context["spol_zaposlen_a"] = spol_zaposlen_a
   
+
+def set_gender(spol_zaposlen_a):
+  if spol_zaposlen_a == "zaposlen":
+    context["dužan_na"] = "dužan"
+    print(context["dužan_na"])
 
 def get_obrazl_textbox():
   global obrazl_textbox
