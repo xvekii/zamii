@@ -198,7 +198,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
 
     global klasa_textbox
     klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, 
-                                             wrap="word", border_color=("black"))
+                                            border_color=("black"))
     klasa_textbox.grid(row=2, column=1, padx=(0, 240), pady=(0, 10), sticky="e")
   
   
