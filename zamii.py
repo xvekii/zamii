@@ -129,6 +129,7 @@ def get_ime_ucitelja_D(prezime, ime):
   print(ime_prez_D)
   context["ime_prez_z_D"] = ime_prez_D
 
+
 def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
     db.execute("SELECT na_radnom_mjestu FROM radno_mjesto WHERE id_radnog_mjesta = ( \
                SELECT radno_mjesto FROM ucitelji WHERE id_ucitelja_N = ( \
