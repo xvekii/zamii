@@ -7,6 +7,7 @@ popis_ucitelja = []
 popis_ucitelja_G = []
 popis_ucitelja_G_dict = {}
 
+# Get and set the file path
 file_dir = os.path.dirname(os.path.abspath(__file__))
 db_name = "ucitelji.db"
 db_path = os.path.join(file_dir, db_name)
@@ -14,6 +15,7 @@ db_path = os.path.join(file_dir, db_name)
 db_connection = sqlite3.connect(db_path)
 db = db_connection.cursor()
 
+# Get teachers' names from db
 db.execute("SELECT prezime, ime FROM ucitelji ORDER BY prezime")
 rows = db.fetchall()
 
