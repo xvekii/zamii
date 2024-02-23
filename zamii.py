@@ -5,6 +5,8 @@ from docxtpl import DocxTemplate
 
 popis_ucitelja = []
 popis_ucitelja_G = []
+
+popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
 
 # Get and set the file path
@@ -29,6 +31,12 @@ rows_G = db.fetchall()
 for row_G in rows_G:
   puno_ime_G = " ".join(row_G)
   popis_ucitelja_G.append(puno_ime_G)
+
+# Get prezime_ime from ucitelji and store into a dictionary with prezime_ime_D key and surname, name tuples
+db.execute("SELECT prezime, ime FROM ucitelji ORDER BY prezime")
+for row in db.fetchall():
+  prezime_ime_N = f"{row[0]} {row[1]}"
+  popis_ucitelja_N_dict[prezime_ime_N] = (row[0], row[1])
 
 # Get prezime_ime_G from ucitelji and store into a dictionary with prezime_ime_G key and surname, name tuples
 db.execute("SELECT prezime_G, ime_G FROM ucitelji_G ORDER BY prezime_G")
