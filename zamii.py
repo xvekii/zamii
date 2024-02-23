@@ -121,6 +121,10 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     get_radno_mjesto_zamijenjenog(prezime_G, ime_G)
 
 
+def find_surname_name_G(prezime_ime_G):
+  return popis_ucitelja_G_dict.get(prezime_ime_G)
+
+
 def get_ime_ucitelja_D(prezime, ime):
   db.execute("SELECT ime_D, prezime_D FROM ucitelji_D WHERE id_ucitelja_D = ( \
              SELECT id_ucitelja_N FROM ucitelji WHERE ime = ? AND prezime = ?)", (prezime, ime))
@@ -141,10 +145,6 @@ def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
     radno_mj = rows_G[0]
     context["r_mj_zamijenj_G"] = radno_mj
     print(radno_mj)
-
-
-def find_surname_name_G(prezime_ime_G):
-  return popis_ucitelja_G_dict.get(prezime_ime_G)
 
 
 class VrijemeZamjeneFrame(customtkinter.CTkFrame):
