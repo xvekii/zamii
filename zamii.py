@@ -91,7 +91,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     print(konačnog_radnog_vremena)
     context["radnog_vremena"] = konačnog_radnog_vremena
 
-  
+  # Get prezime_ime from db and store into tuples for easier ime i prezime identification and reversal
+  # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
   def combobox_callback(self, izbor):
     global ime_i_prezime_zamjene
     prezime_ime = izbor
@@ -108,6 +109,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     get_ime_ucitelja_D(prezime, ime)
 
 
+  # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
+  # Remove global and use the context{} instead
   def combobox_callback_G(self, izbor_G):
     global ime_i_prezime_zamijenjenog_G
     prezime_ime_G = izbor_G
