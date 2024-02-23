@@ -111,17 +111,16 @@ class ZamjenaFrame(customtkinter.CTkFrame):
 
 
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
-  # Remove global and use the context{} instead
   def combobox_callback_G(self, izbor_G):
     global ime_i_prezime_zamijenjenog_G
     prezime_ime_G = izbor_G
-    split_prezime_ime_G = prezime_ime_G.split()
-    ime_i_prezime_zamijenjenog_G = " ".join([split_prezime_ime_G[-1]] + split_prezime_ime_G[:-1])
-    print(ime_i_prezime_zamijenjenog_G)
-
+    
     prezime_ime_G_tuples = find_surname_name_G(prezime_ime_G)
     prezime_G = prezime_ime_G_tuples[0]
     ime_G = prezime_ime_G_tuples[1]
+    ime_i_prezime_zamijenjenog_G = " ".join([ime_G, prezime_G])
+    print(ime_i_prezime_zamijenjenog_G)
+
     get_radno_mjesto_zamijenjenog(prezime_G, ime_G)
 
 
