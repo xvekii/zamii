@@ -30,6 +30,7 @@ for row_G in rows_G:
   puno_ime_G = " ".join(row_G)
   popis_ucitelja_G.append(puno_ime_G)
 
+# Get prezime_ime_G from ucitelji and store into a dictionary with prezime_ime_G key and surname, name tuples
 db.execute("SELECT prezime_G, ime_G FROM ucitelji_G ORDER BY prezime_G")
 for row in db.fetchall():
   prezime_ime_G = f"{row[0]} {row[1]}"
