@@ -194,9 +194,10 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
                                                         variable=šk_sat_chk_var1, onvalue="1.")
     šk_sat_zamjene_checkbox1.grid(row=2, column=1, padx=(0, 20), pady=(10, 0))
 
-    šk_sat_chk_zamjene_label = customtkinter.CTkLabel(self, text="1.", fg_color="transparent")
-    šk_sat_chk_zamjene_label.grid(row=3, column=1, padx=(0, 92), pady=0)
+    šk_sat_chk_zamjene_label1 = customtkinter.CTkLabel(self, text="1.", fg_color="transparent")
+    šk_sat_chk_zamjene_label1.grid(row=3, column=1, padx=(0, 92), pady=0)
 
+  
   def get_chkbox1_callback(self):
     izbor = šk_sat_chk_var1.get()
     šk_sat_z = izbor
