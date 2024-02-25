@@ -102,20 +102,17 @@ class ZamjenaFrame(customtkinter.CTkFrame):
 
   # Get prezime_ime from db and store into tuples for easier ime i prezime identification and reversal
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
-  def combobox_callback(self, izbor):
+  def combobox_callback(self, izbor_N):
     global ime_i_prezime_zamjene
-    prezime_ime = izbor
-    split_prezime_ime = prezime_ime.split()
+    prezime_ime_N = izbor_N
 
-    ime_i_prezime_zamjene = " ".join([split_prezime_ime[-1]] + split_prezime_ime[:-1])
-    print(ime_i_prezime_zamjene)
+    prezime_ime_N_tuples = find_surname_name_N(prezime_ime_N)
+    prezime_N = prezime_ime_N_tuples[0]
+    ime_N = prezime_ime_N_tuples[1]
+    ime_i_prezime_zamjene = " ".join([ime_N, prezime_N])
+    print(ime_N, prezime_N)
 
-    ime = ime_i_prezime_zamjene.split()[-1]
-    prezime = " ".join(ime_i_prezime_zamjene.split()[:-1])
-
-    print(ime, prezime)
-
-    get_ime_ucitelja_D(prezime, ime)
+    get_ime_ucitelja_D(prezime_N, ime_N)
 
 
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
@@ -132,13 +129,17 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     get_radno_mjesto_zamijenjenog(prezime_G, ime_G)
 
 
+def find_surname_name_N(prezime_ime_N):
+  return popis_ucitelja_N_dict.get(prezime_ime_N)
+
+
 def find_surname_name_G(prezime_ime_G):
   return popis_ucitelja_G_dict.get(prezime_ime_G)
 
 
 def get_ime_ucitelja_D(prezime, ime):
   db.execute("SELECT ime_D, prezime_D FROM ucitelji_D WHERE id_ucitelja_D = ( \
-             SELECT id_ucitelja_N FROM ucitelji WHERE ime = ? AND prezime = ?)", (prezime, ime))
+             SELECT id_ucitelja_N FROM ucitelji WHERE prezime = ? AND ime = ?)", (prezime, ime))
   rows_D = db.fetchone()
   ime_D = rows_D[0]
   prez_D = rows_D[1] 
