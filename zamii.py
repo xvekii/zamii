@@ -188,12 +188,20 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     šk_sat_zamjene_label = customtkinter.CTkLabel(self, text="školski sat zamjene", fg_color="transparent")
     šk_sat_zamjene_label.grid(row=2, column=0, padx=(57, 0), pady=0)
 
-    šk_sat_zamjene_combo = customtkinter.CTkComboBox(self, values=šk_sat_z_str, 
-                                                       command=self.combo_šk_sat_z_callback, state="normal", 
-                                                       button_hover_color=("plum"), width=120)
-    šk_sat_zamjene_combo.grid(row=2, column=1, padx=0, pady=10, columnspan=1)
-    šk_sat_zamjene_combo.set("koji sat")
-  
+    global šk_sat_chk_var1
+    šk_sat_chk_var1 = customtkinter.StringVar(value="0")
+    šk_sat_zamjene_checkbox1 = customtkinter.CTkCheckBox(self, text="1.", command=self.get_chkbox1_callback,
+                                                        variable=šk_sat_chk_var1, onvalue="1.")
+    šk_sat_zamjene_checkbox1.grid(row=2, column=1, padx=0, pady=10)
+
+
+  def get_chkbox1_callback(self):
+    izbor = šk_sat_chk_var1.get()
+    šk_sat_z = izbor
+    context["šk_sat_z"] = šk_sat_z
+    
+    print(f"check1: {izbor}")
+
 
   def combo_dani_z_callback(self, izbor):
     global dan_zamjene
@@ -214,10 +222,10 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     context["trajanje_zamjene"] = trajanje_zamjene
     set_sat_i(trajanje_zamjene)
 
-
-  def combo_šk_sat_z_callback(self, izbor):
-    šk_sat_z = izbor
-    context["šk_sat_z"] = šk_sat_z
+  
+  # def combo_šk_sat_z_callback(self, izbor):
+  #   šk_sat_z = izbor
+  #   context["šk_sat_z"] = šk_sat_z
 
 
 def set_sat_i(sati):
