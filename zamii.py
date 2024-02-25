@@ -143,7 +143,7 @@ def get_ime_ucitelja_D(prezime, ime):
   rows_D = db.fetchone()
   ime_D = rows_D[0]
   prez_D = rows_D[1] 
-  ime_prez_D = ime_D + " " + prez_D
+  ime_prez_D = " ".join([ime_D, prez_D])
   print(ime_prez_D)
   context["ime_prez_z_D"] = ime_prez_D
 
