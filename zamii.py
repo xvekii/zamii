@@ -5,6 +5,7 @@ from docxtpl import DocxTemplate
 
 popis_ucitelja = []
 popis_ucitelja_G = []
+šk_sat_z_chckbxes = []
 
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
@@ -208,19 +209,22 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
 
   
   def get_chkbox1_callback(self):
+    # global šk_sat_z_chckbxes 
     izbor = šk_sat_chk_var1.get()
-    šk_sat_z = izbor
-    context["šk_sat_z"] = šk_sat_z
-    
-    print(f"check1: {izbor}")
+    šk_sat_z_chckbxes.append(izbor)
+    # context["šk_sat_z"] = šk_sat_z
+    # print(f"check1: {izbor}")
+    print(f"check1: {šk_sat_z_chckbxes}")
+
 
   def get_chkbox2_callback(self):
     izbor = šk_sat_chk_var2.get()
+    šk_sat_z_chckbxes.append(izbor)
     # šk_sat_z = izbor
     # context["šk_sat_z"] = šk_sat_z
     
-    print(f"check2: {izbor}")
-
+    # print(f"check2: {izbor}")
+    print(f"check2: {šk_sat_z_chckbxes}")
 
   def combo_dani_z_callback(self, izbor):
     global dan_zamjene
@@ -307,6 +311,11 @@ def primijeni_btn_callback():
   render_document()
 
 
+def update_šk_sat_checkboxes():
+  concat_str = ", ".join(šk_sat_z_chckbxes)
+  context["šk_sat_z"] = concat_str
+
+
 def update_context():
   global ime_i_prezime_zamjene
   global ime_i_prezime_zamijenjenog_G
@@ -318,6 +327,7 @@ def update_context():
   set_gender(spol_zaposlen_a)
   print(spol_zaposlen_a)
   context["spol_zaposlen_a"] = spol_zaposlen_a
+  update_šk_sat_checkboxes()
   
 
 def set_gender(spol_zaposlen_a):
