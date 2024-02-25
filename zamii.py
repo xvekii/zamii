@@ -196,6 +196,15 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
 
     šk_sat_chk_zamjene_label1 = customtkinter.CTkLabel(self, text="1.", fg_color="transparent")
     šk_sat_chk_zamjene_label1.grid(row=3, column=1, padx=(0, 92), pady=0)
+    
+    global šk_sat_chk_var2
+    šk_sat_chk_var2 = customtkinter.StringVar(value="0")
+    šk_sat_zamjene_checkbox2 = customtkinter.CTkCheckBox(self, text="", command=self.get_chkbox2_callback,
+                                                        variable=šk_sat_chk_var2, onvalue="2.")
+    šk_sat_zamjene_checkbox2.grid(row=2, column=1, padx=(60, 0), pady=(10, 0))
+
+    šk_sat_chk_zamjene_label2 = customtkinter.CTkLabel(self, text="2.", fg_color="transparent")
+    šk_sat_chk_zamjene_label2.grid(row=3, column=2, padx=(0, 92), pady=0)
 
   
   def get_chkbox1_callback(self):
@@ -204,6 +213,13 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     context["šk_sat_z"] = šk_sat_z
     
     print(f"check1: {izbor}")
+
+  def get_chkbox2_callback(self):
+    izbor = šk_sat_chk_var2.get()
+    # šk_sat_z = izbor
+    # context["šk_sat_z"] = šk_sat_z
+    
+    print(f"check2: {izbor}")
 
 
   def combo_dani_z_callback(self, izbor):
