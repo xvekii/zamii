@@ -318,17 +318,22 @@ def primijeni_btn_callback():
   update_context()
   render_document()
 
-# Remove eventual "0"s from the list if user unchecks checkbox
+# Remove eventual "0"s and unchecked values from the list if user unchecks checkbox
 def clean_šk_sat_chckbxes():
-    for item in šk_sat_z_chckbxes:
-      if item != "0":
-        šk_sat_z_chckbxes_clean.append(item)
+  i = 0
+  while i < len(šk_sat_z_chckbxes):
+    if šk_sat_z_chckbxes[i] != "0":
+      šk_sat_z_chckbxes_clean.append(šk_sat_z_chckbxes[i])
+    elif i > 0:
+      šk_sat_z_chckbxes_clean.pop()
+    i += 1
 
 
 def update_šk_sat_checkboxes():
   clean_šk_sat_chckbxes()
   concat_str = ", ".join(šk_sat_z_chckbxes_clean)
   context["šk_sat_z"] = concat_str
+  print(f"sati: {concat_str}")
 
 
 def update_context():
