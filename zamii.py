@@ -6,6 +6,8 @@ from docxtpl import DocxTemplate
 popis_ucitelja = []
 popis_ucitelja_G = []
 šk_sat_z_chckbxes = []
+šk_sat_z_chckbxes_clean = []
+
 
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
@@ -207,7 +209,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     šk_sat_chk_zamjene_label2 = customtkinter.CTkLabel(self, text="2.", fg_color="transparent")
     šk_sat_chk_zamjene_label2.grid(row=3, column=2, padx=(0, 92), pady=0)
 
-  
+
   def get_chkbox1_callback(self):
     izbor = šk_sat_chk_var1.get()
     šk_sat_z_chckbxes.append(izbor)
@@ -218,6 +220,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     izbor = šk_sat_chk_var2.get()
     šk_sat_z_chckbxes.append(izbor)
     print(f"check2: {šk_sat_z_chckbxes}")
+
 
   def combo_dani_z_callback(self, izbor):
     global dan_zamjene
@@ -303,9 +306,16 @@ def primijeni_btn_callback():
   update_context()
   render_document()
 
+# Remove eventual "0"s from the list if user unchecks checkbox
+def clean_šk_sat_chckbxes():
+    for item in šk_sat_z_chckbxes:
+      if item != "0":
+        šk_sat_z_chckbxes_clean.append(item)
+
 
 def update_šk_sat_checkboxes():
-  concat_str = ", ".join(šk_sat_z_chckbxes)
+  clean_šk_sat_chckbxes()
+  concat_str = ", ".join(šk_sat_z_chckbxes_clean)
   context["šk_sat_z"] = concat_str
 
 
