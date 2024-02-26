@@ -241,11 +241,6 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     context["trajanje_zamjene"] = trajanje_zamjene
     set_sat_i(trajanje_zamjene)
 
-  
-  # def combo_šk_sat_z_callback(self, izbor):
-  #   šk_sat_z = izbor
-  #   context["šk_sat_z"] = šk_sat_z
-
 
 def set_sat_i(sati):
   if sati == "1":
