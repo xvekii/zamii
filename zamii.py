@@ -195,40 +195,27 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     šk_sat_chk_var1 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox1 = customtkinter.CTkCheckBox(self, text="", command=self.get_chkbox1_callback,
                                                         variable=šk_sat_chk_var1, onvalue="1.")
-    šk_sat_zamjene_checkbox1.grid(row=2, column=1, padx=(0, 20), pady=(10, 0))
+    šk_sat_zamjene_checkbox1.grid(row=2, column=1, padx=(0, 10), pady=(10, 0))
 
-    šk_sat_chk_zamjene_label1 = customtkinter.CTkLabel(self, text="1.", fg_color="transparent")
-    šk_sat_chk_zamjene_label1.grid(row=3, column=1, padx=(0, 92), pady=(0, 0))
     
     global šk_sat_chk_var2
     šk_sat_chk_var2 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox2 = customtkinter.CTkCheckBox(self, text="", command=self.get_chkbox2_callback,
                                                         variable=šk_sat_chk_var2, onvalue="2.")
-    šk_sat_zamjene_checkbox2.grid(row=2, column=1, padx=(60, 0), pady=(10, 0))
+    šk_sat_zamjene_checkbox2.grid(row=3, column=1, padx=(0, 10), pady=(10, 0))
 
-    šk_sat_chk_zamjene_label2 = customtkinter.CTkLabel(self, text="2.", fg_color="transparent")
-    šk_sat_chk_zamjene_label2.grid(row=3, column=1, padx=(0, 12), pady=(0, 0))
     
     global šk_sat_chk_var3
     šk_sat_chk_var3 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox3 = customtkinter.CTkCheckBox(self, text="", command=self.get_chkbox3_callback,
                                                         variable=šk_sat_chk_var3, onvalue="3.")
-    šk_sat_zamjene_checkbox3.grid(row=2, column=1, padx=(140, 0), pady=(10, 0))
-
-    šk_sat_chk_zamjene_label3 = customtkinter.CTkLabel(self, text="3.", fg_color="transparent")
-    šk_sat_chk_zamjene_label3.grid(row=3, column=1, padx=(66, 0), pady=0)
+    šk_sat_zamjene_checkbox3.grid(row=4, column=1, padx=(0, 10), pady=(10, 0))
     
     global šk_sat_chk_var4
     šk_sat_chk_var4 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox4 = customtkinter.CTkCheckBox(self, text="", command=self.get_chkbox4_callback,
                                                         variable=šk_sat_chk_var4, onvalue="4.")
-    šk_sat_zamjene_checkbox4.grid(row=2, column=1, padx=(140, 0), pady=(10, 0))
-
-    šk_sat_chk_zamjene_label4 = customtkinter.CTkLabel(self, text="4.", fg_color="transparent")
-    šk_sat_chk_zamjene_label4.grid(row=3, column=1, padx=(140, 0), pady=0)
-
-
-
+    šk_sat_zamjene_checkbox4.grid(row=5, column=1, padx=(0, 10), pady=(10, 10))
 
 
   def get_chkbox1_callback(self):
@@ -433,7 +420,7 @@ class App(customtkinter.CTk):
     super().__init__()
     self.title("Zamii")
 
-    self.geometry("600x550+300+100")
+    self.geometry("600x650+300+100")
     self.grid_columnconfigure(0, weight=1)
     self.grid_rowconfigure(0, weight=0)
     self.resizable(width=0, height=0)
