@@ -468,7 +468,7 @@ class App(customtkinter.CTk):
     super().__init__()
     self.title("Zamii")
 
-    self.geometry("600x650+300+100")
+    self.geometry("600x630+300+100")
     self.grid_columnconfigure(0, weight=1)
     self.grid_rowconfigure(0, weight=0)
     self.resizable(width=0, height=0)
@@ -485,7 +485,7 @@ class App(customtkinter.CTk):
     
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", 
                                             hover_color=("#38A282"), command=primijeni_btn_callback)
-    primijeni_btn.grid(row=3, column=0, padx=55, pady=5, sticky="e")
+    primijeni_btn.grid(row=3, column=0, padx=(0, 53), pady=5, sticky="e")
 
 context = {}
 
