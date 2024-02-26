@@ -209,21 +209,16 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
 
   
   def get_chkbox1_callback(self):
-    # global šk_sat_z_chckbxes 
     izbor = šk_sat_chk_var1.get()
     šk_sat_z_chckbxes.append(izbor)
-    # context["šk_sat_z"] = šk_sat_z
-    # print(f"check1: {izbor}")
+    
     print(f"check1: {šk_sat_z_chckbxes}")
 
 
   def get_chkbox2_callback(self):
     izbor = šk_sat_chk_var2.get()
     šk_sat_z_chckbxes.append(izbor)
-    # šk_sat_z = izbor
-    # context["šk_sat_z"] = šk_sat_z
-    
-    # print(f"check2: {izbor}")
+   
     print(f"check2: {šk_sat_z_chckbxes}")
 
   def combo_dani_z_callback(self, izbor):
