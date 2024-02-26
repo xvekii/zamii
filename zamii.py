@@ -228,6 +228,12 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     šk_sat_zamjene_checkbox6 = customtkinter.CTkCheckBox(self, text="6. sat", command=self.get_chkbox6_callback,
                                                         variable=šk_sat_chk_var6, onvalue="6.")
     šk_sat_zamjene_checkbox6.grid(row=3, column=2, padx=(0, 20), pady=(10, 0))
+    
+    global šk_sat_chk_var7
+    šk_sat_chk_var7 = customtkinter.StringVar(value="0")
+    šk_sat_zamjene_checkbox7 = customtkinter.CTkCheckBox(self, text="7. sat", command=self.get_chkbox7_callback,
+                                                        variable=šk_sat_chk_var7, onvalue="7.")
+    šk_sat_zamjene_checkbox7.grid(row=4, column=2, padx=(0, 20), pady=(10, 0))
 
 
 
@@ -267,6 +273,12 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     izbor = šk_sat_chk_var6.get()
     šk_sat_z_chckbxes.append(izbor)
     print(f"check6: {šk_sat_z_chckbxes}")
+  
+  
+  def get_chkbox7_callback(self):
+    izbor = šk_sat_chk_var7.get()
+    šk_sat_z_chckbxes.append(izbor)
+    print(f"check7: {šk_sat_z_chckbxes}")
 
   
   def combo_dani_z_callback(self, izbor):
