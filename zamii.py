@@ -101,7 +101,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   def radiobtn_event(self):
     konačnog_radnog_vremena = self.radio_rad_vrem_var.get() 
     print(konačnog_radnog_vremena)
-    context["radnog_vremena"] = konačnog_radnog_vremena
+    context["rad_vrem"] = konačnog_radnog_vremena
 
   # Get prezime_ime from db and store into tuples for easier ime i prezime identification and reversal
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
@@ -392,7 +392,7 @@ def update_context():
   global ime_i_prezime_zamijenjenog_G
   global context
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
-  context["ime_i_prezime_zamijenjenog"] = ime_i_prezime_zamijenjenog_G
+  context["im_prez_zamij_G"] = ime_i_prezime_zamijenjenog_G
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
   set_gender(spol_zaposlen_a)
