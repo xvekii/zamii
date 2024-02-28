@@ -158,7 +158,7 @@ def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
                WHERE prezime_G = ? AND ime_G = ?))", (prezime_G, ime_G))
     rows_G = db.fetchone()
     radno_mj = rows_G[0]
-    context["r_mj_zamijenj_G"] = radno_mj
+    context["r_mj_zamij_G"] = radno_mj
     print(radno_mj)
 
 
@@ -392,7 +392,7 @@ def update_context():
   global ime_i_prezime_zamijenjenog_G
   global context
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
-  context["im_prez_zamij_G"] = ime_i_prezime_zamijenjenog_G
+  context["zamij_G"] = ime_i_prezime_zamijenjenog_G
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
   set_gender(spol_zaposlen_a)
