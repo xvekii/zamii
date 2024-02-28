@@ -158,7 +158,7 @@ def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
                WHERE prezime_G = ? AND ime_G = ?))", (prezime_G, ime_G))
     rows_G = db.fetchone()
     radno_mj = rows_G[0]
-    context["r_mj_zamij_G"] = radno_mj
+    context["r_mj_zamijenj_G"] = radno_mj
     print(radno_mj)
 
 
