@@ -108,6 +108,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
   def combobox_callback(self, izbor_N):
     global ime_i_prezime_zamjene
+    global ime_N
+    global prezime_N
     prezime_ime_N = izbor_N
 
     prezime_ime_N_tuples = find_surname_name_N(prezime_ime_N)
@@ -396,7 +398,7 @@ def update_context():
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
   context["zamij_G"] = ime_i_prezime_zamijenjenog_G
   
-  spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
+  spol_zaposlen_a = get_gender_zaposlen_a(ime_N, prezime_N)
   if izjava == True: 
     primijeni_izjavu(spol_zaposlen_a)
 
@@ -460,15 +462,12 @@ def get_radno_mjesto(ime, prezime):
     print(res[0])
 
 # Refactor to use dictionary of tuples with prezime_ime
-def get_gender_zaposlen_a(ime_i_prezime_zamjene):
-  split_ime = ime_i_prezime_zamjene.split()
-  ime = split_ime[0]
-  prezime = " ".join(split_ime[1:])
-  print(ime, prezime)
+def get_gender_zaposlen_a(ime_N, prezime_N):
+  print(ime_N, prezime_N)
   
-  get_radno_mjesto(ime, prezime)
+  get_radno_mjesto(ime_N, prezime_N)
   
-  db.execute("SELECT spol FROM ucitelji WHERE ime = ? AND prezime = ?", (ime, prezime))
+  db.execute("SELECT spol FROM ucitelji WHERE ime = ? AND prezime = ?", (ime_N, prezime_N))
   res = db.fetchone()
   
   if res is not None:
