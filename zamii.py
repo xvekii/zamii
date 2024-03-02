@@ -472,6 +472,7 @@ class App(customtkinter.CTk):
 
     self.geometry("600x630+300+100")
     self.grid_columnconfigure(0, weight=1)
+
     self.grid_rowconfigure(0, weight=0)
     self.resizable(width=0, height=0)
     customtkinter.set_appearance_mode("system")
@@ -484,10 +485,14 @@ class App(customtkinter.CTk):
     
     self.obrazloženje_frame = ObrazloženjeFrame(self)
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
+
+    izjava_btn = customtkinter.CTkButton(self, text="dodaj izjavu", fg_color="#6d6875", 
+                                            hover_color=("#118ab2"))
+    izjava_btn.grid(row=3, column=0, padx=(0, 215), pady=5, sticky="e")
     
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", 
                                             hover_color=("#38A282"), command=primijeni_btn_callback)
-    primijeni_btn.grid(row=3, column=0, padx=(0, 53), pady=5, sticky="e")
+    primijeni_btn.grid(row=3, column=0, padx=(0, 10), pady=5, sticky="e")
 
 context = {}
 
