@@ -407,6 +407,8 @@ def set_gender(spol_zaposlen_a):
     context["radnik_ca"] = "Radnik"
     context["rdn"] = "Radniku"
     context["r_s"] = "sam"
+    # context["izjava"] = "Izjavljujem da sam suglasan na gore navedeni prekovremeni rad _____________________"
+    # context["potpis"] = "potpis"
   elif spol_zaposlen_a == "zaposlena":
     context["dužan_na"] = "dužna" 
     context["radnik_ca"] = "Radnica"
