@@ -405,13 +405,13 @@ def set_gender(spol_zaposlen_a):
   if spol_zaposlen_a == "zaposlen":
     context["dužan_na"] = "dužan"
     context["radnik_ca"] = "Radnik"
-    context["radniku_ci"] = "Radniku"
-    context["sam_a"] = "sam"
+    context["rdn"] = "Radniku"
+    context["r_s"] = "sam"
   elif spol_zaposlen_a == "zaposlena":
     context["dužan_na"] = "dužna" 
     context["radnik_ca"] = "Radnica"
-    context["radniku_ci"] = "Radnici"
-    context["sam_a"] = "sama"
+    context["rdn"] = "Radnici"
+    context["r_s"] = "sama"
   
 
 def get_obrazl_textbox():
