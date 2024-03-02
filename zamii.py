@@ -8,9 +8,10 @@ popis_ucitelja_G = []
 šk_sat_z_chckbxes = []
 šk_sat_z_chckbxes_clean = []
 
-
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
+
+izjava = False
 
 # Get and set the file path
 file_dir = os.path.dirname(os.path.abspath(__file__))
@@ -391,10 +392,14 @@ def update_context():
   global ime_i_prezime_zamjene
   global ime_i_prezime_zamijenjenog_G
   global context
+  global izjava
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
   context["zamij_G"] = ime_i_prezime_zamijenjenog_G
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_i_prezime_zamjene)
+  if izjava == True: 
+    primijeni_izjavu(spol_zaposlen_a)
+
   set_gender(spol_zaposlen_a)
   print(spol_zaposlen_a)
   context["spol_zaposlen_a"] = spol_zaposlen_a
@@ -407,14 +412,29 @@ def set_gender(spol_zaposlen_a):
     context["radnik_ca"] = "Radnik"
     context["rdn"] = "Radniku"
     context["r_s"] = "sam"
-    # context["izjava"] = "Izjavljujem da sam suglasan na gore navedeni prekovremeni rad _____________________"
-    # context["potpis"] = "potpis"
   elif spol_zaposlen_a == "zaposlena":
     context["dužan_na"] = "dužna" 
     context["radnik_ca"] = "Radnica"
     context["rdn"] = "Radnici"
     context["r_s"] = "sama"
   
+
+def dodaj_izjavu_btn_callback():
+  global izjava
+  izjava = True
+
+
+def primijeni_izjavu(spol_zaposlen_a):
+  gender = spol_zaposlen_a
+  suglasan_na = None
+  if gender == "zaposlen": 
+    suglasan_na = "suglasan"
+  elif gender == "zaposlena":
+    suglasan_na = "suglasna"
+  context["izjava"] = f"Izjavljujem da sam {suglasan_na} na gore navedeni prekovremeni rad _____________________"
+  context["potpis"] = "potpis"
+  print(suglasan_na)
+
 
 def get_obrazl_textbox():
   global obrazl_textbox
@@ -487,7 +507,7 @@ class App(customtkinter.CTk):
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
 
     izjava_btn = customtkinter.CTkButton(self, text="dodaj izjavu", fg_color="#6d6875", 
-                                            hover_color=("#118ab2"))
+                                            hover_color=("#118ab2"), command=dodaj_izjavu_btn_callback)
     izjava_btn.grid(row=3, column=0, padx=(0, 215), pady=5, sticky="e")
     
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", 
