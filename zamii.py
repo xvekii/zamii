@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import customtkinter
+from PIL import ImageTk
 from docxtpl import DocxTemplate
 
 popis_ucitelja = []
@@ -488,6 +489,10 @@ class App(customtkinter.CTk):
   def __init__(self):
     super().__init__()
     self.title("Zamii")
+
+    self.iconpath = ImageTk.PhotoImage(file=os.path.join("images","zamii.png"))
+    self.wm_iconbitmap()
+    self.iconphoto(False, self.iconpath)
 
     self.geometry("600x630+300+100")
     self.grid_columnconfigure(0, weight=1)
