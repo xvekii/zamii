@@ -196,24 +196,28 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     šk_sat_zamjene_label.grid(row=2, column=0, padx=(57, 0), pady=0)
 
     # šk_sat_zamjene checkboxes - first 4, first column
+    global šk_sat_zamjene_checkbox1
     global šk_sat_chk_var1
     šk_sat_chk_var1 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox1 = customtkinter.CTkCheckBox(self, text="1. sat", command=self.get_chkbox1_callback,
                                                         variable=šk_sat_chk_var1, onvalue="1.")
     šk_sat_zamjene_checkbox1.grid(row=2, column=1, padx=(0, 20), pady=(10, 0))
 
+    global šk_sat_zamjene_checkbox2
     global šk_sat_chk_var2
     šk_sat_chk_var2 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox2 = customtkinter.CTkCheckBox(self, text="2. sat", command=self.get_chkbox2_callback,
                                                         variable=šk_sat_chk_var2, onvalue="2.")
     šk_sat_zamjene_checkbox2.grid(row=3, column=1, padx=(0, 20), pady=(10, 0))
 
+    global šk_sat_zamjene_checkbox3
     global šk_sat_chk_var3
     šk_sat_chk_var3 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox3 = customtkinter.CTkCheckBox(self, text="3. sat", command=self.get_chkbox3_callback,
                                                         variable=šk_sat_chk_var3, onvalue="3.")
     šk_sat_zamjene_checkbox3.grid(row=4, column=1, padx=(0, 20), pady=(10, 0))
     
+    global šk_sat_zamjene_checkbox4
     global šk_sat_chk_var4
     šk_sat_chk_var4 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox4 = customtkinter.CTkCheckBox(self, text="4. sat", command=self.get_chkbox4_callback,
@@ -221,24 +225,28 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     šk_sat_zamjene_checkbox4.grid(row=5, column=1, padx=(0, 20), pady=(10, 10))
     
     # šk_sat_zamjene checkboxes - second 4, second column
+    global šk_sat_zamjene_checkbox5
     global šk_sat_chk_var5
     šk_sat_chk_var5 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox5 = customtkinter.CTkCheckBox(self, text="5. sat", command=self.get_chkbox5_callback,
                                                         variable=šk_sat_chk_var5, onvalue="5.")
     šk_sat_zamjene_checkbox5.grid(row=2, column=2, padx=(0, 20), pady=(10, 0))
     
+    global šk_sat_zamjene_checkbox6
     global šk_sat_chk_var6
     šk_sat_chk_var6 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox6 = customtkinter.CTkCheckBox(self, text="6. sat", command=self.get_chkbox6_callback,
                                                         variable=šk_sat_chk_var6, onvalue="6.")
     šk_sat_zamjene_checkbox6.grid(row=3, column=2, padx=(0, 20), pady=(10, 0))
     
+    global šk_sat_zamjene_checkbox7
     global šk_sat_chk_var7
     šk_sat_chk_var7 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox7 = customtkinter.CTkCheckBox(self, text="7. sat", command=self.get_chkbox7_callback,
                                                         variable=šk_sat_chk_var7, onvalue="7.")
     šk_sat_zamjene_checkbox7.grid(row=4, column=2, padx=(0, 20), pady=(10, 0))
     
+    global šk_sat_zamjene_checkbox8
     global šk_sat_chk_var8
     šk_sat_chk_var8 = customtkinter.StringVar(value="0")
     šk_sat_zamjene_checkbox8 = customtkinter.CTkCheckBox(self, text="8. sat", command=self.get_chkbox8_callback,
@@ -372,6 +380,21 @@ def primijeni_btn_callback():
   get_klasa_textbox()
   update_context()
   render_document()
+  deselect_chkboxes()
+  
+
+def deselect_chkboxes():
+  šk_sat_zamjene_checkbox1.deselect()
+  šk_sat_zamjene_checkbox2.deselect()
+  šk_sat_zamjene_checkbox3.deselect()
+  šk_sat_zamjene_checkbox4.deselect()
+  šk_sat_zamjene_checkbox5.deselect()
+  šk_sat_zamjene_checkbox6.deselect()
+  šk_sat_zamjene_checkbox7.deselect()
+  šk_sat_zamjene_checkbox8.deselect()
+  šk_sat_z_chckbxes_clean.clear()
+  šk_sat_z_chckbxes.clear()
+  print(f"chkbxes_sati: {šk_sat_z_chckbxes_clean}")
 
 # Remove eventual "0"s and unchecked values from the list if user unchecks checkbox
 def clean_šk_sat_chckbxes():
@@ -388,7 +411,10 @@ def update_šk_sat_checkboxes():
   clean_šk_sat_chckbxes()
   concat_str = ", ".join(šk_sat_z_chckbxes_clean)
   context["šk_sat_z"] = concat_str
+  concat_str = None
+  
   print(f"sati: {concat_str}")
+  
 
 
 def update_context():
