@@ -104,6 +104,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     konačnog_radnog_vremena = self.radio_rad_vrem_var.get() 
     print(konačnog_radnog_vremena)
     context["rad_vrem"] = konačnog_radnog_vremena
+    
 
   # Get prezime_ime from db and store into tuples for easier ime i prezime identification and reversal
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
@@ -396,6 +397,7 @@ def deselect_chkboxes():
   šk_sat_z_chckbxes.clear()
   print(f"chkbxes_sati: {šk_sat_z_chckbxes_clean}")
 
+
 # Remove eventual "0"s and unchecked values from the list if user unchecks checkbox
 def clean_šk_sat_chckbxes():
   i = 0
@@ -415,7 +417,6 @@ def update_šk_sat_checkboxes():
   
   print(f"sati: {concat_str}")
   
-
 
 def update_context():
   global ime_i_prezime_zamjene
