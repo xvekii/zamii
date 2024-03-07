@@ -382,7 +382,13 @@ def primijeni_btn_callback():
   update_context()
   render_document()
   deselect_chkboxes()
+  ukloni_izjavu()
+  clear_context()
   
+
+def clear_context():
+  context.clear()
+
 
 def deselect_chkboxes():
   šk_sat_zamjene_checkbox1.deselect()
@@ -452,6 +458,11 @@ def set_gender(spol_zaposlen_a):
 def dodaj_izjavu_btn_callback():
   global izjava
   izjava = True
+
+
+def ukloni_izjavu():
+  global izjava
+  izjava = False
 
 
 def primijeni_izjavu(spol_zaposlen_a):
