@@ -70,14 +70,15 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
 
-    ime_prezime_zamjene_label = customtkinter.CTkLabel(self, text="prezime i ime zamjene", fg_color="transparent")
-    ime_prezime_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
+    prezime_ime_zamjene_label = customtkinter.CTkLabel(self, text="prezime i ime zamjene", fg_color="transparent")
+    prezime_ime_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
 
-    ime_prezime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, 
+    global prezime_ime_combo
+    prezime_ime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combobox_callback, 
                                                   state="normal", button_hover_color=("plum"), width=300)
-    ime_prezime_combo.set("odaberi prezime i ime")
-    ime_prezime_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=2)
-    ime_prezime_combo.grid_columnconfigure(0, weight=1)
+    prezime_ime_combo.set("odaberi prezime i ime")
+    prezime_ime_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=2)
+    prezime_ime_combo.grid_columnconfigure(0, weight=1)
 
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
     radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=10, sticky="w")
@@ -384,7 +385,7 @@ def primijeni_btn_callback():
   deselect_chkboxes()
   ukloni_izjavu()
   clear_context()
-  
+
 
 def clear_context():
   context.clear()
