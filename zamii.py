@@ -385,7 +385,11 @@ def primijeni_btn_callback():
   deselect_chkboxes()
   ukloni_izjavu()
   clear_context()
+  clear_prezime_ime_combobox()
 
+def clear_prezime_ime_combobox():
+  prezime_ime_combo.set("odaberi prezime i ime")
+  
 
 def clear_context():
   context.clear()
