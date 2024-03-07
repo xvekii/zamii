@@ -122,6 +122,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     print(ime_N, prezime_N)
 
     get_ime_ucitelja_D(prezime_N, ime_N)
+    prezime_ime_N = ""
+    izbor_N = ""
 
 
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
@@ -386,9 +388,16 @@ def primijeni_btn_callback():
   ukloni_izjavu()
   clear_context()
   clear_prezime_ime_combobox()
+  clear_ime_i_prezime_zamjene()
+
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
+  
+
+def clear_ime_i_prezime_zamjene():
+  global ime_i_prezime_zamjene 
+  ime_i_prezime_zamjene = ""
   
 
 def clear_context():
@@ -526,6 +535,8 @@ def render_document():
   doc = DocxTemplate("word.docx")
   doc.render(context)
   doc.save(f"{ime_i_prezime_zamjene}.docx")
+  
+  print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
 class App(customtkinter.CTk):
