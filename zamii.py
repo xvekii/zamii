@@ -83,14 +83,16 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
     radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=10, sticky="w")
 
+    global radnog_vremena_radio1
+    global radnog_vremena_radio2
     self.radio_rad_vrem_var = customtkinter.StringVar(value=0)
-    self.radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="punog", command=self.radiobtn_event, 
+    radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="punog", command=self.radiobtn_event, 
                                                         variable=self.radio_rad_vrem_var, value="punog")
-    self.radnog_vremena_radio1.grid(row=1, column=1, padx=(85, 0), pady=10, sticky="w")
+    radnog_vremena_radio1.grid(row=1, column=1, padx=(85, 0), pady=10, sticky="w")
     
-    self.radnog_vremena_radio2 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
+    radnog_vremena_radio2 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
                                                         variable=self.radio_rad_vrem_var, value="nepunog")
-    self.radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
+    radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
 
     umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
     umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=10)
@@ -389,12 +391,22 @@ def primijeni_btn_callback():
   ukloni_izjavu()
   clear_context()
   clear_prezime_ime_combobox()
-  clear_ime_i_prezime_zamjene()
-  clear_combo_umjesto_callback_G()
   
+  clear_ime_i_prezime_zamjene()
+  
+  clear_radnog_vremena_radio_btns()
+  clear_combo_umjesto_callback_G()
+
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
+
+
+def clear_radnog_vremena_radio_btns():
+  global radnog_vremena_radio1
+  global radnog_vremena_radio2
+  radnog_vremena_radio1.deselect()
+  radnog_vremena_radio2.deselect()
 
 
 def clear_combo_umjesto_callback_G():
