@@ -398,6 +398,7 @@ def primijeni_btn_callback():
   
   clear_radnog_vremena_radio_btns()
   clear_combo_umjesto_callback_G()
+  clear_obrazl_textbox()
 
 
 def clear_prezime_ime_combobox():
@@ -441,6 +442,10 @@ def deselect_chkboxes():
   šk_sat_z_chckbxes_clean.clear()
   šk_sat_z_chckbxes.clear()
   print(f"chkbxes_sati: {šk_sat_z_chckbxes_clean}")
+
+
+def clear_obrazl_textbox():
+  obrazl_textbox.delete("0.0", "end-1c")
 
 
 # Remove eventual "0"s and unchecked values from the list if user unchecks checkbox
