@@ -398,6 +398,7 @@ def primijeni_btn_callback():
   
   clear_radnog_vremena_radio_btns()
   clear_combo_umjesto_callback_G()
+  clear_trajanje_zamjene_combo()
   clear_obrazl_textbox()
 
 
