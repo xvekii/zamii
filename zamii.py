@@ -95,6 +95,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
     umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=10)
     
+    global umjesto_combo
     umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combo_umjesto_callback_G, 
                                               state="normal", button_hover_color=("plum"), width=300)
     umjesto_combo.set("odaberi prezime i ime")
@@ -389,10 +390,15 @@ def primijeni_btn_callback():
   clear_context()
   clear_prezime_ime_combobox()
   clear_ime_i_prezime_zamjene()
-
+  clear_combo_umjesto_callback_G()
+  
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
+
+
+def clear_combo_umjesto_callback_G():
+  umjesto_combo.set("odaberi prezime i ime")
   
 
 def clear_ime_i_prezime_zamjene():
