@@ -95,7 +95,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
     umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=10)
     
-    umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combobox_callback_G, 
+    umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combo_umjesto_callback_G, 
                                               state="normal", button_hover_color=("plum"), width=300)
     umjesto_combo.set("odaberi prezime i ime")
     umjesto_combo.grid(row=3, column=1, padx=60, pady=10, columnspan=2)
@@ -127,7 +127,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
 
 
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
-  def combobox_callback_G(self, izbor_G):
+  def combo_umjesto_callback_G(self, izbor_G):
     global ime_i_prezime_zamijenjenog_G
     prezime_ime_G = izbor_G
     
