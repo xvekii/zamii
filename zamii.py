@@ -193,6 +193,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     trajanje_zamjene_label = customtkinter.CTkLabel(self, text="trajanje zamjene", fg_color="transparent")
     trajanje_zamjene_label.grid(row=1, column=0, padx=(76, 0), pady=0)
 
+    global trajanje_zamjene_combo
     trajanje_zamjene_combo = customtkinter.CTkComboBox(self, values=trajanje_sati_z_str, 
                                                        command=self.combo_trajanje_sati_z_callback, state="normal", 
                                                        button_hover_color=("plum"), width=120)
@@ -326,6 +327,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
   def combo_trajanje_sati_z_callback(self, izbor):
     trajanje_zamjene = izbor
     context["trajanje_zamjene"] = trajanje_zamjene
+    print(f"trajanje zamjene: {context["trajanje_zamjene"]}")
     set_sat_i(trajanje_zamjene)
 
 
@@ -416,6 +418,11 @@ def clear_combo_umjesto_callback_G():
 def clear_ime_i_prezime_zamjene():
   global ime_i_prezime_zamjene 
   ime_i_prezime_zamjene = ""
+
+
+def clear_trajanje_zamjene_combo():
+  global trajanje_zamjene_combo
+  trajanje_zamjene_combo.set("koliko sati")
   
 
 def clear_context():
