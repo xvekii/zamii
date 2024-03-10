@@ -15,6 +15,7 @@ popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
 
 ime_i_prezime_zamjene = ""
+ime_i_prezime_zamijenjenog_G = ""
 
 izjava = False
 
@@ -398,6 +399,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
 
 def primijeni_btn_callback():
   check_prezime_ime_combo_selection()
+  check_umjesto_prezime_ime_combo_selection()
   get_obrazl_textbox()
   get_klasa_textbox()
   update_context()
@@ -408,6 +410,7 @@ def primijeni_btn_callback():
   clear_prezime_ime_combobox()
   
   clear_ime_i_prezime_zamjene()
+  clear_ime_i_prezime_zamijenjenog_G()
   
   clear_radnog_vremena_radio_btns()
   clear_combo_umjesto_callback_G()
@@ -416,6 +419,7 @@ def primijeni_btn_callback():
   print(f"ime i prezime fin: {ime_i_prezime_zamjene}")
   print(f"context fin: {context}")
   print(f"ime_N fin: {ime_N}")
+
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
@@ -439,6 +443,12 @@ def clear_ime_i_prezime_zamjene():
   global ime_N
   prezime_N = ""
   ime_N = ""
+
+
+def clear_ime_i_prezime_zamijenjenog_G():
+  global ime_i_prezime_zamijenjenog_G
+  ime_i_prezime_zamijenjenog_G = ""
+
 
 
 def clear_trajanje_zamjene_combo():
@@ -493,6 +503,11 @@ def check_prezime_ime_combo_selection():
     unesi_prezime_ime_alert()  
 
 
+def check_umjesto_prezime_ime_combo_selection():
+  if ime_i_prezime_zamijenjenog_G == "":
+    unesi_umjesto_prezime_ime_alert()
+
+
 def update_context():
   global ime_i_prezime_zamjene
   global ime_i_prezime_zamijenjenog_G
@@ -515,6 +530,11 @@ def update_context():
 
 def unesi_prezime_ime_alert():
   CTkMessagebox(title="Pogreška!", message="Odaberi prezime i ime zamjene!", icon="warning", bg_color="orange",
+                  button_color="black", sound=True)
+  
+
+def unesi_umjesto_prezime_ime_alert():
+  CTkMessagebox(title="Pogreška!", message="Odaberi umjesto koga je zamjena!", icon="warning", bg_color="orange",
                   button_color="black", sound=True)
 
 
