@@ -16,6 +16,10 @@ popis_ucitelja_G_dict = {}
 
 ime_i_prezime_zamjene = ""
 ime_i_prezime_zamijenjenog_G = ""
+dan_zamjene = ""
+mjesec_zamjene = ""
+dan_naloga = ""
+mj_naloga = ""
 
 izjava = False
 
