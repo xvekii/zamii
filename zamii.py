@@ -1,8 +1,10 @@
 import os
 import sqlite3
 import customtkinter
+from CTkMessagebox import CTkMessagebox
 from PIL import ImageTk
 from docxtpl import DocxTemplate
+
 
 popis_ucitelja = []
 popis_ucitelja_G = []
@@ -11,6 +13,8 @@ popis_ucitelja_G = []
 
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
+
+ime_i_prezime_zamjene = ""
 
 izjava = False
 
@@ -117,17 +121,19 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     global ime_N
     global prezime_N
     prezime_ime_N = izbor_N
-
+    
     prezime_ime_N_tuples = find_surname_name_N(prezime_ime_N)
     prezime_N = prezime_ime_N_tuples[0]
     ime_N = prezime_ime_N_tuples[1]
     ime_i_prezime_zamjene = " ".join([ime_N, prezime_N])
+    
     print(ime_N, prezime_N)
 
     get_ime_ucitelja_D(prezime_N, ime_N)
     prezime_ime_N = ""
-    izbor_N = ""
-
+    prezime_N = ""
+    ime_N = ""
+    
 
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
   def combo_umjesto_callback_G(self, izbor_G):
@@ -474,8 +480,13 @@ def update_context():
   global ime_i_prezime_zamijenjenog_G
   global context
   global izjava
-  context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
-  context["zamij_G"] = ime_i_prezime_zamijenjenog_G
+
+  try:
+    if ime_i_prezime_zamjene != None or ime_i_prezime_zamjene != "":
+      context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
+      context["zamij_G"] = ime_i_prezime_zamijenjenog_G
+  except NameError:
+    unesi_prezime_ime_alert()
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_N, prezime_N)
   if izjava == True: 
@@ -486,6 +497,11 @@ def update_context():
   context["spol_zaposlen_a"] = spol_zaposlen_a
   update_šk_sat_checkboxes()
   
+
+def unesi_prezime_ime_alert():
+    CTkMessagebox(title="Pogreška!", message="Odaberi prezime i ime zamjene!", icon="warning", bg_color="orange",
+                  button_color="black", sound=True)
+
 
 def set_gender(spol_zaposlen_a):
   if spol_zaposlen_a == "zaposlen":
