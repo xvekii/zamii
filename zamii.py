@@ -384,13 +384,13 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
   
   
   def combo_dani_n_callback(self, izbor):
+    global dan_naloga
     dan_naloga = izbor
-    context["dan_naloga"] = dan_naloga
 
 
   def combo_mjeseci_n_callback(self, izbor):
+    global mj_naloga
     mj_naloga = izbor
-    context["mj_naloga"] = mj_naloga
   
 
 def primijeni_btn_callback():
@@ -515,6 +515,8 @@ def update_context():
   context["zamij_G"] = ime_i_prezime_zamijenjenog_G
   context["dan_z"] = dan_zamjene
   context["mjesec_z"] = mjesec_zamjene
+  context["dan_naloga"] = dan_naloga
+  context["mj_naloga"] = mj_naloga
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_N, prezime_N)
  
