@@ -120,8 +120,14 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     global ime_i_prezime_zamjene
     global ime_N
     global prezime_N
-    prezime_ime_N = izbor_N
     
+    print(f"izbor 1: {izbor_N}")
+
+    if izbor_N == "":
+      unesi_prezime_ime_alert()
+      return
+
+    prezime_ime_N = izbor_N
     prezime_ime_N_tuples = find_surname_name_N(prezime_ime_N)
     prezime_N = prezime_ime_N_tuples[0]
     ime_N = prezime_ime_N_tuples[1]
@@ -130,9 +136,9 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     print(ime_N, prezime_N)
 
     get_ime_ucitelja_D(prezime_N, ime_N)
-    prezime_ime_N = ""
-    prezime_N = ""
-    ime_N = ""
+    # prezime_ime_N = ""
+    # prezime_N = ""
+    # ime_N = ""
     
 
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
@@ -391,6 +397,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
   
 
 def primijeni_btn_callback():
+  check_prezime_ime_combo_selection()
   get_obrazl_textbox()
   get_klasa_textbox()
   update_context()
@@ -406,7 +413,9 @@ def primijeni_btn_callback():
   clear_combo_umjesto_callback_G()
   clear_trajanje_zamjene_combo()
   clear_obrazl_textbox()
-
+  print(f"ime i prezime fin: {ime_i_prezime_zamjene}")
+  print(f"context fin: {context}")
+  print(f"ime_N fin: {ime_N}")
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
@@ -426,6 +435,10 @@ def clear_combo_umjesto_callback_G():
 def clear_ime_i_prezime_zamjene():
   global ime_i_prezime_zamjene 
   ime_i_prezime_zamjene = ""
+  global prezime_N
+  global ime_N
+  prezime_N = ""
+  ime_N = ""
 
 
 def clear_trajanje_zamjene_combo():
@@ -475,20 +488,22 @@ def update_šk_sat_checkboxes():
   print(f"sati: {concat_str}")
   
 
+def check_prezime_ime_combo_selection():
+  if ime_i_prezime_zamjene == "":
+    unesi_prezime_ime_alert()  
+
+
 def update_context():
   global ime_i_prezime_zamjene
   global ime_i_prezime_zamijenjenog_G
   global context
   global izjava
 
-  try:
-    if ime_i_prezime_zamjene != None or ime_i_prezime_zamjene != "":
-      context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
-      context["zamij_G"] = ime_i_prezime_zamijenjenog_G
-  except NameError:
-    unesi_prezime_ime_alert()
+  context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
+  context["zamij_G"] = ime_i_prezime_zamijenjenog_G
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_N, prezime_N)
+ 
   if izjava == True: 
     primijeni_izjavu(spol_zaposlen_a)
 
@@ -499,7 +514,7 @@ def update_context():
   
 
 def unesi_prezime_ime_alert():
-    CTkMessagebox(title="Pogreška!", message="Odaberi prezime i ime zamjene!", icon="warning", bg_color="orange",
+  CTkMessagebox(title="Pogreška!", message="Odaberi prezime i ime zamjene!", icon="warning", bg_color="orange",
                   button_color="black", sound=True)
 
 
