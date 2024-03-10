@@ -326,15 +326,11 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
   def combo_dani_z_callback(self, izbor):
     global dan_zamjene
     dan_zamjene = izbor
-    context["dan_z"] = dan_zamjene
-    print(dan_zamjene)
-
+    
 
   def combo_mjeseci_z_callback(self, izbor):
     global mjesec_zamjene
     mjesec_zamjene = izbor
-    context["mjesec_z"] = mjesec_zamjene
-    print(mjesec_zamjene)
 
 
   def combo_trajanje_sati_z_callback(self, izbor):
@@ -419,7 +415,8 @@ def primijeni_btn_callback():
   print(f"ime i prezime fin: {ime_i_prezime_zamjene}")
   print(f"context fin: {context}")
   print(f"ime_N fin: {ime_N}")
-
+  print(f"dan zamjene: {dan_zamjene}")
+  print(f"mjesec zamjene: {mjesec_zamjene}")
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
@@ -516,6 +513,8 @@ def update_context():
 
   context["ime_i_prezime_zamjene"] = ime_i_prezime_zamjene
   context["zamij_G"] = ime_i_prezime_zamijenjenog_G
+  context["dan_z"] = dan_zamjene
+  context["mjesec_z"] = mjesec_zamjene
   
   spol_zaposlen_a = get_gender_zaposlen_a(ime_N, prezime_N)
  
