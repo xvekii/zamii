@@ -408,8 +408,7 @@ def primijeni_btn_callback():
   ukloni_izjavu()
   clear_context()
   
-  clear_ime_i_prezime_zamjene()
-  clear_ime_i_prezime_zamijenjenog_G()
+  clear_names_variables()
   
   
   print(f"ime i prezime fin: {ime_i_prezime_zamjene}")
@@ -436,6 +435,11 @@ def clear_widgets():
   clear_combo_umjesto_callback_G()
   clear_trajanje_zamjene_combo()
   clear_obrazl_textbox()
+
+
+def clear_names_variables():
+  clear_ime_i_prezime_zamjene()
+  clear_ime_i_prezime_zamijenjenog_G()
 
 
 def clear_prezime_ime_combobox():
