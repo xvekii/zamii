@@ -410,13 +410,9 @@ def primijeni_btn_callback():
   
   clear_names_variables()
   
+  # Print for debugging
+  print_var_values()
   
-  print(f"ime i prezime fin: {ime_i_prezime_zamjene}")
-  print(f"context fin: {context}")
-  print(f"ime_N fin: {ime_N}")
-  print(f"dan zamjene: {dan_zamjene}")
-  print(f"mjesec zamjene: {mjesec_zamjene}")
-
 
 def check_names_comboboxes():
   check_prezime_ime_combo_selection()
@@ -440,6 +436,14 @@ def clear_widgets():
 def clear_names_variables():
   clear_ime_i_prezime_zamjene()
   clear_ime_i_prezime_zamijenjenog_G()
+
+
+def print_var_values(): 
+  print(f"ime i prezime fin: {ime_i_prezime_zamjene}")
+  print(f"context fin: {context}")
+  print(f"ime_N fin: {ime_N}")
+  print(f"dan zamjene: {dan_zamjene}")
+  print(f"mjesec zamjene: {mjesec_zamjene}")
 
 
 def clear_prezime_ime_combobox():
