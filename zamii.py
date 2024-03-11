@@ -399,9 +399,8 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
 
 def primijeni_btn_callback():
   check_names_comboboxes()
-
-  get_obrazl_textbox()
-  get_klasa_textbox()
+  update_obrazl_textboxes()
+  
   update_context()
   render_document()
   deselect_chkboxes()
@@ -427,6 +426,10 @@ def check_names_comboboxes():
   check_prezime_ime_combo_selection()
   check_umjesto_prezime_ime_combo_selection()
 
+
+def update_obrazl_textboxes():
+  get_obrazl_textbox()
+  get_klasa_textbox()
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
