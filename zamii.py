@@ -398,8 +398,8 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
   
 
 def primijeni_btn_callback():
-  check_prezime_ime_combo_selection()
-  check_umjesto_prezime_ime_combo_selection()
+  check_names_comboboxes()
+
   get_obrazl_textbox()
   get_klasa_textbox()
   update_context()
@@ -421,6 +421,12 @@ def primijeni_btn_callback():
   print(f"ime_N fin: {ime_N}")
   print(f"dan zamjene: {dan_zamjene}")
   print(f"mjesec zamjene: {mjesec_zamjene}")
+
+
+def check_names_comboboxes():
+  check_prezime_ime_combo_selection()
+  check_umjesto_prezime_ime_combo_selection()
+
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
@@ -449,7 +455,6 @@ def clear_ime_i_prezime_zamjene():
 def clear_ime_i_prezime_zamijenjenog_G():
   global ime_i_prezime_zamijenjenog_G
   ime_i_prezime_zamijenjenog_G = ""
-
 
 
 def clear_trajanje_zamjene_combo():
