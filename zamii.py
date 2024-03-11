@@ -403,18 +403,15 @@ def primijeni_btn_callback():
   
   update_context()
   render_document()
-  deselect_chkboxes()
+  clear_widgets()
+
   ukloni_izjavu()
   clear_context()
-  clear_prezime_ime_combobox()
   
   clear_ime_i_prezime_zamjene()
   clear_ime_i_prezime_zamijenjenog_G()
   
-  clear_radnog_vremena_radio_btns()
-  clear_combo_umjesto_callback_G()
-  clear_trajanje_zamjene_combo()
-  clear_obrazl_textbox()
+  
   print(f"ime i prezime fin: {ime_i_prezime_zamjene}")
   print(f"context fin: {context}")
   print(f"ime_N fin: {ime_N}")
@@ -430,6 +427,16 @@ def check_names_comboboxes():
 def update_obrazl_textboxes():
   get_obrazl_textbox()
   get_klasa_textbox()
+
+
+def clear_widgets():
+  deselect_chkboxes()
+  clear_prezime_ime_combobox()
+  clear_radnog_vremena_radio_btns()
+  clear_combo_umjesto_callback_G()
+  clear_trajanje_zamjene_combo()
+  clear_obrazl_textbox()
+
 
 def clear_prezime_ime_combobox():
   prezime_ime_combo.set("odaberi prezime i ime")
