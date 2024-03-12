@@ -5,22 +5,32 @@ from CTkMessagebox import CTkMessagebox
 from PIL import ImageTk
 from docxtpl import DocxTemplate
 
-
+# For storing teacher names and surnames (Nominative and Genitive)
 popis_ucitelja = []
 popis_ucitelja_G = []
-šk_sat_z_chckbxes = []
-šk_sat_z_chckbxes_clean = []
-
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
 
+# For storing school class(es) the replacement is needed for
+šk_sat_z_chckbxes = []
+šk_sat_z_chckbxes_clean = []
+
+# Name and surname of the replacement teacher
+# Name and surname of the replaced teacher (Genitive)
 ime_i_prezime_zamjene = ""
 ime_i_prezime_zamijenjenog_G = ""
+
+# Day of replacement
+# Month of replacement
 dan_zamjene = ""
 mjesec_zamjene = ""
+
+# Day of the overtime form
+# Month of the overtime form
 dan_naloga = ""
 mj_naloga = ""
 
+# For tracking of the state of consent for the overtime work: add/remove
 izjava = False
 
 # Get and set the file path
