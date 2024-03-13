@@ -11,6 +11,23 @@ popis_ucitelja_G = []
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
 
+# Days and months lists
+dani = list(range(1, 32))
+dani_str = [str(dan) for dan in dani]
+mjeseci = list(range(1, 13))
+mjeseci_z_str = [str(mjesec) for mjesec in mjeseci]
+
+# Number of classes 
+trajanje_sati_z = list(range(1, 6))
+trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
+
+# Which classes
+šk_sati_z = list(range(1, 9))
+šk_sat_z_str = [str(sat) for sat in šk_sati_z]
+
+obrazl_textbox = None
+klasa_textbox = None
+
 # For storing school class(es) the replacement is needed for
 šk_sat_z_chckbxes = []
 šk_sat_z_chckbxes_clean = []
@@ -67,22 +84,6 @@ db.execute("SELECT prezime_G, ime_G FROM ucitelji_G ORDER BY prezime_G")
 for row in db.fetchall():
   prezime_ime_G = f"{row[0]} {row[1]}"
   popis_ucitelja_G_dict[prezime_ime_G] = (row[0], row[1])
-
-
-dani = list(range(1, 32))
-dani_str = [str(dan) for dan in dani]
-
-mjeseci = list(range(1, 13))
-mjeseci_z_str = [str(mjesec) for mjesec in mjeseci]
-
-trajanje_sati_z = list(range(1, 6))
-trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
-
-šk_sati_z = list(range(1, 9))
-šk_sat_z_str = [str(sat) for sat in šk_sati_z]
-
-obrazl_textbox = None
-klasa_textbox = None
 
 
 class ZamjenaFrame(customtkinter.CTkFrame):
