@@ -179,6 +179,7 @@ def find_surname_name_G(prezime_ime_G):
   return popis_ucitelja_G_dict.get(prezime_ime_G)
 
 
+# Get the name of the teacher in Dative (surname, name)
 def get_ime_ucitelja_D(prezime, ime):
   db.execute("SELECT ime_D, prezime_D FROM ucitelji_D WHERE id_ucitelja_D = ( \
              SELECT id_ucitelja_N FROM ucitelji WHERE prezime = ? AND ime = ?)", (prezime, ime))
@@ -189,7 +190,7 @@ def get_ime_ucitelja_D(prezime, ime):
   print(ime_prez_D)
   context["ime_prez_z_D"] = ime_prez_D
 
-
+# Get the working position of the teacher
 def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
     db.execute("SELECT na_radnom_mjestu FROM radno_mjesto WHERE id_radnog_mjesta = ( \
                SELECT radno_mjesto FROM ucitelji WHERE id_ucitelja_N = ( \
