@@ -85,7 +85,7 @@ for row in db.fetchall():
   prezime_ime_G = f"{row[0]} {row[1]}"
   popis_ucitelja_G_dict[prezime_ime_G] = (row[0], row[1])
 
-
+# Replacement and replaced teachers frame
 class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
@@ -190,7 +190,7 @@ def get_ime_ucitelja_D(prezime, ime):
   print(ime_prez_D)
   context["ime_prez_z_D"] = ime_prez_D
 
-# Get the working position of the teacher
+# Get the working position of the teacher in Genitive
 def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
     db.execute("SELECT na_radnom_mjestu FROM radno_mjesto WHERE id_radnog_mjesta = ( \
                SELECT radno_mjesto FROM ucitelji WHERE id_ucitelja_N = ( \
