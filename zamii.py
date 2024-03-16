@@ -201,7 +201,7 @@ def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
     context["r_mj_zamijenj_G"] = radno_mj
     print(radno_mj)
 
-
+# Time of replacement frame
 class VrijemeZamjeneFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
