@@ -672,8 +672,8 @@ class PretražiImePrezimeFrame(customtkinter.CTkFrame):
     unesi_label = customtkinter.CTkLabel(self, text="Unesi: ", fg_color="transparent")
     unesi_label.grid(row=0, column=0, padx=(0, 0), pady=0)
     
-    ime_prezime_label = customtkinter.CTkLabel(self, text="ime", fg_color="transparent")
-    ime_prezime_label.grid(row=1, column=0, padx=(38, 0), pady=0)
+    ime_label = customtkinter.CTkLabel(self, text="ime", fg_color="transparent")
+    ime_label.grid(row=1, column=0, padx=(38, 0), pady=0)
 
     pretraži_ime_prezime_textbox = customtkinter.CTkTextbox(self, width=160, height=10, corner_radius=0, border_width=1, 
                                             border_color=("black"))
