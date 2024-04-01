@@ -672,7 +672,7 @@ class App(customtkinter.CTk):
     self.wm_iconbitmap()
     self.iconphoto(False, self.iconpath)
 
-    self.geometry("600x630+300+100")
+    self.geometry("600x668+300+100")
     self.grid_columnconfigure(0, weight=1)
 
     self.grid_rowconfigure(0, weight=0)
