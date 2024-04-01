@@ -664,6 +664,16 @@ def render_document():
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
+class PretražiImePrezimeFrame(customtkinter.CTkFrame):
+  def __init__(self, master):
+    super().__init__(master)
+
+    self.grid_columnconfigure(0, weight=1)
+
+
+
+
+
 class BazaToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
     super().__init__()
@@ -672,6 +682,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.geometry("500x468+300+100")
     self.grid_columnconfigure(0, weight=1)
 
+    self.pretraži_ime_prezime_frame = PretražiImePrezimeFrame(self)
+    self.pretraži_ime_prezime_frame.grid(row=0, column=0, padx=10, pady=(15, 0), sticky="new")
 
 
 class App(customtkinter.CTk):
