@@ -667,8 +667,10 @@ def render_document():
 class PretražiImePrezimeFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
-
     self.grid_columnconfigure(0, weight=1)
+
+    pretraži_ime_prezime_btn = customtkinter.CTkButton(self, text="pretraži", fg_color="#9A8C98")
+    pretraži_ime_prezime_btn.grid(row=1, column=0, padx=(0, 100), pady=5, sticky="e")
 
 
 
