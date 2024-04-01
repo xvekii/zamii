@@ -669,15 +669,18 @@ class PretražiImePrezimeFrame(customtkinter.CTkFrame):
     super().__init__(master)
     self.grid_columnconfigure(0, weight=1)
 
-    ime_prezime_label = customtkinter.CTkLabel(self, text="ime i prezime", fg_color="transparent")
-    ime_prezime_label.grid(row=0, column=0, padx=(38, 0), pady=0)
+    unesi_label = customtkinter.CTkLabel(self, text="Unesi: ", fg_color="transparent")
+    unesi_label.grid(row=0, column=0, padx=(0, 0), pady=0)
+    
+    ime_prezime_label = customtkinter.CTkLabel(self, text="ime", fg_color="transparent")
+    ime_prezime_label.grid(row=1, column=0, padx=(38, 0), pady=0)
 
     pretraži_ime_prezime_textbox = customtkinter.CTkTextbox(self, width=160, height=10, corner_radius=0, border_width=1, 
                                             border_color=("black"))
-    pretraži_ime_prezime_textbox.grid(row=0, column=1, padx=(0, 210), pady=(10, 10), sticky="e")
+    pretraži_ime_prezime_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
 
-    pretraži_ime_prezime_btn = customtkinter.CTkButton(self, text="pretraži", fg_color="#9A8C98")
-    pretraži_ime_prezime_btn.grid(row=1, column=1, padx=(0, 50), pady=5, sticky="e")
+    pretraži_ime_prezime_btn = customtkinter.CTkButton(self, text="pretraži", fg_color="#6D6875")
+    pretraži_ime_prezime_btn.grid(row=2, column=1, padx=(0, 50), pady=5, sticky="e")
 
     
 
@@ -689,7 +692,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.title("Baza podataka")
 
     self.geometry("600x468+300+100")
-    self.grid_columnconfigure(0, weight=1)
+    self.grid_columnconfigure(3, weight=1)
 
     self.pretraži_ime_prezime_frame = PretražiImePrezimeFrame(self)
     self.pretraži_ime_prezime_frame.grid(row=0, column=0, padx=10, pady=(15, 0), sticky="new")
