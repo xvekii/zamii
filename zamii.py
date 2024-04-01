@@ -615,6 +615,7 @@ def primijeni_izjavu(spol_zaposlen_a):
   print(suglasan_na)
 
 
+
 def get_obrazl_textbox():
   global obrazl_textbox
   obrazl_txt = obrazl_textbox.get("0.0", "end-1c")
@@ -663,6 +664,16 @@ def render_document():
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
+class BazaToplevelWindow(customtkinter.CTkToplevel):
+  def __init__(self):
+    super().__init__()
+    self.title("Baza podataka")
+
+    self.geometry("500x468+300+100")
+    self.grid_columnconfigure(0, weight=1)
+
+
+
 class App(customtkinter.CTk):
   def __init__(self):
     super().__init__()
@@ -688,7 +699,8 @@ class App(customtkinter.CTk):
     self.obrazloženje_frame = ObrazloženjeFrame(self)
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
 
-    baza_podataka_btn = customtkinter.CTkButton(self, text="baza podataka", fg_color="#9A8C98")
+    baza_podataka_btn = customtkinter.CTkButton(self, text="baza podataka", fg_color="#9A8C98",
+                                                command=self.otvori_bazu_toplevel)
     baza_podataka_btn.grid(row=3, column=0, padx=(0, 415), pady=5, sticky="e")
 
     izjava_btn = customtkinter.CTkButton(self, text="dodaj izjavu", fg_color="#6d6875", 
@@ -698,6 +710,16 @@ class App(customtkinter.CTk):
     primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", 
                                             hover_color=("#38A282"), command=primijeni_btn_callback)
     primijeni_btn.grid(row=3, column=0, padx=(0, 35), pady=5, sticky="e")
+
+    self.baza_toplevel_window = None
+
+
+  def otvori_bazu_toplevel(self):
+    if self.baza_toplevel_window is None or not self.baza_toplevel_window.winfo_exists():
+      self.baza_toplevel_window = BazaToplevelWindow()
+    else:
+      self.baza_toplevel_window.focus()
+
 
 context = {}
 
