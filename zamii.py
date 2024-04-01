@@ -377,26 +377,29 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
                                               wrap="word", border_color=("black"))
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 10), sticky="e")
     
+    izbriši_btn = customtkinter.CTkButton(self, text="izbriši", width=56, fg_color="#6C757D", command=clear_obrazl_textbox)
+    izbriši_btn.grid(row=1, column=1, padx=60, pady=(0, 10), sticky="e")
+
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
-    nadnevak_naloga_label.grid(row=1, column=0, padx=(72, 0), pady=(0, 10))
+    nadnevak_naloga_label.grid(row=2, column=0, padx=(72, 0), pady=(0, 10))
 
     dan_naloga_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_n_callback, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     dan_naloga_combo.set("dan")
-    dan_naloga_combo.grid(row=1, column=1, padx=(0, 182), pady=(0, 10))
+    dan_naloga_combo.grid(row=2, column=1, padx=(0, 182), pady=(0, 10))
 
     mjesec_naloga_combo = customtkinter.CTkComboBox(self, values=mjeseci_z_str, command=self.combo_mjeseci_n_callback, 
                                                     state="normal", button_hover_color=("plum"), width=120)
     mjesec_naloga_combo.set("mjesec")
-    mjesec_naloga_combo.grid(row=1, column=1, padx=(180, 0), pady=(0, 10))
+    mjesec_naloga_combo.grid(row=2, column=1, padx=(180, 0), pady=(0, 10))
 
     klasa_label = customtkinter.CTkLabel(self, text="KLASA", fg_color="transparent")
-    klasa_label.grid(row=2, column=0, padx=(132, 0), pady=(0, 10))
+    klasa_label.grid(row=3, column=0, padx=(132, 0), pady=(0, 10))
 
     global klasa_textbox
     klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, 
                                             border_color=("black"))
-    klasa_textbox.grid(row=2, column=1, padx=(0, 240), pady=(0, 10), sticky="e")
+    klasa_textbox.grid(row=3, column=1, padx=(0, 240), pady=(0, 10), sticky="e")
   
   
   def combo_dani_n_callback(self, izbor):
@@ -442,7 +445,6 @@ def clear_widgets():
   clear_radnog_vremena_radio_btns()
   clear_combo_umjesto_callback_G()
   clear_trajanje_zamjene_combo()
-  clear_obrazl_textbox()
 
 
 def clear_names_variables():
