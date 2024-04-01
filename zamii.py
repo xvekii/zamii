@@ -677,9 +677,9 @@ class PretražiImePrezimeFrame(customtkinter.CTkFrame):
     prezime_label = customtkinter.CTkLabel(self, text="prezime", fg_color="transparent")
     prezime_label.grid(row=1, column=2, padx=(30, 0), pady=0)
 
-    pretraži_ime_prezime_textbox = customtkinter.CTkTextbox(self, width=160, height=10, corner_radius=0, border_width=1, 
+    pretraži_ime_textbox = customtkinter.CTkTextbox(self, width=160, height=10, corner_radius=0, border_width=1, 
                                             border_color=("black"))
-    pretraži_ime_prezime_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
+    pretraži_ime_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
 
     pretraži_ime_prezime_btn = customtkinter.CTkButton(self, text="pretraži", fg_color="#6D6875")
     pretraži_ime_prezime_btn.grid(row=2, column=1, padx=(0, 50), pady=5, sticky="e")
