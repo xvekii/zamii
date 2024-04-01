@@ -688,6 +688,9 @@ class App(customtkinter.CTk):
     self.obrazloženje_frame = ObrazloženjeFrame(self)
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
 
+    baza_podataka_btn = customtkinter.CTkButton(self, text="baza podataka", fg_color="#9A8C98")
+    baza_podataka_btn.grid(row=3, column=0, padx=(0, 420), pady=5, sticky="e")
+
     izjava_btn = customtkinter.CTkButton(self, text="dodaj izjavu", fg_color="#6d6875", 
                                             hover_color=("#118ab2"), command=dodaj_izjavu_btn_callback)
     izjava_btn.grid(row=3, column=0, padx=(0, 215), pady=5, sticky="e")
