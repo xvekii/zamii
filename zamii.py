@@ -1,5 +1,6 @@
 import os
 import sqlite3
+from tkinter import *
 from tkinter import ttk
 import customtkinter
 from CTkMessagebox import CTkMessagebox
@@ -685,8 +686,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.geometry("600x468+300+100")
     self.grid_columnconfigure(3, weight=1)
 
-    self.pretraži_ime_prezime_frame = BazaFrame(self)
-    self.pretraži_ime_prezime_frame.grid(row=0, column=0, padx=(10, 10), pady=(15, 0), sticky="new")
+    self.baza_frame = BazaFrame(self)
+    self.baza_frame.grid(row=0, column=0, padx=(10, 10), pady=(15, 0), sticky="new")
 
     style = ttk.Style()
     style.theme_use("default")
@@ -695,12 +696,18 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                   background="gray",
                   foreground="black",
                   rowheight=25,
-                  fieldbackground="turquoise")
+                  fieldbackground="#D3D3D3")
     
-    style.map("Treeview", 
-              background=[("selected", "navy")])
+    style.map("Treeview", background=[("selected", "navy")])
 
+    baza_scroll = Scrollbar(self.baza_frame)
+    baza_scroll.pack(side=RIGHT, fill=Y)
 
+    baza_tree = ttk.Treeview(self.baza_frame, yscrollcommand=baza_scroll.set, selectmode="extended")
+    baza_tree.pack()
+
+    baza_scroll.config(command=baza_tree.yview)
+    
 
 class App(customtkinter.CTk):
   def __init__(self):
