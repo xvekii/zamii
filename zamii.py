@@ -683,7 +683,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    self.geometry("1100x468+300+100")
+    self.geometry("1000x468+300+100")
     self.grid_columnconfigure(3, weight=1)
 
     self.baza_frame = BazaFrame(self)
@@ -708,10 +708,11 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     baza_scroll.config(command=baza_tree.yview)
 
-    baza_tree["columns"] = ("ID", "Radno mjesto", "Prezime", "Ime", "Spol")
+    baza_tree["columns"] = ("ID", "Radno mjesto", "Na radnom mjestu", "Prezime", "Ime", "Spol")
     baza_tree.column("#0", stretch=NO, width=0)
     baza_tree.column("ID", anchor=CENTER, width=40)
     baza_tree.column("Radno mjesto", anchor=CENTER, width=140)
+    baza_tree.column("Na radnom mjestu", anchor=CENTER, width=400)
     baza_tree.column("Prezime", anchor=CENTER, width=200)
     baza_tree.column("Ime", anchor=CENTER, width=140)
     baza_tree.column("Spol", anchor=CENTER, width=40)
@@ -719,6 +720,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.heading("#0", text="", anchor=W)
     baza_tree.heading("ID", text="ID", anchor=CENTER)
     baza_tree.heading("Radno mjesto", text="Radno mjesto", anchor=CENTER)
+    baza_tree.heading("Na radnom mjestu", text="Na radnom mjestu", anchor=CENTER)
     baza_tree.heading("Prezime", text="Prezime", anchor=CENTER)
     baza_tree.heading("Ime", text="Ime", anchor=CENTER)
     baza_tree.heading("Spol", text="Spol", anchor=CENTER)
@@ -744,9 +746,9 @@ def get_db_data(baza_tree):
 
   for row in rows:
     if count % 2 == 0:
-      baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4]), tags=("evenrow",))
+      baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4], row[5]), tags=("evenrow",))
     else: 
-      baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4]), tags=("oddrow",))
+      baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4], row[5]), tags=("oddrow",))
     count += 1
 
 
