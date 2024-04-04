@@ -725,6 +725,26 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     baza_tree.tag_configure("oddrow", background="white")
     baza_tree.tag_configure("oddrow", background="lightgreen")
+  
+    get_db_data(baza_tree)
+
+def get_db_data(baza_tree):
+  db_connection = sqlite3.connect(db_path)
+  db = db_connection.cursor()
+
+  # Get teachers' names from db
+  db.execute("SELECT id_ucitelja_N, radno_mjesto, prezime, ime, spol FROM ucitelji ORDER BY prezime")
+  rows = db.fetchall()
+
+  global count
+  count = 0
+
+  for row in rows:
+    if count % 2 == 0:
+      baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4]), tags=("evenrow",))
+    else: 
+      baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4]), tags=("oddrow",))
+
 
 
 class App(customtkinter.CTk):
@@ -765,7 +785,7 @@ class App(customtkinter.CTk):
     primijeni_btn.grid(row=3, column=0, padx=(0, 35), pady=5, sticky="e")
 
     self.baza_toplevel_window = None
-
+  
 
   def otvori_bazu_toplevel(self):
     if self.baza_toplevel_window is None or not self.baza_toplevel_window.winfo_exists():
