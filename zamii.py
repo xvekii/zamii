@@ -683,7 +683,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    self.geometry("600x468+300+100")
+    self.geometry("1100x468+300+100")
     self.grid_columnconfigure(3, weight=1)
 
     self.baza_frame = BazaFrame(self)
@@ -707,6 +707,15 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.pack()
 
     baza_scroll.config(command=baza_tree.yview)
+
+    baza_tree["columns"] = ("ID", "Radno mjesto", "Prezime", "Ime", "Spol")
+    baza_tree.column("#0", stretch=NO, width=140)
+    baza_tree.column("ID", anchor=CENTER, width=140)
+    baza_tree.column("Radno mjesto", anchor=CENTER, width=140)
+    baza_tree.column("Prezime", anchor=W, width=140)
+    baza_tree.column("Ime", anchor=W, width=140)
+    baza_tree.column("Spol", anchor=CENTER, width=140)
+
     
 
 class App(customtkinter.CTk):
