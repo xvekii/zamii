@@ -734,7 +734,9 @@ def get_db_data(baza_tree):
   db = db_connection.cursor()
 
   # Get teachers' names from db
-  db.execute("SELECT id_ucitelja_N, radno_mjesto, prezime, ime, spol FROM ucitelji ORDER BY prezime")
+  db.execute("SELECT ucitelji.id_ucitelja_N, ucitelji.radno_mjesto, radno_mjesto.na_radnom_mjestu, ucitelji.prezime, ucitelji.ime, ucitelji.spol FROM ucitelji \
+             JOIN radno_mjesto radno_mjesto ON ucitelji.radno_mjesto = radno_mjesto.id_radnog_mjesta \
+             ORDER BY prezime")
   rows = db.fetchall()
 
   global count
