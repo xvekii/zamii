@@ -712,8 +712,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.column("#0", stretch=NO, width=0)
     baza_tree.column("ID", anchor=CENTER, width=40)
     baza_tree.column("Radno mjesto", anchor=CENTER, width=140)
-    baza_tree.column("Prezime", anchor=W, width=200)
-    baza_tree.column("Ime", anchor=W, width=140)
+    baza_tree.column("Prezime", anchor=CENTER, width=200)
+    baza_tree.column("Ime", anchor=CENTER, width=140)
     baza_tree.column("Spol", anchor=CENTER, width=40)
 
     baza_tree.heading("#0", text="", anchor=W)
@@ -727,6 +727,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.tag_configure("oddrow", background="lightgreen")
   
     get_db_data(baza_tree)
+
 
 def get_db_data(baza_tree):
   db_connection = sqlite3.connect(db_path)
@@ -744,7 +745,7 @@ def get_db_data(baza_tree):
       baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4]), tags=("evenrow",))
     else: 
       baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4]), tags=("oddrow",))
-
+    count += 1
 
 
 class App(customtkinter.CTk):
