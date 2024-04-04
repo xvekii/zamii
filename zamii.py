@@ -723,6 +723,10 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.heading("Ime", text="Ime", anchor=CENTER)
     baza_tree.heading("Spol", text="Spol", anchor=CENTER)
 
+    baza_tree.tag_configure("oddrow", background="white")
+    baza_tree.tag_configure("oddrow", background="lightgreen")
+
+
 class App(customtkinter.CTk):
   def __init__(self):
     super().__init__()
