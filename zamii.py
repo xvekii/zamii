@@ -709,14 +709,19 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_scroll.config(command=baza_tree.yview)
 
     baza_tree["columns"] = ("ID", "Radno mjesto", "Prezime", "Ime", "Spol")
-    baza_tree.column("#0", stretch=NO, width=140)
-    baza_tree.column("ID", anchor=CENTER, width=140)
+    baza_tree.column("#0", stretch=NO, width=0)
+    baza_tree.column("ID", anchor=CENTER, width=40)
     baza_tree.column("Radno mjesto", anchor=CENTER, width=140)
-    baza_tree.column("Prezime", anchor=W, width=140)
+    baza_tree.column("Prezime", anchor=W, width=200)
     baza_tree.column("Ime", anchor=W, width=140)
-    baza_tree.column("Spol", anchor=CENTER, width=140)
+    baza_tree.column("Spol", anchor=CENTER, width=40)
 
-    
+    baza_tree.heading("#0", text="", anchor=W)
+    baza_tree.heading("ID", text="ID", anchor=CENTER)
+    baza_tree.heading("Radno mjesto", text="Radno mjesto", anchor=CENTER)
+    baza_tree.heading("Prezime", text="Prezime", anchor=CENTER)
+    baza_tree.heading("Ime", text="Ime", anchor=CENTER)
+    baza_tree.heading("Spol", text="Spol", anchor=CENTER)
 
 class App(customtkinter.CTk):
   def __init__(self):
