@@ -1,5 +1,6 @@
 import os
 import sqlite3
+from tkinter import ttk
 import customtkinter
 from CTkMessagebox import CTkMessagebox
 from PIL import ImageTk
@@ -664,30 +665,13 @@ def render_document():
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
-class PretražiImePrezimeFrame(customtkinter.CTkFrame):
+
+class BazaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
-    self.grid_columnconfigure(0, weight=1)
 
-    unesi_label = customtkinter.CTkLabel(self, text="Unesi: ", fg_color="transparent")
-    unesi_label.grid(row=0, column=0, padx=(18, 0), pady=0)
-    
-    ime_label = customtkinter.CTkLabel(self, text="ime", fg_color="transparent")
-    ime_label.grid(row=1, column=0, padx=(30, 0), pady=0)
-    
-    pretraži_ime_textbox = customtkinter.CTkTextbox(self, width=160, height=10, corner_radius=0, border_width=1, 
-                                            border_color=("black"))
-    pretraži_ime_textbox.grid(row=1, column=1, padx=(15, 15), pady=(10, 10), sticky="e")
-    
-    prezime_label = customtkinter.CTkLabel(self, text="prezime", fg_color="transparent")
-    prezime_label.grid(row=1, column=2, padx=(30, 0), pady=0)
-    
-    pretraži_prezime_textbox = customtkinter.CTkTextbox(self, width=220, height=10, corner_radius=0, border_width=1, 
-                                            border_color=("black"))
-    pretraži_prezime_textbox.grid(row=1, column=3, padx=(20, 12), pady=(10, 10), sticky="e")
-
-    pretraži_ime_prezime_btn = customtkinter.CTkButton(self, text="pretraži", fg_color="#6D6875")
-    pretraži_ime_prezime_btn.grid(row=2, column=3, padx=(0, 10), pady=5, sticky="e")
+  
+  
 
     
 
@@ -701,8 +685,21 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.geometry("600x468+300+100")
     self.grid_columnconfigure(3, weight=1)
 
-    self.pretraži_ime_prezime_frame = PretražiImePrezimeFrame(self)
+    self.pretraži_ime_prezime_frame = BazaFrame(self)
     self.pretraži_ime_prezime_frame.grid(row=0, column=0, padx=(10, 10), pady=(15, 0), sticky="new")
+
+    style = ttk.Style()
+    style.theme_use("default")
+
+    style.configure("Treeview", 
+                  background="gray",
+                  foreground="black",
+                  rowheight=25,
+                  fieldbackground="turquoise")
+    
+    style.map("Treeview", 
+              background=[("selected", "navy")])
+
 
 
 class App(customtkinter.CTk):
