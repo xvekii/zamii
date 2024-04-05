@@ -725,10 +725,20 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.tag_configure("oddrow", background="lightgreen")
   
     self.podatci_frame = LabelFrame(self, text="Podatci", width=900)
-    self.podatci_frame.grid(row=1, column=0, padx=(10, 10), pady=(0, 0), sticky=W)
+    self.podatci_frame.grid(row=1, column=0, padx=(10, 10), pady=(0, 0), sticky=EW)
   
     self.ime_label = Label(self.podatci_frame, text="Ime")
     self.ime_label.grid(row=1, column=0, padx=10, pady=10)
+    
+    self.ime_entry = Entry(self.podatci_frame, width=15)
+    self.ime_entry.grid(row=1, column=1, padx=10, pady=10)
+
+    self.prezime_label = Label(self.podatci_frame, text="Prezime")
+    self.prezime_label.grid(row=1, column=2, padx=10, pady=10)
+    
+    self.prezime_entry = Entry(self.podatci_frame, width=15)
+    self.prezime_entry.grid(row=1, column=3, padx=10, pady=10)
+
 
     get_db_data(baza_tree)
 
