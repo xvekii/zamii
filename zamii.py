@@ -692,7 +692,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                   background="D3D3D3",
                   foreground="black",
                   rowheight=25,
-                  fieldbackground="white")
+                  fieldbackground="D3D3D3")
     
     style.map("Treeview", background=[("selected", "navy")])
 
