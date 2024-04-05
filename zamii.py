@@ -692,7 +692,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                   background="D3D3D3",
                   foreground="black",
                   rowheight=25,
-                  fieldbackground="#D3D3D3")
+                  fieldbackground="white")
     
     style.map("Treeview", background=[("selected", "navy")])
 
@@ -721,8 +721,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.heading("Ime", text="Ime", anchor=CENTER)
     baza_tree.heading("Spol", text="Spol", anchor=CENTER)
 
-    baza_tree.tag_configure("oddrow", background="white")
-    baza_tree.tag_configure("oddrow", background="lightgreen")
+    baza_tree.tag_configure("oddrow", background="#FBFBFB")
+    baza_tree.tag_configure("evenrow", background="#6ECDB0")
   
     self.podatci_frame = LabelFrame(self, text="Podatci", width=900)
     self.podatci_frame.grid(row=1, column=0, padx=(10, 10), pady=(0, 0), sticky=EW)
