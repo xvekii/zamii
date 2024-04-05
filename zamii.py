@@ -739,6 +739,12 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.prezime_entry = Entry(self.podatci_frame, width=15)
     self.prezime_entry.grid(row=1, column=3, padx=10, pady=10)
 
+    self.ID_label = Label(self.podatci_frame, text="ID")
+    self.ID_label.grid(row=1, column=4, padx=10, pady=10)
+
+    self.ID_entry = Entry(self.podatci_frame, width=15)
+    self.ID_entry.grid(row=1, column=5, padx=10, pady=10)
+
 
     get_db_data(baza_tree)
 
