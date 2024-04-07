@@ -666,14 +666,6 @@ def render_document():
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
-
-class BazaFrame(customtkinter.CTkFrame):
-  def __init__(self, master):
-    super().__init__(master)
-
-    
-
-
 class BazaToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
     super().__init__()
@@ -772,7 +764,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
     self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
     
-    self.popis_radnih_mj_btn = customtkinter.CTkButton(self.naredbe_frame, text="Popis radnih mjesta", fg_color="#4a4e69")
+    self.popis_radnih_mj_btn = customtkinter.CTkButton(self.naredbe_frame, text="Popis radnih mjesta", fg_color="#4a4e69",
+                                                       command=self.otvori_popis_radnih_mj_toplevel_window)
     self.popis_radnih_mj_btn.grid(row=1, column=3, padx=(5, 15), pady=10)
     
     self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
@@ -780,9 +773,18 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
 
     self.baza_tree.bind("<ButtonRelease-1>", self.select_db_data)
+    
+    self.popis_radnih_mj_toplevel_window = None
 
     get_db_data(self.baza_tree)
   
+
+  def otvori_popis_radnih_mj_toplevel_window(self):
+    if self.popis_radnih_mj_toplevel_window is None or not self.popis_radnih_mj_toplevel_window.winfo_exists():
+      self.popis_radnih_mj_toplevel_window = PopisRadnihMjToplevelWindow()
+    else: 
+      self.popis_radnih_mj_toplevel_window.focus()
+
 
   def očisti_obrasce(self):
     self.ID_entry.delete(0, END)
@@ -808,6 +810,21 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.ime_entry.insert(0, values[4])
     self.spol_entry.insert(0, values[5])
   
+
+class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
+  def __init__(self):
+    super().__init__()
+    self.title("Popis radnih mjesta")
+
+    self.geometry("630x468+300+100")
+    self.grid_columnconfigure(3, weight=1)
+    
+
+class BazaFrame(customtkinter.CTkFrame):
+  def __init__(self, master):
+    super().__init__(master)
+
+
 
 def get_db_data(baza_tree):
   db_connection = sqlite3.connect(db_path)
