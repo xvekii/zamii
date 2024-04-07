@@ -695,7 +695,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                   fieldbackground="D3D3D3")
     style.configure("Treeview.Heading", font=(None, 13))
     
-    style.map("Treeview", background=[("selected", "navy")])
+    style.map("Treeview", background=[("selected", "#4a4e69")])
 
     baza_scroll = Scrollbar(self.baza_frame)
     baza_scroll.pack(side=RIGHT, fill=Y)
@@ -723,7 +723,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.heading("Spol", text="Spol", anchor=CENTER)
 
     baza_tree.tag_configure("oddrow", background="#FBFBFB")
-    baza_tree.tag_configure("evenrow", background="#6ECDB0")
+    baza_tree.tag_configure("evenrow", background="#f2e9e4")
   
     self.podatci_frame = LabelFrame(self, text="Podatci", width=900)
     self.podatci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
