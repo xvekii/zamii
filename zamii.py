@@ -758,6 +758,13 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.spol_entry = Entry(self.podatci_frame, width=2)
     self.spol_entry.grid(row=1, column=9, padx=(5, 15), pady=10)
 
+    # Buttons
+    self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
+    self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
+
+    self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
+    self.izmijeni_unos_btn.grid(row=1, column=0, padx=(5, 15), pady=10)
+
 
     get_db_data(baza_tree)
 
@@ -784,6 +791,7 @@ def get_db_data(baza_tree):
 
   db_connection.commit()
   db_connection.close()
+
 
 class App(customtkinter.CTk):
   def __init__(self):
