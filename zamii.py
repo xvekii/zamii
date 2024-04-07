@@ -854,6 +854,30 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_tree.tag_configure("oddrow", background="#FBFBFB")
     self.radna_mj_tree.tag_configure("evenrow", background="#f2e9e4")
 
+    get_radna_mjesta(self.radna_mj_tree)
+
+
+def get_radna_mjesta(radna_mj_tree):
+  db_connection = sqlite3.connect(db_path)
+  db = db_connection.cursor()
+
+  db.execute("SELECT id_radnog_mjesta, na_radnom_mjestu FROM radno_mjesto")
+  rows = db.fetchall()
+
+  global count
+  count = 0
+
+  for row in rows:
+    if count % 2 == 0:
+      radna_mj_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1]), tags=("evenrow",))
+    else: 
+      radna_mj_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1]), tags=("oddrow",))
+    count += 1
+
+  db_connection.commit()
+  db_connection.close()
+
+
 
 class RadnaMjFrame(customtkinter.CTkFrame):
   def __init__(self, master):
