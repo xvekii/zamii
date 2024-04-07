@@ -894,7 +894,6 @@ def get_radna_mjesta(radna_mj_tree):
   db_connection.close()
 
 
-
 class RadnaMjFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
@@ -903,7 +902,6 @@ class RadnaMjFrame(customtkinter.CTkFrame):
 class BazaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
-
 
 
 def get_db_data(baza_tree):
