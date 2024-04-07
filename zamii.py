@@ -717,7 +717,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.baza_tree.tag_configure("oddrow", background="#FBFBFB")
     self.baza_tree.tag_configure("evenrow", background="#f2e9e4")
   
-    # Obrasci za unos
+    # Input forms
     self.obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=900)
     self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
   
@@ -816,7 +816,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Popis radnih mjesta")
 
-    self.geometry("515x468+300+100")
+    self.geometry("613x468+300+100")
     self.grid_columnconfigure(3, weight=1)
     
     self.radna_mj_frame = RadnaMjFrame(self)
@@ -844,15 +844,31 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
     self.radna_mj_tree["columns"] = ("ID radnog mjesta", "Na radnom mjestu (G)")
     self.radna_mj_tree.column("#0", stretch=NO, width=0)
-    self.radna_mj_tree.column("ID radnog mjesta", anchor=CENTER, width=120)
-    self.radna_mj_tree.column("Na radnom mjestu (G)", anchor=CENTER, width=350)
+    self.radna_mj_tree.column("ID radnog mjesta", anchor=CENTER, width=160)
+    self.radna_mj_tree.column("Na radnom mjestu (G)", anchor=W, width=400)
 
     self.radna_mj_tree.heading("#0", text="", anchor=W)
     self.radna_mj_tree.heading("ID radnog mjesta", text="ID radnog mjesta", anchor=CENTER)
-    self.radna_mj_tree.heading("Na radnom mjestu (G)", text="Na radnom mjestu (G)", anchor=CENTER)
+    self.radna_mj_tree.heading("Na radnom mjestu (G)", text="Na radnom mjestu (G)", anchor=W)
 
     self.radna_mj_tree.tag_configure("oddrow", background="#FBFBFB")
     self.radna_mj_tree.tag_configure("evenrow", background="#f2e9e4")
+
+  # Input forms
+    self.obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=485)
+    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
+
+    self.ID_label = Label(self.obrasci_frame, text="ID")
+    self.ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
+
+    self.ID_entry = Entry(self.obrasci_frame, width=3)
+    self.ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
+
+    self.na_radnom_mjestu_label = Label(self.obrasci_frame, text="Radno mjesto (G)")
+    self.na_radnom_mjestu_label.grid(row=1, column=2, padx=(5, 15), pady=10)
+
+    self.na_radnom_mjestu_entry = Entry(self.obrasci_frame, width=35)
+    self.na_radnom_mjestu_entry.grid(row=1, column=3, padx=(5, 15), pady=10)
 
     get_radna_mjesta(self.radna_mj_tree)
 
