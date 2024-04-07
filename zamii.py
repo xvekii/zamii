@@ -764,6 +764,13 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
     self.izmijeni_unos_btn.grid(row=1, column=0, padx=(5, 15), pady=10)
+    
+    self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
+    self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
+
+    self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
+    self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
+
 
 
     get_db_data(baza_tree)
