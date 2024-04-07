@@ -727,7 +727,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
   
     # Obrasci za unos
     self.obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=900)
-    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
+    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
   
     self.ID_label = Label(self.obrasci_frame, text="ID")
     self.ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
