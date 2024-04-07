@@ -775,13 +775,22 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.popis_radnih_mj_btn = customtkinter.CTkButton(self.naredbe_frame, text="Popis radnih mjesta", fg_color="#4a4e69")
     self.popis_radnih_mj_btn.grid(row=1, column=3, padx=(5, 15), pady=10)
     
-    self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69")
+    self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
+                                                      command=self.očisti_obrasce)
     self.očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
 
     self.baza_tree.bind("<ButtonRelease-1>", self.select_db_data)
 
     get_db_data(self.baza_tree)
   
+
+  def očisti_obrasce(self):
+    self.ID_entry.delete(0, END)
+    self.radno_mjesto_entry.delete(0, END)
+    self.prezime_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
+
 
   def select_db_data(self, event):
     self.ID_entry.delete(0, END)
