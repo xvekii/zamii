@@ -725,37 +725,38 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.tag_configure("oddrow", background="#FBFBFB")
     baza_tree.tag_configure("evenrow", background="#f2e9e4")
   
-    self.podatci_frame = LabelFrame(self, text="Podatci", width=900)
-    self.podatci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
+    # Obrasci za unos
+    self.obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=900)
+    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
   
-    self.ID_label = Label(self.podatci_frame, text="ID")
+    self.ID_label = Label(self.obrasci_frame, text="ID")
     self.ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
 
-    self.ID_entry = Entry(self.podatci_frame, width=3)
+    self.ID_entry = Entry(self.obrasci_frame, width=3)
     self.ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
 
-    self.radno_mjesto_label = Label(self.podatci_frame, text="Radno mjesto")
+    self.radno_mjesto_label = Label(self.obrasci_frame, text="Radno mjesto")
     self.radno_mjesto_label.grid(row=1, column=2, padx=(5, 15), pady=10)
 
-    self.radno_mjesto_entry = Entry(self.podatci_frame, width=3)
+    self.radno_mjesto_entry = Entry(self.obrasci_frame, width=3)
     self.radno_mjesto_entry.grid(row=1, column=3, padx=(5, 15), pady=10)
     
-    self.prezime_label = Label(self.podatci_frame, text="Prezime")
+    self.prezime_label = Label(self.obrasci_frame, text="Prezime")
     self.prezime_label.grid(row=1, column=4, padx=(5, 15), pady=10)
     
-    self.prezime_entry = Entry(self.podatci_frame, width=20)
+    self.prezime_entry = Entry(self.obrasci_frame, width=20)
     self.prezime_entry.grid(row=1, column=5, padx=(5, 15), pady=10)
     
-    self.ime_label = Label(self.podatci_frame, text="Ime")
+    self.ime_label = Label(self.obrasci_frame, text="Ime")
     self.ime_label.grid(row=1, column=6, padx=(5, 15), pady=10)
     
-    self.ime_entry = Entry(self.podatci_frame, width=15)
+    self.ime_entry = Entry(self.obrasci_frame, width=15)
     self.ime_entry.grid(row=1, column=7, padx=(5, 15), pady=10)
     
-    self.spol_label = Label(self.podatci_frame, text="Spol")
+    self.spol_label = Label(self.obrasci_frame, text="Spol")
     self.spol_label.grid(row=1, column=8, padx=(5, 15), pady=10)
 
-    self.spol_entry = Entry(self.podatci_frame, width=2)
+    self.spol_entry = Entry(self.obrasci_frame, width=2)
     self.spol_entry.grid(row=1, column=9, padx=(5, 15), pady=10)
 
     # Buttons
