@@ -750,6 +750,12 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     self.radno_mjesto_entry = Entry(self.podatci_frame, width=3)
     self.radno_mjesto_entry.grid(row=1, column=7, padx=10, pady=10)
+    
+    self.spol_label = Label(self.podatci_frame, text="Spol")
+    self.spol_label.grid(row=1, column=8, padx=10, pady=10)
+
+    self.spol_entry = Entry(self.podatci_frame, width=3)
+    self.spol_entry.grid(row=1, column=9, padx=10, pady=10)
 
 
     get_db_data(baza_tree)
