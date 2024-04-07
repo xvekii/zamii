@@ -379,8 +379,8 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
                                               wrap="word", border_color=("black"))
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 10), sticky="e")
     
-    izbriši_btn = customtkinter.CTkButton(self, text="izbriši", width=56, fg_color="#6C757D", command=clear_obrazl_textbox_callback)
-    izbriši_btn.grid(row=1, column=1, padx=60, pady=(0, 10), sticky="e")
+    očisti_btn = customtkinter.CTkButton(self, text="očisti", width=56, fg_color="#6C757D", command=clear_obrazl_textbox_callback)
+    očisti_btn.grid(row=1, column=1, padx=60, pady=(0, 10), sticky="e")
 
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
     nadnevak_naloga_label.grid(row=2, column=0, padx=(72, 0), pady=(0, 10))
