@@ -700,30 +700,30 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_scroll = Scrollbar(self.baza_frame)
     baza_scroll.pack(side=RIGHT, fill=Y)
 
-    baza_tree = ttk.Treeview(self.baza_frame, yscrollcommand=baza_scroll.set, selectmode="extended")
-    baza_tree.pack()
+    self.baza_tree = ttk.Treeview(self.baza_frame, yscrollcommand=baza_scroll.set, selectmode="extended")
+    self.baza_tree.pack()
 
-    baza_scroll.config(command=baza_tree.yview)
+    baza_scroll.config(command=self.baza_tree.yview)
 
-    baza_tree["columns"] = ("ID", "Radno mjesto", "Na radnom mjestu", "Prezime", "Ime", "Spol")
-    baza_tree.column("#0", stretch=NO, width=0)
-    baza_tree.column("ID", anchor=CENTER, width=40)
-    baza_tree.column("Radno mjesto", anchor=CENTER, width=120)
-    baza_tree.column("Na radnom mjestu", anchor=W, width=350)
-    baza_tree.column("Prezime", anchor=W, width=200)
-    baza_tree.column("Ime", anchor=W, width=140)
-    baza_tree.column("Spol", anchor=CENTER, width=40)
+    self.baza_tree["columns"] = ("ID", "Radno mjesto", "Na radnom mjestu", "Prezime", "Ime", "Spol")
+    self.baza_tree.column("#0", stretch=NO, width=0)
+    self.baza_tree.column("ID", anchor=CENTER, width=40)
+    self.baza_tree.column("Radno mjesto", anchor=CENTER, width=120)
+    self.baza_tree.column("Na radnom mjestu", anchor=W, width=350)
+    self.baza_tree.column("Prezime", anchor=W, width=200)
+    self.baza_tree.column("Ime", anchor=W, width=140)
+    self.baza_tree.column("Spol", anchor=CENTER, width=40)
 
-    baza_tree.heading("#0", text="", anchor=W)
-    baza_tree.heading("ID", text="ID", anchor=CENTER)
-    baza_tree.heading("Radno mjesto", text="Radno mjesto", anchor=CENTER)
-    baza_tree.heading("Na radnom mjestu", text="Na radnom mjestu", anchor=W)
-    baza_tree.heading("Prezime", text="Prezime", anchor=W)
-    baza_tree.heading("Ime", text="Ime", anchor=W)
-    baza_tree.heading("Spol", text="Spol", anchor=CENTER)
+    self.baza_tree.heading("#0", text="", anchor=W)
+    self.baza_tree.heading("ID", text="ID", anchor=CENTER)
+    self.baza_tree.heading("Radno mjesto", text="Radno mjesto", anchor=CENTER)
+    self.baza_tree.heading("Na radnom mjestu", text="Na radnom mjestu", anchor=W)
+    self.baza_tree.heading("Prezime", text="Prezime", anchor=W)
+    self.baza_tree.heading("Ime", text="Ime", anchor=W)
+    self.baza_tree.heading("Spol", text="Spol", anchor=CENTER)
 
-    baza_tree.tag_configure("oddrow", background="#FBFBFB")
-    baza_tree.tag_configure("evenrow", background="#f2e9e4")
+    self.baza_tree.tag_configure("oddrow", background="#FBFBFB")
+    self.baza_tree.tag_configure("evenrow", background="#f2e9e4")
   
     # Obrasci za unos
     self.obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=900)
@@ -778,10 +778,27 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69")
     self.očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
 
+    self.baza_tree.bind("<ButtonRelease-1>", self.select_db_data)
 
+    get_db_data(self.baza_tree)
+  
 
-    get_db_data(baza_tree)
+  def select_db_data(self, event):
+    self.ID_entry.delete(0, END)
+    self.radno_mjesto_entry.delete(0, END)
+    self.prezime_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
 
+    selected = self.baza_tree.focus()
+    values = self.baza_tree.item(selected, "values")
+
+    self.ID_entry.insert(0, values[0])
+    self.radno_mjesto_entry.insert(0, values[1])
+    self.prezime_entry.insert(0, values[3])
+    self.ime_entry.insert(0, values[4])
+    self.spol_entry.insert(0, values[5])
+  
 
 def get_db_data(baza_tree):
   db_connection = sqlite3.connect(db_path)
