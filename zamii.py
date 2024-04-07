@@ -842,6 +842,17 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
     radna_mj_scroll.config(command=self.radna_mj_tree.yview)
 
+    self.radna_mj_tree["columns"] = ("ID radnog mjesta", "Na radnom mjestu (G)")
+    self.radna_mj_tree.column("#0", stretch=NO, width=0)
+    self.radna_mj_tree.column("ID radnog mjesta", anchor=CENTER, width=120)
+    self.radna_mj_tree.column("Na radnom mjestu (G)", anchor=CENTER, width=350)
+
+    self.radna_mj_tree.heading("#0", text="", anchor=W)
+    self.radna_mj_tree.heading("ID radnog mjesta", text="ID radnog mjesta", anchor=CENTER)
+    self.radna_mj_tree.heading("Na radnom mjestu (G)", text="Na radnom mjestu (G)", anchor=CENTER)
+
+    self.radna_mj_tree.tag_configure("oddrow", background="#FBFBFB")
+    self.radna_mj_tree.tag_configure("evenrow", background="#f2e9e4")
 
 
 class RadnaMjFrame(customtkinter.CTkFrame):
