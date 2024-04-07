@@ -679,7 +679,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    self.geometry("1000x468+300+100")
+    self.geometry("930x468+300+100")
     self.grid_columnconfigure(3, weight=1)
 
     self.baza_frame = BazaFrame(self)
