@@ -683,7 +683,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(3, weight=1)
 
     self.baza_frame = BazaFrame(self)
-    self.baza_frame.grid(row=0, column=0, padx=(10, 10), pady=(0, 0), sticky="new")
+    self.baza_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
 
     style = ttk.Style()
     style.theme_use("default")
@@ -725,7 +725,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_tree.tag_configure("evenrow", background="#6ECDB0")
   
     self.podatci_frame = LabelFrame(self, text="Podatci", width=900)
-    self.podatci_frame.grid(row=1, column=0, padx=(10, 10), pady=(0, 0), sticky=EW)
+    self.podatci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
   
     self.ID_label = Label(self.podatci_frame, text="ID")
     self.ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
