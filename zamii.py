@@ -816,7 +816,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Popis radnih mjesta")
 
-    self.geometry("630x468+300+100")
+    self.geometry("515x468+300+100")
     self.grid_columnconfigure(3, weight=1)
     
     self.radna_mj_frame = RadnaMjFrame(self)
@@ -864,15 +864,15 @@ def get_radna_mjesta(radna_mj_tree):
   db.execute("SELECT id_radnog_mjesta, na_radnom_mjestu FROM radno_mjesto")
   rows = db.fetchall()
 
-  global count
-  count = 0
+  global count_rm
+  count_rm = 0
 
   for row in rows:
-    if count % 2 == 0:
-      radna_mj_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1]), tags=("evenrow",))
+    if count_rm % 2 == 0:
+      radna_mj_tree.insert(parent="", index="end", iid=count_rm, text="", values=(row[0], row[1]), tags=("evenrow",))
     else: 
-      radna_mj_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1]), tags=("oddrow",))
-    count += 1
+      radna_mj_tree.insert(parent="", index="end", iid=count_rm, text="", values=(row[0], row[1]), tags=("oddrow",))
+    count_rm += 1
 
   db_connection.commit()
   db_connection.close()
