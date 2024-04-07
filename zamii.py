@@ -781,6 +781,8 @@ def get_db_data(baza_tree):
       baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4], row[5]), tags=("oddrow",))
     count += 1
 
+  db_connection.commit()
+  db_connection.close()
 
 class App(customtkinter.CTk):
   def __init__(self):
