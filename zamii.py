@@ -770,6 +770,12 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
     self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
+    
+    self.popis_radnih_mj_btn = customtkinter.CTkButton(self.naredbe_frame, text="Popis radnih mjesta", fg_color="#4a4e69")
+    self.popis_radnih_mj_btn.grid(row=1, column=3, padx=(5, 15), pady=10)
+    
+    self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69")
+    self.očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
 
 
 
