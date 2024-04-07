@@ -819,6 +819,35 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.geometry("630x468+300+100")
     self.grid_columnconfigure(3, weight=1)
     
+    self.radna_mj_frame = RadnaMjFrame(self)
+    self.radna_mj_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
+
+    style = ttk.Style()
+    style.theme_use("default")
+
+    style.configure("Treeview", 
+                  background="D3D3D3",
+                  foreground="black",
+                  rowheight=25,
+                  fieldbackground="D3D3D3")
+    style.configure("Treeview.Heading", font=(None, 13))
+
+    style.map("Treeview", background=[("selected", "#4a4e69")])
+
+    radna_mj_scroll = Scrollbar(self.radna_mj_frame)
+    radna_mj_scroll.pack(side=RIGHT, fill=Y)
+
+    self.radna_mj_tree = ttk.Treeview(self.radna_mj_frame, yscrollcommand=radna_mj_scroll.set, selectmode="extended")
+    self.radna_mj_tree.pack()
+
+    radna_mj_scroll.config(command=self.radna_mj_tree.yview)
+
+
+
+class RadnaMjFrame(customtkinter.CTkFrame):
+  def __init__(self, master):
+    super().__init__(master)
+
 
 class BazaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
