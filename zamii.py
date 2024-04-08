@@ -874,8 +874,9 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_naredbe_frame = LabelFrame(self, text="Naredbe", width=485)
     self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
 
-    self.radna_mj_izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
-    self.radna_mj_izmijeni_unos_btn.grid(row=1, column=0, padx=(5, 15), pady=10)
+    self.radna_mj_izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
+                                                              width=100)
+    self.radna_mj_izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
     
     self.radna_mj_dodaj_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
     self.radna_mj_dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
@@ -884,8 +885,8 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
 
     self.radna_mj_očisti_obrasce_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
-                                                      command=self.očisti_radna_mj_obrasce)
-    self.radna_mj_očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
+                                                      width=119, command=self.očisti_radna_mj_obrasce)
+    self.radna_mj_očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 10), pady=10)
 
     get_radna_mjesta(self.radna_mj_tree)
 
