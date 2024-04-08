@@ -854,7 +854,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_tree.tag_configure("oddrow", background="#FBFBFB")
     self.radna_mj_tree.tag_configure("evenrow", background="#f2e9e4")
 
-    # Input forms
+    # Radna mjesta input forms
     self.radna_mj_obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=485)
     self.radna_mj_obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
 
@@ -870,17 +870,17 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.na_radnom_mjestu_entry = Entry(self.radna_mj_obrasci_frame, width=35)
     self.na_radnom_mjestu_entry.grid(row=1, column=3, padx=(5, 15), pady=10)
 
-    # Buttons
-    self.naredbe_frame = LabelFrame(self, text="Naredbe", width=485)
-    self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
+    # Radna mjesta buttons
+    self.radna_mj_naredbe_frame = LabelFrame(self, text="Naredbe", width=485)
+    self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
 
-    self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
+    self.izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
     self.izmijeni_unos_btn.grid(row=1, column=0, padx=(5, 15), pady=10)
     
-    self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
+    self.dodaj_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
     self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
 
-    self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
+    self.izbriši_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
     self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
 
     get_radna_mjesta(self.radna_mj_tree)
