@@ -874,14 +874,14 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_naredbe_frame = LabelFrame(self, text="Naredbe", width=485)
     self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
 
-    self.izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
-    self.izmijeni_unos_btn.grid(row=1, column=0, padx=(5, 15), pady=10)
+    self.radna_mj_izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
+    self.radna_mj_izmijeni_unos_btn.grid(row=1, column=0, padx=(5, 15), pady=10)
     
-    self.dodaj_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
-    self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
+    self.radna_mj_dodaj_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
+    self.radna_mj_dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
 
-    self.izbriši_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
-    self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
+    self.radna_mj_izbriši_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
+    self.radna_mj_izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
 
     get_radna_mjesta(self.radna_mj_tree)
 
