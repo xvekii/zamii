@@ -883,7 +883,16 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_izbriši_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
     self.radna_mj_izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
 
+    self.radna_mj_očisti_obrasce_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
+                                                      command=self.očisti_radna_mj_obrasce)
+    self.radna_mj_očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
+
     get_radna_mjesta(self.radna_mj_tree)
+
+
+  def očisti_radna_mj_obrasce(self):
+      self.radna_mj_ID_entry.delete(0, END)
+      self.na_radnom_mjestu_entry.delete(0, END)
 
 
 def get_radna_mjesta(radna_mj_tree):
