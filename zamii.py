@@ -671,7 +671,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    self.geometry("930x468+300+100")
+    self.geometry("935x468+300+100")
     self.grid_columnconfigure(3, weight=1)
 
     self.baza_frame = BazaFrame(self)
@@ -722,7 +722,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
   
     self.ID_label = Label(self.obrasci_frame, text="ID")
-    self.ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
+    self.ID_label.grid(row=1, column=0, padx=(10, 15), pady=10)
 
     self.ID_entry = Entry(self.obrasci_frame, width=3)
     self.ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
@@ -756,7 +756,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
 
     self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
-    self.izmijeni_unos_btn.grid(row=1, column=0, padx=(5, 15), pady=10)
+    self.izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
     
     self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
     self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
@@ -856,7 +856,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
     # Radna mjesta input forms
     self.radna_mj_obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=485)
-    self.radna_mj_obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
+    self.radna_mj_obrasci_frame.grid(row=1, column=0, padx=(15, 10), pady=(0, 10), sticky=EW)
 
     self.radna_mj_ID_label = Label(self.radna_mj_obrasci_frame, text="ID")
     self.radna_mj_ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
@@ -872,7 +872,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
     # Radna mjesta buttons
     self.radna_mj_naredbe_frame = LabelFrame(self, text="Naredbe", width=485)
-    self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
+    self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 10), pady=(0, 0), sticky=EW)
 
     self.radna_mj_izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
                                                               width=100)
