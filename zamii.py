@@ -92,8 +92,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
 
-    prezime_ime_zamjene_label = customtkinter.CTkLabel(self, text="prezime i ime zamjene", fg_color="transparent")
-    prezime_ime_zamjene_label.grid(row=0, column=0, padx=(38, 0), pady=0)
+    prezime_ime_zamjene_label = customtkinter.CTkLabel(self, text="Prezime i ime zamjene", fg_color="transparent")
+    prezime_ime_zamjene_label.grid(row=0, column=0, padx=(42, 0), pady=0)
 
     global prezime_ime_combo
     prezime_ime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combo_prezime_ime_callback, 
@@ -102,7 +102,7 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     prezime_ime_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=2)
     prezime_ime_combo.grid_columnconfigure(0, weight=1)
 
-    radnog_vremena_label = customtkinter.CTkLabel(self, text="radnog vremena", fg_color="transparent")
+    radnog_vremena_label = customtkinter.CTkLabel(self, text="Radnog vremena", fg_color="transparent")
     radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=10, sticky="w")
 
     global radnog_vremena_radio1
@@ -116,8 +116,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
                                                         variable=self.radio_rad_vrem_var, value="nepunog")
     radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
 
-    umjesto_label = customtkinter.CTkLabel(self, text="umjesto", fg_color="transparent")
-    umjesto_label.grid(row=3, column=0, padx=(126, 0), pady=10)
+    umjesto_label = customtkinter.CTkLabel(self, text="Umjesto", fg_color="transparent")
+    umjesto_label.grid(row=3, column=0, padx=(128, 0), pady=10)
     
     global umjesto_combo
     umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combo_umjesto_callback_G, 
@@ -208,7 +208,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
 
-    nadnevak_zamjene_label = customtkinter.CTkLabel(self, text="nadnevak zamjene", fg_color="transparent")
+    nadnevak_zamjene_label = customtkinter.CTkLabel(self, text="Nadnevak zamjene", fg_color="transparent")
     nadnevak_zamjene_label.grid(row=0, column=0, padx=(62, 0), pady=0)
 
     dan_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_z_callback, 
@@ -221,7 +221,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     mjesec_zamjene_combo.set("mjesec")
     mjesec_zamjene_combo.grid(row=0, column=2, padx=0, pady=10, columnspan=1)
 
-    trajanje_zamjene_label = customtkinter.CTkLabel(self, text="trajanje zamjene", fg_color="transparent")
+    trajanje_zamjene_label = customtkinter.CTkLabel(self, text="Trajanje zamjene", fg_color="transparent")
     trajanje_zamjene_label.grid(row=1, column=0, padx=(76, 0), pady=0)
 
     global trajanje_zamjene_combo
@@ -231,8 +231,8 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     trajanje_zamjene_combo.grid(row=1, column=1, padx=0, pady=10, columnspan=1)
     trajanje_zamjene_combo.set("koliko sati")
 
-    šk_sat_zamjene_label = customtkinter.CTkLabel(self, text="školski sat zamjene", fg_color="transparent")
-    šk_sat_zamjene_label.grid(row=2, column=0, padx=(57, 0), pady=0)
+    šk_sat_zamjene_label = customtkinter.CTkLabel(self, text="Školski sat zamjene", fg_color="transparent")
+    šk_sat_zamjene_label.grid(row=2, column=0, padx=(60, 0), pady=(10, 0))
 
     # šk_sat_zamjene checkboxes - first 4, first column
     global šk_sat_zamjene_checkbox1
@@ -371,7 +371,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
   def __init__(self, master):
     super().__init__(master)
 
-    obrazl_label = customtkinter.CTkLabel(self, text="obrazloženje", fg_color="transparent")
+    obrazl_label = customtkinter.CTkLabel(self, text="Obrazloženje", fg_color="transparent")
     obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
 
     global obrazl_textbox
@@ -382,7 +382,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     očisti_btn = customtkinter.CTkButton(self, text="očisti", width=56, fg_color="#6C757D", command=clear_obrazl_textbox_callback)
     očisti_btn.grid(row=1, column=1, padx=60, pady=(0, 10), sticky="e")
 
-    nadnevak_naloga_label = customtkinter.CTkLabel(self, text="nadnevak naloga", fg_color="transparent")
+    nadnevak_naloga_label = customtkinter.CTkLabel(self, text="Nadnevak naloga", fg_color="transparent")
     nadnevak_naloga_label.grid(row=2, column=0, padx=(72, 0), pady=(0, 10))
 
     dan_naloga_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_n_callback, 
@@ -989,15 +989,15 @@ class App(customtkinter.CTk):
     self.obrazloženje_frame = ObrazloženjeFrame(self)
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
 
-    baza_podataka_btn = customtkinter.CTkButton(self, text="baza podataka", fg_color="#9A8C98",
+    baza_podataka_btn = customtkinter.CTkButton(self, text="Baza podataka", fg_color="#9A8C98",
                                                 command=self.otvori_bazu_toplevel)
     baza_podataka_btn.grid(row=3, column=0, padx=(0, 415), pady=5, sticky="e")
 
-    izjava_btn = customtkinter.CTkButton(self, text="dodaj izjavu", fg_color="#6d6875", 
+    izjava_btn = customtkinter.CTkButton(self, text="Dodaj izjavu", fg_color="#6d6875", 
                                             hover_color=("#118ab2"), command=dodaj_izjavu_btn_callback)
     izjava_btn.grid(row=3, column=0, padx=(0, 215), pady=5, sticky="e")
     
-    primijeni_btn = customtkinter.CTkButton(self, text="primijeni", fg_color="#110329", 
+    primijeni_btn = customtkinter.CTkButton(self, text="Primijeni", fg_color="#110329", 
                                             hover_color=("#38A282"), command=primijeni_btn_callback)
     primijeni_btn.grid(row=3, column=0, padx=(0, 35), pady=5, sticky="e")
 
