@@ -888,12 +888,25 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
                                                       width=119, command=self.očisti_radna_mj_obrasce)
     self.radna_mj_očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 10), pady=10)
 
+    self.radna_mj_tree.bind("<ButtonRelease-1>", self.select_radna_mjesta_data)
+
     get_radna_mjesta(self.radna_mj_tree)
 
 
   def očisti_radna_mj_obrasce(self):
       self.radna_mj_ID_entry.delete(0, END)
       self.na_radnom_mjestu_entry.delete(0, END)
+
+
+  def select_radna_mjesta_data(self, event):
+    self.radna_mj_ID_entry.delete(0, END)
+    self.na_radnom_mjestu_entry.delete(0, END)
+
+    selected = self.radna_mj_tree.focus()
+    values = self.radna_mj_tree.item(selected, "values")
+
+    self.radna_mj_ID_entry.insert(0, values[0])
+    self.na_radnom_mjestu_entry.insert(0, values[1])
 
 
 def get_radna_mjesta(radna_mj_tree):
