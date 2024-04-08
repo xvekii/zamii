@@ -377,10 +377,10 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     global obrazl_textbox
     obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, 
                                               wrap="word", border_color=("black"))
-    obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 10), sticky="e")
+    obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 5), sticky="e")
     
     očisti_btn = customtkinter.CTkButton(self, text="očisti", width=56, fg_color="#6C757D", command=clear_obrazl_textbox_callback)
-    očisti_btn.grid(row=1, column=1, padx=60, pady=(0, 10), sticky="e")
+    očisti_btn.grid(row=1, column=1, padx=60, pady=(0, 20), sticky="e")
 
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="Nadnevak naloga", fg_color="transparent")
     nadnevak_naloga_label.grid(row=2, column=0, padx=(72, 0), pady=(0, 10))
@@ -396,12 +396,12 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     mjesec_naloga_combo.grid(row=2, column=1, padx=(180, 0), pady=(0, 10))
 
     klasa_label = customtkinter.CTkLabel(self, text="KLASA", fg_color="transparent")
-    klasa_label.grid(row=3, column=0, padx=(132, 0), pady=(0, 10))
+    klasa_label.grid(row=3, column=0, padx=(132, 0), pady=(10, 10))
 
     global klasa_textbox
     klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, 
                                             border_color=("black"))
-    klasa_textbox.grid(row=3, column=1, padx=(0, 240), pady=(0, 10), sticky="e")
+    klasa_textbox.grid(row=3, column=1, padx=(0, 240), pady=(10, 10), sticky="e")
   
   
   def combo_dani_n_callback(self, izbor):
@@ -973,7 +973,7 @@ class App(customtkinter.CTk):
     self.wm_iconbitmap()
     self.iconphoto(False, self.iconpath)
 
-    self.geometry("600x668+300+100")
+    self.geometry("600x680+300+100")
     self.grid_columnconfigure(0, weight=1)
 
     self.grid_rowconfigure(0, weight=0)
@@ -981,7 +981,7 @@ class App(customtkinter.CTk):
     customtkinter.set_appearance_mode("system")
 
     self.zamjena_frame = ZamjenaFrame(self)
-    self.zamjena_frame.grid(row=0, column=0, padx=10, pady=(15, 0), sticky="new")
+    self.zamjena_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
 
     self.vrijeme_zamjene_frame = VrijemeZamjeneFrame(self)
     self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(15, 5), sticky="ew")
@@ -991,15 +991,15 @@ class App(customtkinter.CTk):
 
     baza_podataka_btn = customtkinter.CTkButton(self, text="Baza podataka", fg_color="#9A8C98",
                                                 command=self.otvori_bazu_toplevel)
-    baza_podataka_btn.grid(row=3, column=0, padx=(0, 415), pady=5, sticky="e")
+    baza_podataka_btn.grid(row=3, column=0, padx=(0, 415), pady=(5, 5), sticky="e")
 
     izjava_btn = customtkinter.CTkButton(self, text="Dodaj izjavu", fg_color="#6d6875", 
                                             hover_color=("#118ab2"), command=dodaj_izjavu_btn_callback)
-    izjava_btn.grid(row=3, column=0, padx=(0, 215), pady=5, sticky="e")
+    izjava_btn.grid(row=3, column=0, padx=(0, 213), pady=(5, 5), sticky="e")
     
     primijeni_btn = customtkinter.CTkButton(self, text="Primijeni", fg_color="#110329", 
                                             hover_color=("#38A282"), command=primijeni_btn_callback)
-    primijeni_btn.grid(row=3, column=0, padx=(0, 35), pady=5, sticky="e")
+    primijeni_btn.grid(row=3, column=0, padx=(0, 32), pady=(5, 5), sticky="e")
 
     self.baza_toplevel_window = None
   
