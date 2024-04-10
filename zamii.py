@@ -767,10 +767,14 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.popis_radnih_mj_btn = customtkinter.CTkButton(self.naredbe_frame, text="Popis radnih mjesta", fg_color="#4a4e69",
                                                        command=self.otvori_popis_radnih_mj_toplevel_window)
     self.popis_radnih_mj_btn.grid(row=1, column=3, padx=(5, 15), pady=10)
+
+    self.prikaži_G_i_D_btn = customtkinter.CTkButton(self.naredbe_frame, text="Prikaži G i D", fg_color="#4a4e69",
+                                                       width=110, command=self.otvori_popis_radnih_mj_toplevel_window)
+    self.prikaži_G_i_D_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
     
     self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
-                                                      command=self.očisti_obrasce)
-    self.očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
+                                                      width=110, command=self.očisti_obrasce)
+    self.očisti_obrasce_btn.grid(row=1, column=5, padx=(5, 5), pady=10)
 
     self.baza_tree.bind("<ButtonRelease-1>", self.select_db_data)
     
