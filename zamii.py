@@ -671,7 +671,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    self.geometry("935x468+300+100")
+    self.geometry("935x500+300+100")
     self.grid_columnconfigure(3, weight=1)
 
     self.baza_frame = BazaFrame(self)
@@ -751,6 +751,18 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.spol_entry = Entry(self.obrasci_frame, width=2)
     self.spol_entry.grid(row=1, column=9, padx=(5, 15), pady=10)
 
+    self.prezime_ime_G_label = Label(self.obrasci_frame, text="Prezime G")
+    self.prezime_ime_G_label.grid(row=2, column=4, padx=(5, 15), pady=10)
+
+    self.prezime_ime_G_entry = Entry(self.obrasci_frame, width=20)
+    self.prezime_ime_G_entry.grid(row=2, column=5, padx=(5, 15), pady=10)
+
+    self.ime_G_label = Label(self.obrasci_frame, text="Ime G")
+    self.ime_G_label.grid(row=2, column=6, padx=(5, 15), pady=10)
+
+    self.ime_G_entry = Entry(self.obrasci_frame, width=15)
+    self.ime_G_entry.grid(row=2, column=7, padx=(5, 15), pady=10)
+
     # Buttons
     self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
     self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
@@ -812,6 +824,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.prezime_entry.delete(0, END)
     self.ime_entry.delete(0, END)
     self.spol_entry.delete(0, END)
+    self.prezime_ime_G_entry.delete(0, END)
+    self.ime_G_entry.delete(0, END)
 
     selected = self.baza_tree.focus()
     values = self.baza_tree.item(selected, "values")
@@ -822,6 +836,10 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.ime_entry.insert(0, values[4])
     self.spol_entry.insert(0, values[5])
   
+    db.execute("SELECT prezime_G, ime_G FROM ucitelji_G WHERE id_ucitelja_G = ?", (values[0],))
+    rows = db.fetchall()
+    self.prezime_ime_G_entry.insert(0, rows[0][0])
+    self.ime_G_entry.insert(0, rows[0][1])
 
 class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
