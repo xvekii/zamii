@@ -673,6 +673,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     self.geometry("935x500+300+100")
     self.grid_columnconfigure(3, weight=1)
+    self.wm_transient(zamii)
 
     self.baza_frame = BazaFrame(self)
     self.baza_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
@@ -684,7 +685,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                   background="D3D3D3",
                   foreground="black",
                   rowheight=25,
-                  fieldbackground="D3D3D3")
+                  fieldbackground="D3D3D3",
+                  font=(None, 13))
     style.configure("Treeview.Heading", font=(None, 13))
     
     style.map("Treeview", background=[("selected", "#4a4e69")])
@@ -693,7 +695,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     baza_scroll.pack(side=RIGHT, fill=Y)
 
     self.baza_tree = ttk.Treeview(self.baza_frame, yscrollcommand=baza_scroll.set, selectmode="extended")
-    self.baza_tree.pack()
+    self.baza_tree.pack(fill="both", expand=True)
 
     baza_scroll.config(command=self.baza_tree.yview)
 
@@ -848,6 +850,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
     self.geometry("613x468+300+100")
     self.grid_columnconfigure(3, weight=1)
+    self.wm_transient(zamii.baza_toplevel_window)
     
     self.radna_mj_frame = RadnaMjFrame(self)
     self.radna_mj_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
@@ -859,7 +862,8 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
                   background="D3D3D3",
                   foreground="black",
                   rowheight=25,
-                  fieldbackground="D3D3D3")
+                  fieldbackground="D3D3D3",
+                  font=(None, 13))
     style.configure("Treeview.Heading", font=(None, 13))
 
     style.map("Treeview", background=[("selected", "#4a4e69")])
@@ -868,7 +872,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     radna_mj_scroll.pack(side=RIGHT, fill=Y)
 
     self.radna_mj_tree = ttk.Treeview(self.radna_mj_frame, yscrollcommand=radna_mj_scroll.set, selectmode="extended")
-    self.radna_mj_tree.pack()
+    self.radna_mj_tree.pack(fill="both", expand=True)
 
     radna_mj_scroll.config(command=self.radna_mj_tree.yview)
 
