@@ -375,7 +375,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
 
     global obrazl_textbox
-    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=50, corner_radius=0, border_width=1, 
+    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=40, corner_radius=0, border_width=1, 
                                               wrap="word", border_color=("black"))
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 5), sticky="e")
     
