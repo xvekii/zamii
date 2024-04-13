@@ -1017,7 +1017,7 @@ class App(customtkinter.CTk):
     self.wm_iconbitmap()
     self.iconphoto(False, self.iconpath)
 
-    self.geometry("600x680+300+100")
+    self.geometry("600x652+400+10")
     self.grid_columnconfigure(0, weight=1)
 
     self.grid_rowconfigure(0, weight=0)
@@ -1028,10 +1028,10 @@ class App(customtkinter.CTk):
     self.zamjena_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
 
     self.vrijeme_zamjene_frame = VrijemeZamjeneFrame(self)
-    self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(15, 5), sticky="ew")
+    self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(10, 5), sticky="ew")
     
     self.obrazloženje_frame = ObrazloženjeFrame(self)
-    self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(15, 5), sticky="ew")
+    self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(10, 5), sticky="ew")
 
     baza_podataka_btn = customtkinter.CTkButton(self, text="Baza podataka", fg_color="#9A8C98",
                                                 command=self.otvori_bazu_toplevel)
