@@ -93,37 +93,37 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     super().__init__(master)
 
     prezime_ime_zamjene_label = customtkinter.CTkLabel(self, text="Prezime i ime zamjene", fg_color="transparent")
-    prezime_ime_zamjene_label.grid(row=0, column=0, padx=(42, 0), pady=0)
-
+    prezime_ime_zamjene_label.grid(row=0, column=0, padx=(42, 0), pady=(0, 0)
+)
     global prezime_ime_combo
     prezime_ime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combo_prezime_ime_callback, 
                                                   state="normal", button_hover_color=("plum"), width=300)
     prezime_ime_combo.set("odaberi prezime i ime")
-    prezime_ime_combo.grid(row=0, column=1, padx=60, pady=10, columnspan=2)
+    prezime_ime_combo.grid(row=0, column=1, padx=60, pady=(10, 5), columnspan=2)
     prezime_ime_combo.grid_columnconfigure(0, weight=1)
 
     radnog_vremena_label = customtkinter.CTkLabel(self, text="Radnog vremena", fg_color="transparent")
-    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=10, sticky="w")
+    radnog_vremena_label.grid(row=1, column=0, padx=(75, 0), pady=(10, 5), sticky="w")
 
     global radnog_vremena_radio1
     global radnog_vremena_radio2
     self.radio_rad_vrem_var = customtkinter.StringVar(value=0)
     radnog_vremena_radio1 = customtkinter.CTkRadioButton(self, text="punog", command=self.radiobtn_event, 
                                                         variable=self.radio_rad_vrem_var, value="punog")
-    radnog_vremena_radio1.grid(row=1, column=1, padx=(85, 0), pady=10, sticky="w")
+    radnog_vremena_radio1.grid(row=1, column=1, padx=(85, 0), pady=(10, 5), sticky="w")
     
     radnog_vremena_radio2 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
                                                         variable=self.radio_rad_vrem_var, value="nepunog")
-    radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=10)
+    radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=(10, 5))
 
     umjesto_label = customtkinter.CTkLabel(self, text="Umjesto", fg_color="transparent")
-    umjesto_label.grid(row=3, column=0, padx=(128, 0), pady=10)
+    umjesto_label.grid(row=3, column=0, padx=(128, 0), pady=(10, 5))
     
     global umjesto_combo
     umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combo_umjesto_callback_G, 
                                               state="normal", button_hover_color=("plum"), width=300)
     umjesto_combo.set("odaberi prezime i ime")
-    umjesto_combo.grid(row=3, column=1, padx=60, pady=10, columnspan=2)
+    umjesto_combo.grid(row=3, column=1, padx=60, pady=(10, 10), columnspan=2)
 
 
   def radiobtn_event(self):
