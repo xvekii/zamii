@@ -671,7 +671,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    self.geometry("935x500+300+100")
+    self.geometry("950x500+300+100")
     self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii)
 
@@ -723,46 +723,46 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=900)
     self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
   
-    self.ID_label = Label(self.obrasci_frame, text="ID")
+    self.ID_label = customtkinter.CTkLabel(self.obrasci_frame, text="ID")
     self.ID_label.grid(row=1, column=0, padx=(10, 15), pady=10)
 
-    self.ID_entry = Entry(self.obrasci_frame, width=3)
+    self.ID_entry = customtkinter.CTkEntry(self.obrasci_frame, width=35)
     self.ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
 
-    self.radno_mjesto_label = Label(self.obrasci_frame, text="Radno mjesto")
+    self.radno_mjesto_label = customtkinter.CTkLabel(self.obrasci_frame, text="Radno mjesto")
     self.radno_mjesto_label.grid(row=1, column=2, padx=(5, 15), pady=10)
 
-    self.radno_mjesto_entry = Entry(self.obrasci_frame, width=3)
+    self.radno_mjesto_entry = customtkinter.CTkEntry(self.obrasci_frame, width=35)
     self.radno_mjesto_entry.grid(row=1, column=3, padx=(5, 15), pady=10)
     
-    self.prezime_label = Label(self.obrasci_frame, text="Prezime")
+    self.prezime_label = customtkinter.CTkLabel(self.obrasci_frame, text="Prezime")
     self.prezime_label.grid(row=1, column=4, padx=(5, 15), pady=10)
     
-    self.prezime_entry = Entry(self.obrasci_frame, width=20)
+    self.prezime_entry = customtkinter.CTkEntry(self.obrasci_frame, width=220)
     self.prezime_entry.grid(row=1, column=5, padx=(5, 15), pady=10)
     
-    self.ime_label = Label(self.obrasci_frame, text="Ime")
+    self.ime_label = customtkinter.CTkLabel(self.obrasci_frame, text="Ime")
     self.ime_label.grid(row=1, column=6, padx=(5, 15), pady=10)
     
-    self.ime_entry = Entry(self.obrasci_frame, width=15)
+    self.ime_entry = customtkinter.CTkEntry(self.obrasci_frame, width=200)
     self.ime_entry.grid(row=1, column=7, padx=(5, 15), pady=10)
     
-    self.spol_label = Label(self.obrasci_frame, text="Spol")
+    self.spol_label = customtkinter.CTkLabel(self.obrasci_frame, text="Spol")
     self.spol_label.grid(row=1, column=8, padx=(5, 15), pady=10)
 
-    self.spol_entry = Entry(self.obrasci_frame, width=2)
+    self.spol_entry = customtkinter.CTkEntry(self.obrasci_frame, width=26)
     self.spol_entry.grid(row=1, column=9, padx=(5, 15), pady=10)
 
-    self.prezime_ime_G_label = Label(self.obrasci_frame, text="Prezime G")
+    self.prezime_ime_G_label = customtkinter.CTkLabel(self.obrasci_frame, text="Prezime G")
     self.prezime_ime_G_label.grid(row=2, column=4, padx=(5, 15), pady=10)
 
-    self.prezime_ime_G_entry = Entry(self.obrasci_frame, width=20)
+    self.prezime_ime_G_entry = customtkinter.CTkEntry(self.obrasci_frame, width=220)
     self.prezime_ime_G_entry.grid(row=2, column=5, padx=(5, 15), pady=10)
 
-    self.ime_G_label = Label(self.obrasci_frame, text="Ime G")
+    self.ime_G_label = customtkinter.CTkLabel(self.obrasci_frame, text="Ime G")
     self.ime_G_label.grid(row=2, column=6, padx=(5, 15), pady=10)
 
-    self.ime_G_entry = Entry(self.obrasci_frame, width=15)
+    self.ime_G_entry = customtkinter.CTkEntry(self.obrasci_frame, width=200)
     self.ime_G_entry.grid(row=2, column=7, padx=(5, 15), pady=10)
 
     # Buttons
