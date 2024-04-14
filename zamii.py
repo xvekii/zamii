@@ -720,8 +720,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.baza_tree.tag_configure("evenrow", background="#f2e9e4")
   
     # Input forms
-    self.obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=900)
-    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
+    self.obrasci_frame = LabelFrame(self, text="Obrasci za unos")
+    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
   
     self.ID_label = customtkinter.CTkLabel(self.obrasci_frame, text="ID")
     self.ID_label.grid(row=1, column=0, padx=(10, 15), pady=10)
@@ -767,7 +767,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     # Buttons
     self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
-    self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky=EW)
+    self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky="ew")
 
     self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
     self.izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
