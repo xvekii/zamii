@@ -671,7 +671,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    self.geometry("950x500+300+100")
+    self.geometry("975x500+300+100")
     self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii)
 
