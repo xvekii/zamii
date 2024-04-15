@@ -852,6 +852,9 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.ime_entry.insert(0, values[4])
     self.spol_entry.insert(0, values[5])
   
+    db_connection = sqlite3.connect(db_path)
+    db = db_connection.cursor()
+
     db.execute("SELECT prezime_G, ime_G FROM ucitelji_G WHERE id_ucitelja_G = ?", (values[0],))
     rows = db.fetchall()
     self.prezime_ime_G_entry.insert(0, rows[0][0])
