@@ -840,6 +840,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.spol_entry.delete(0, END)
     self.prezime_ime_G_entry.delete(0, END)
     self.ime_G_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
 
     selected = self.baza_tree.focus()
     values = self.baza_tree.item(selected, "values")
@@ -854,6 +856,11 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     rows = db.fetchall()
     self.prezime_ime_G_entry.insert(0, rows[0][0])
     self.ime_G_entry.insert(0, rows[0][1])
+
+    db.execute("SELECT prezime_D, ime_D FROM ucitelji_D WHERE id_ucitelja_D = ?", (values[0],))
+    rows_D = db.fetchall()
+    self.prezime_ime_D_entry.insert(0, rows_D[0][0])
+    self.ime_D_entry.insert(0, rows_D[0][1])
 
 class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
