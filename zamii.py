@@ -781,7 +781,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
     self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky="ew")
 
-    self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69")
+    self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
+                                                     command=self.izmijeni_unos)
     self.izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
     
     self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
@@ -864,6 +865,18 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     rows_D = db.fetchall()
     self.prezime_ime_D_entry.insert(0, rows_D[0][0])
     self.ime_D_entry.insert(0, rows_D[0][1])
+
+
+  def izmijeni_unos(self):
+    selected = self.baza_tree.focus()
+    self.baza_tree.item(selected, text="", values=(self.ID_entry.get(), self.radno_mjesto_entry.get(),
+                                                   self.prezime_entry.get(), self.ime_entry.get(), self.spol_entry.get()))
+    self.ID_entry.delete(0, END)
+    self.radno_mjesto_entry.delete(0, END)
+    self.prezime_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
+    
 
 class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
