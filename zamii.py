@@ -848,6 +848,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
   def select_db_data(self, event):
     self.ID_entry.delete(0, END)
     self.radno_mjesto_entry.delete(0, END)
+    self.na_radnom_mjestu_entry.delete(0, END)
     self.prezime_entry.delete(0, END)
     self.ime_entry.delete(0, END)
     self.spol_entry.delete(0, END)
@@ -859,14 +860,17 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     selected = self.baza_tree.focus()
     values = self.baza_tree.item(selected, "values")
 
+    db_connection = sqlite3.connect(db_path)
+    db = db_connection.cursor()
+
+
+
     self.ID_entry.insert(0, values[0])
     self.radno_mjesto_entry.insert(0, values[1])
+    self.na_radnom_mjestu_entry.insert(0, values[2])
     self.prezime_entry.insert(0, values[3])
     self.ime_entry.insert(0, values[4])
     self.spol_entry.insert(0, values[5])
-  
-    db_connection = sqlite3.connect(db_path)
-    db = db_connection.cursor()
 
     db.execute("SELECT prezime_G, ime_G FROM ucitelji_G WHERE id_ucitelja_G = ?", (values[0],))
     rows = db.fetchall()
