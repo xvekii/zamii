@@ -835,7 +835,12 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
   def očisti_obrasce(self):
     self.ID_entry.delete(0, END)
     self.radno_mjesto_entry.delete(0, END)
+
     self.prezime_entry.delete(0, END)
+    self.prezime_ime_G_entry.delete(0, END)
+    self.ime_G_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
     self.ime_entry.delete(0, END)
     self.spol_entry.delete(0, END)
 
