@@ -883,18 +883,27 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
   def izmijeni_unos(self):
     selected = self.baza_tree.focus()
+    if not selected:
+      return
+    
     self.baza_tree.item(selected, text="", values=(self.ID_entry.get(), self.radno_mjesto_entry.get(), self.na_radnom_mjestu_entry.get(),
                                                    self.prezime_entry.get(), self.ime_entry.get(), self.spol_entry.get()))
     ime = self.ime_entry.get()
     ID = self.ID_entry.get()
 
-    db_connection = sqlite3.connect(db_path)
-    db = db_connection.cursor()
+    if not ime or not ID:
+      return
 
-    db.execute("UPDATE ucitelji SET ime = ? WHERE id_ucitelja_N = ?", (ime, ID))
-    db_connection.commit()
-    db_connection.close()
-    
+    try:
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("UPDATE ucitelji SET ime = ? WHERE id_ucitelja_N = ?", (ime, ID))
+      db_connection.commit()
+      db_connection.close()
+    except Exception as e:
+      print("Error updating db ", e)
+
     self.ID_entry.delete(0, END)
     self.radno_mjesto_entry.delete(0, END)
     self.na_radnom_mjestu_entry.delete(0, END)
