@@ -888,17 +888,19 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     
     self.baza_tree.item(selected, text="", values=(self.ID_entry.get(), self.radno_mjesto_entry.get(), self.na_radnom_mjestu_entry.get(),
                                                    self.prezime_entry.get(), self.ime_entry.get(), self.spol_entry.get()))
-    ime = self.ime_entry.get()
     ID = self.ID_entry.get()
+    ime = self.ime_entry.get()
+    prezime = self.prezime_entry.get()
 
-    if not ime or not ID:
+
+    if not ime or not prezime or not ID:
       return
 
     try:
       db_connection = sqlite3.connect(db_path)
       db = db_connection.cursor()
 
-      db.execute("UPDATE ucitelji SET ime = ? WHERE id_ucitelja_N = ?", (ime, ID))
+      db.execute("UPDATE ucitelji SET ime = ?, prezime = ? WHERE id_ucitelja_N = ?", (ime, prezime, ID))
       db_connection.commit()
       db_connection.close()
     except Exception as e:
