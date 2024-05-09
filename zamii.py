@@ -752,52 +752,55 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.na_radnom_mjestu_entry = customtkinter.CTkEntry(self.obrasci_frame, width=220)
     self.na_radnom_mjestu_entry.grid(row=1, column=5, padx=(5, 15), pady=10)
 
+    # Input forms1
+    self.obrasci_frame1 = LabelFrame(self, text="")
+    self.obrasci_frame1.grid(row=2, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
     
-    self.prezime_label = customtkinter.CTkLabel(self.obrasci_frame, text="Prezime")
+    self.prezime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime")
     self.prezime_label.grid(row=2, column=4, padx=(5, 15), pady=10)
     
-    self.prezime_entry = customtkinter.CTkEntry(self.obrasci_frame, width=220)
+    self.prezime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_entry.grid(row=2, column=5, padx=(5, 15), pady=10)
     
-    self.ime_label = customtkinter.CTkLabel(self.obrasci_frame, text="Ime")
+    self.ime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime")
     self.ime_label.grid(row=2, column=6, padx=(5, 15), pady=10)
     
-    self.ime_entry = customtkinter.CTkEntry(self.obrasci_frame, width=200)
+    self.ime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
     self.ime_entry.grid(row=2, column=7, padx=(5, 15), pady=10)
     
-    self.spol_label = customtkinter.CTkLabel(self.obrasci_frame, text="Spol")
+    self.spol_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Spol")
     self.spol_label.grid(row=2, column=8, padx=(5, 15), pady=10)
 
-    self.spol_entry = customtkinter.CTkEntry(self.obrasci_frame, width=26)
+    self.spol_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=26)
     self.spol_entry.grid(row=2, column=9, padx=(5, 15), pady=10)
 
-    self.prezime_ime_G_label = customtkinter.CTkLabel(self.obrasci_frame, text="Prezime G")
+    self.prezime_ime_G_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime G")
     self.prezime_ime_G_label.grid(row=3, column=4, padx=(5, 15), pady=10)
 
-    self.prezime_ime_G_entry = customtkinter.CTkEntry(self.obrasci_frame, width=220)
+    self.prezime_ime_G_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_ime_G_entry.grid(row=3, column=5, padx=(5, 15), pady=10)
 
-    self.ime_G_label = customtkinter.CTkLabel(self.obrasci_frame, text="Ime G")
+    self.ime_G_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime G")
     self.ime_G_label.grid(row=3, column=6, padx=(5, 15), pady=10)
 
-    self.ime_G_entry = customtkinter.CTkEntry(self.obrasci_frame, width=200)
+    self.ime_G_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
     self.ime_G_entry.grid(row=3, column=7, padx=(5, 15), pady=10)
 
-    self.prezime_ime_D_label = customtkinter.CTkLabel(self.obrasci_frame, text="Prezime D")
+    self.prezime_ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime D")
     self.prezime_ime_D_label.grid(row=4, column=4, padx=(5, 15), pady=(10, 20))
 
-    self.prezime_ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame, width=220)
+    self.prezime_ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_ime_D_entry.grid(row=4, column=5, padx=(5, 15), pady=(10, 20))
 
-    self.ime_D_label = customtkinter.CTkLabel(self.obrasci_frame, text="Ime D")
+    self.ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime D")
     self.ime_D_label.grid(row=4, column=6, padx=(5, 15), pady=(10, 20))
 
-    self.ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame, width=200)
+    self.ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
     self.ime_D_entry.grid(row=4, column=7, padx=(5, 15), pady=(10, 20))
 
     # Buttons
     self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
-    self.naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 0), sticky="ew")
+    self.naredbe_frame.grid(row=3, column=0, padx=(15, 15), pady=(0, 0), sticky="ew")
 
     self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
                                                      command=self.izmijeni_unos)
