@@ -658,11 +658,22 @@ def get_gender_zaposlen_a(ime_N, prezime_N):
       return "zaposlena"
 
 
+def generate_unique_file_name(file_name):
+  base, ext = os.path.splitext(file_name)
+  counter = 1
+  new_filename = file_name
+  while os.path.exists(new_filename):
+    new_filename = f"{base}({counter}){ext}"
+    counter += 1
+  return new_filename
+
+
 def render_document():
   doc = DocxTemplate("word.docx")
   doc.render(context)
-  doc.save(f"{ime_i_prezime_zamjene}.docx")
-  
+  file_name = f"{ime_i_prezime_zamjene}.docx"
+  new_file_name = generate_unique_file_name(file_name)
+  doc.save(new_file_name)
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
