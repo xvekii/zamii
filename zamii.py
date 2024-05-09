@@ -787,16 +787,16 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.ime_G_entry.grid(row=3, column=7, padx=(5, 15), pady=10)
 
     self.prezime_ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime D")
-    self.prezime_ime_D_label.grid(row=4, column=4, padx=(5, 15), pady=(10, 20))
+    self.prezime_ime_D_label.grid(row=4, column=4, padx=(5, 15), pady=(10, 10))
 
     self.prezime_ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
-    self.prezime_ime_D_entry.grid(row=4, column=5, padx=(5, 15), pady=(10, 20))
+    self.prezime_ime_D_entry.grid(row=4, column=5, padx=(5, 15), pady=(10, 10))
 
     self.ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime D")
-    self.ime_D_label.grid(row=4, column=6, padx=(5, 15), pady=(10, 20))
+    self.ime_D_label.grid(row=4, column=6, padx=(5, 15), pady=(10, 10))
 
     self.ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
-    self.ime_D_entry.grid(row=4, column=7, padx=(5, 15), pady=(10, 20))
+    self.ime_D_entry.grid(row=4, column=7, padx=(5, 15), pady=(10, 10))
 
     # Buttons
     self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
