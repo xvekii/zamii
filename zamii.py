@@ -746,10 +746,10 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.radno_mjesto_entry = customtkinter.CTkEntry(self.obrasci_frame, width=35)
     self.radno_mjesto_entry.grid(row=1, column=3, padx=(5, 15), pady=10)
 
-    self.na_radnom_mjestu_label = customtkinter.CTkLabel(self.obrasci_frame, text="Na r. mj.")
+    self.na_radnom_mjestu_label = customtkinter.CTkLabel(self.obrasci_frame, text="Na radnom mjestu")
     self.na_radnom_mjestu_label.grid(row=1, column=4, padx=(5, 15), pady=10)
 
-    self.na_radnom_mjestu_entry = customtkinter.CTkEntry(self.obrasci_frame, width=220)
+    self.na_radnom_mjestu_entry = customtkinter.CTkEntry(self.obrasci_frame, width=320)
     self.na_radnom_mjestu_entry.grid(row=1, column=5, padx=(5, 15), pady=10)
 
     # Input forms1
