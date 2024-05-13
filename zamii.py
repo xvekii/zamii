@@ -911,7 +911,6 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     ime_D = self.ime_D_entry.get()
     prezime_D = self.prezime_ime_D_entry.get()
 
-
     if not ime or not prezime or not ime_G or not ID:
       return
 
@@ -933,6 +932,10 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.na_radnom_mjestu_entry.delete(0, END)
     self.prezime_entry.delete(0, END)
     self.ime_entry.delete(0, END)
+    self.prezime_ime_G_entry.delete(0, END)
+    self.ime_G_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
     self.spol_entry.delete(0, END)
     
 
