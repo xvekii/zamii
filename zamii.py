@@ -906,9 +906,13 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     radno_mjesto = self.radno_mjesto_entry.get()
     ime = self.ime_entry.get()
     prezime = self.prezime_entry.get()
+    ime_G = self.ime_G_entry.get()
+    prezime_G = self.prezime_ime_G_entry.get()
+    ime_D = self.ime_D_entry.get()
+    prezime_D = self.prezime_ime_D_entry.get()
 
 
-    if not ime or not prezime or not ID:
+    if not ime or not prezime or not ime_G or not ID:
       return
 
     try:
@@ -916,6 +920,9 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
       db = db_connection.cursor()
 
       db.execute("UPDATE ucitelji SET ime = ?, prezime = ?, radno_mjesto = ? WHERE id_ucitelja_N = ?", (ime, prezime, radno_mjesto, ID))
+      db.execute("UPDATE ucitelji_G SET ime_G = ?, prezime_G = ? WHERE id_ucitelja_G = ?", (ime_G, prezime_G, ID))
+      db.execute("UPDATE ucitelji_D SET ime_D = ?, prezime_D = ? WHERE id_ucitelja_D = ?", (ime_D, prezime_D, ID))
+
       db_connection.commit()
       db_connection.close()
     except Exception as e:
