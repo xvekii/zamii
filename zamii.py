@@ -989,16 +989,16 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_obrasci_frame = LabelFrame(self, text="Obrasci za unos", width=485)
     self.radna_mj_obrasci_frame.grid(row=1, column=0, padx=(15, 10), pady=(0, 10), sticky=EW)
 
-    self.radna_mj_ID_label = Label(self.radna_mj_obrasci_frame, text="ID")
+    self.radna_mj_ID_label = customtkinter.CTkLabel(self.radna_mj_obrasci_frame, text="ID")
     self.radna_mj_ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
 
-    self.radna_mj_ID_entry = Entry(self.radna_mj_obrasci_frame, width=3)
+    self.radna_mj_ID_entry = customtkinter.CTkEntry(self.radna_mj_obrasci_frame, width=35)
     self.radna_mj_ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
 
-    self.na_radnom_mjestu_label = Label(self.radna_mj_obrasci_frame, text="Radno mjesto (G)")
+    self.na_radnom_mjestu_label = customtkinter.CTkLabel(self.radna_mj_obrasci_frame, text="Radno mjesto (G)")
     self.na_radnom_mjestu_label.grid(row=1, column=2, padx=(5, 15), pady=10)
 
-    self.na_radnom_mjestu_entry = Entry(self.radna_mj_obrasci_frame, width=35)
+    self.na_radnom_mjestu_entry = customtkinter.CTkEntry(self.radna_mj_obrasci_frame, width=320)
     self.na_radnom_mjestu_entry.grid(row=1, column=3, padx=(5, 15), pady=10)
 
     # Radna mjesta buttons
