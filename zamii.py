@@ -1006,7 +1006,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 10), pady=(0, 0), sticky=EW)
 
     self.radna_mj_izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
-                                                              width=100)
+                                                              width=100, command=self.izmijeni_radna_mj_unos)
     self.radna_mj_izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
     
     self.radna_mj_dodaj_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
@@ -1022,6 +1022,34 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_tree.bind("<ButtonRelease-1>", self.select_radna_mjesta_data)
 
     get_radna_mjesta(self.radna_mj_tree)
+
+
+  def izmijeni_radna_mj_unos(self):
+    selected = self.radna_mj_tree.focus()
+    if not selected:
+      return
+    
+    self.radna_mj_tree.item(selected, text="", values=(self.radna_mj_ID_entry.get(), self.na_radnom_mjestu_entry.get()))
+
+    radno_mj_ID = self.radna_mj_ID_entry.get()
+    na_radnom_mjestu = self.na_radnom_mjestu_entry.get()
+
+    if not radno_mj_ID:
+      return
+    
+    try:
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("UPDATE radno_mjesto SET na_radnom_mjestu = ?  WHERE id_radnog_mjesta = ?", (na_radnom_mjestu, radno_mj_ID))
+
+      db_connection.commit()
+      db_connection.close()
+    except Exception as e:
+      print("Error updating db - radno mjesto", e)
+
+    self.radna_mj_ID_entry.delete(0, END)
+    self.na_radnom_mjestu_entry.delete(0, END)
 
 
   def očisti_radna_mj_obrasce(self):
