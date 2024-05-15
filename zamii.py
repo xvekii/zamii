@@ -1009,7 +1009,8 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
                                                               width=100, command=self.izmijeni_radna_mj_unos)
     self.radna_mj_izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
     
-    self.radna_mj_dodaj_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
+    self.radna_mj_dodaj_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Dodaj unos", fg_color="#4a4e69",
+                                                           command=self.dodaj_radna_mj_unos)
     self.radna_mj_dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
 
     self.radna_mj_izbriši_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
@@ -1052,9 +1053,24 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.na_radnom_mjestu_entry.delete(0, END)
 
 
+  def dodaj_radna_mj_unos(self):  
+    na_radnom_mjestu = (self.na_radnom_mjestu_entry.get(),)
+
+    try:
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("INSERT INTO radno_mjesto (na_radnom_mjestu) VALUES(?)", na_radnom_mjestu)
+      
+      db_connection.commit()
+      db_connection.close()
+    except Exception as e:
+      print("Error updating db - dodaj radno mjesto", e)
+
+
   def očisti_radna_mj_obrasce(self):
-      self.radna_mj_ID_entry.delete(0, END)
-      self.na_radnom_mjestu_entry.delete(0, END)
+    self.radna_mj_ID_entry.delete(0, END)
+    self.na_radnom_mjestu_entry.delete(0, END)
 
 
   def select_radna_mjesta_data(self, event):
