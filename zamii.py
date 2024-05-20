@@ -12,6 +12,7 @@ popis_ucitelja = []
 popis_ucitelja_G = []
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
+count_rm = 0
 
 # Days and months lists
 dani = list(range(1, 32))
@@ -1055,6 +1056,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
 
   def dodaj_radna_mj_unos(self):  
+    global count_rm
     na_radnom_mjestu = (self.na_radnom_mjestu_entry.get(),)
 
     try:
@@ -1062,11 +1064,27 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
       db = db_connection.cursor()
 
       db.execute("INSERT INTO radno_mjesto (na_radnom_mjestu) VALUES(?)", na_radnom_mjestu)
-      
+    
       db_connection.commit()
+
+      db.execute("SELECT id_radnog_mjesta, na_radnom_mjestu FROM radno_mjesto WHERE na_radnom_mjestu = ?", (na_radnom_mjestu))
+      rows = db.fetchall()
       db_connection.close()
+
+      if not rows:
+        return
+      
+      if count_rm % 2 == 0:
+        self.radna_mj_tree.insert(parent="", index="end", iid=count_rm, text="", values=(rows[0][0], rows[0][1]), tags=("evenrow",))
+      else:  
+        self.radna_mj_tree.insert(parent="", index="end", iid=count_rm, text="", values=(rows[0][0], rows[0][1]), tags=("oddrow",))
+      count_rm += 1
+      
     except Exception as e:
       print("Error updating db - dodaj radno mjesto", e)
+
+    self.radna_mj_ID_entry.delete(0, END)
+    self.na_radnom_mjestu_entry.delete(0, END)
 
 
   def izbriši_radna_mj_unos(self):
@@ -1140,6 +1158,7 @@ def get_radna_mjesta(radna_mj_tree):
       radna_mj_tree.insert(parent="", index="end", iid=count_rm, text="", values=(row[0], row[1]), tags=("oddrow",))
     count_rm += 1
 
+  print(f"counter: {count_rm}")
   db_connection.commit()
   db_connection.close()
 
@@ -1225,6 +1244,7 @@ class App(customtkinter.CTk):
     else:
       self.baza_toplevel_window.focus()
 
+print(f"counter: {count_rm}")
 
 context = {}
 
