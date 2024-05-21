@@ -12,6 +12,7 @@ popis_ucitelja = []
 popis_ucitelja_G = []
 popis_ucitelja_N_dict = {}
 popis_ucitelja_G_dict = {}
+count = 0
 count_rm = 0
 
 # Days and months lists
@@ -807,7 +808,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                                                      command=self.izmijeni_unos)
     self.izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
     
-    self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69")
+    self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69",
+                                                  command = self.dodaj_unos)
     self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
 
     self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
@@ -832,6 +834,57 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     get_db_data(self.baza_tree)
   
+
+  def dodaj_unos(self):
+    global count
+
+    radno_mjesto = self.radno_mjesto_entry.get()
+    prezime = self.prezime_entry.get()
+    ime = self.ime_entry.get()
+    spol = self.spol_entry.get()
+    prezime_G = self.prezime_ime_G_entry.get()
+    ime_G = self.ime_G_entry.get()
+    prezime_D = self.prezime_ime_D_entry.get()
+    ime_D = self.ime_D_entry.get()
+
+    try:
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("INSERT INTO ucitelji (radno_mjesto, prezime, ime, spol) VALUES(?, ?, ?, ?)", (radno_mjesto, prezime, ime, spol))
+      db.execute("INSERT INTO ucitelji_G (prezime_G, ime_G) VALUES(?, ?)", (prezime_G, ime_G))
+      db.execute("INSERT INTO ucitelji_D (prezime_D, ime_D) VALUES(?, ?)", (prezime_D, ime_D))
+
+      db_connection.commit()
+
+      db.execute("SELECT id_ucitelja_N, radno_mjesto, prezime, ime, spol FROM ucitelji WHERE prezime = ? AND ime = ?", (prezime, ime))
+      rows_ucitelji = db.fetchall()
+
+      db.execute("SELECT na_radnom_mjestu FROM radno_mjesto WHERE id_radnog_mjesta = ?", (rows_ucitelji[0][1],))
+      rows_radno_mj = db.fetchall()
+
+      if not rows_ucitelji or not rows_radno_mj:
+        return
+      
+      if count % 2 == 0:
+        self.baza_tree.insert(parent="", index="end", iid=count, text="", values=(rows_ucitelji[0][0], rows_ucitelji[0][1], rows_radno_mj[0][0], rows_ucitelji[0][2], rows_ucitelji[0][3], rows_ucitelji[0][4]), tags=("evenrow",))
+      else:  
+        self.baza_tree.insert(parent="", index="end", iid=count, text="", values=(rows_ucitelji[0][0], rows_ucitelji[0][1], rows_radno_mj[0][0], rows_ucitelji[0][2], rows_ucitelji[0][3], rows_ucitelji[0][4]), tags=("oddrow",))
+      count += 1
+
+    except Exception as e:
+      print("Error updating db - dodaj novog učitelja", e)
+
+    # Delete entry boxes
+    self.radno_mjesto_entry.delete(0, END)
+    self.prezime_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
+    self.prezime_ime_G_entry.delete(0, END)
+    self.ime_G_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
+
 
   def otvori_popis_radnih_mj_toplevel_window(self):
     if self.popis_radnih_mj_toplevel_window is None or not self.popis_radnih_mj_toplevel_window.winfo_exists():
@@ -1194,6 +1247,7 @@ def get_db_data(baza_tree):
       baza_tree.insert(parent="", index="end", iid=count, text="", values=(row[0], row[1], row[2], row[3], row[4], row[5]), tags=("oddrow",))
     count += 1
 
+  print(f"counter: {count}")
   db_connection.commit()
   db_connection.close()
 
