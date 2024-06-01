@@ -1282,7 +1282,8 @@ class App(customtkinter.CTk):
     self.naredbe_btns_frame = customtkinter.CTkFrame(self)
     self.naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 5), sticky="ew")
 
-    odluka_godisnji_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Odluka godišnji", width=120)
+    odluka_godisnji_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Odluka godišnji", fg_color="#B5838D", 
+                                                  width=120)
     odluka_godisnji_btn.grid(row=3, column=0, padx=(5, 10), pady=(5, 5), sticky="ew")
     
     baza_podataka_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Baza podataka", fg_color="#9A8C98",
