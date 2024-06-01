@@ -679,6 +679,17 @@ def render_document():
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
+# def render_godisnji():
+#   context_godisnji = {}
+#   doc_godisnji = DocxTemplate("godisnji.docx")
+#   context_godisnji["test_ime"] = "Karlucci"
+#   doc_godisnji.render(context_godisnji)
+#   doc_godisnji.save("god_new.docx")
+  
+
+# render_godisnji()
+
+
 class BazaToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
     super().__init__()
@@ -1277,17 +1288,23 @@ class App(customtkinter.CTk):
     self.obrazloženje_frame = ObrazloženjeFrame(self)
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(10, 5), sticky="ew")
 
-    baza_podataka_btn = customtkinter.CTkButton(self, text="Baza podataka", fg_color="#9A8C98",
-                                                command=self.otvori_bazu_toplevel)
-    baza_podataka_btn.grid(row=3, column=0, padx=(0, 415), pady=(5, 5), sticky="e")
+    self.naredbe_btns_frame = customtkinter.CTkFrame(self)
+    self.naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 5), sticky="ew")
 
-    izjava_btn = customtkinter.CTkButton(self, text="Dodaj izjavu", fg_color="#6d6875", 
-                                            hover_color=("#118ab2"), command=dodaj_izjavu_btn_callback)
-    izjava_btn.grid(row=3, column=0, padx=(0, 213), pady=(5, 5), sticky="e")
+    odluka_godisnji_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Odluka godišnji", width=120)
+    odluka_godisnji_btn.grid(row=3, column=0, padx=(5, 10), pady=(5, 5), sticky="ew")
     
-    primijeni_btn = customtkinter.CTkButton(self, text="Primijeni", fg_color="#110329", 
-                                            hover_color=("#38A282"), command=primijeni_btn_callback)
-    primijeni_btn.grid(row=3, column=0, padx=(0, 32), pady=(5, 5), sticky="e")
+    baza_podataka_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Baza podataka", fg_color="#9A8C98",
+                                                width=120, command=self.otvori_bazu_toplevel)
+    baza_podataka_btn.grid(row=3, column=1, padx=(5, 10), pady=(5, 5), sticky="ew")
+
+    izjava_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Dodaj izjavu", fg_color="#6d6875", 
+                                            width=120, hover_color=("#118ab2"), command=dodaj_izjavu_btn_callback)
+    izjava_btn.grid(row=3, column=2, padx=(5, 10), pady=(5, 5), sticky="ew")
+    
+    primijeni_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Primijeni", fg_color="#110329", 
+                                            width=165, hover_color=("#38A282"), command=primijeni_btn_callback)
+    primijeni_btn.grid(row=3, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
 
     self.baza_toplevel_window = None
   
