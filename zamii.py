@@ -1278,6 +1278,7 @@ class App(customtkinter.CTk):
     self.obrazloženje_frame = ObrazloženjeFrame(self)
     self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(10, 10), sticky="ew")
 
+    # Naredbe_btns frame
     self.naredbe_btns_frame = customtkinter.CTkFrame(self)
     self.naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 5), sticky="ew")
 
