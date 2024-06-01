@@ -699,7 +699,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii)
 
-    self.baza_frame = BazaFrame(self)
+    self.baza_frame = customtkinter.CTkFrame(self)
     self.baza_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
 
     style = ttk.Style()
@@ -1014,7 +1014,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii.baza_toplevel_window)
     
-    self.radna_mj_frame = RadnaMjFrame(self)
+    self.radna_mj_frame = customtkinter.CTkFrame(self)
     self.radna_mj_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
 
     style = ttk.Style()
@@ -1225,16 +1225,6 @@ def get_radna_mjesta(radna_mj_tree):
   print(f"counter: {count_rm}")
   db_connection.commit()
   db_connection.close()
-
-
-class RadnaMjFrame(customtkinter.CTkFrame):
-  def __init__(self, master):
-    super().__init__(master)
-
-
-class BazaFrame(customtkinter.CTkFrame):
-  def __init__(self, master):
-    super().__init__(master)
 
 
 def get_db_data(baza_tree):
