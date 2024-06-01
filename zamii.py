@@ -382,7 +382,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 5), sticky="e")
     
     očisti_btn = customtkinter.CTkButton(self, text="Očisti", width=56, fg_color="#6C757D", command=clear_obrazl_textbox_callback)
-    očisti_btn.grid(row=1, column=1, padx=60, pady=(0, 20), sticky="e")
+    očisti_btn.grid(row=1, column=1, padx=60, pady=(0, 15), sticky="e")
 
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="Nadnevak naloga", fg_color="transparent")
     nadnevak_naloga_label.grid(row=2, column=0, padx=(72, 0), pady=(0, 10))
@@ -1276,7 +1276,7 @@ class App(customtkinter.CTk):
     self.vrijeme_zamjene_frame.grid(row=1, column=0, padx=10, pady=(10, 5), sticky="ew")
     
     self.obrazloženje_frame = ObrazloženjeFrame(self)
-    self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(10, 5), sticky="ew")
+    self.obrazloženje_frame.grid(row=2, column=0, padx=10, pady=(10, 10), sticky="ew")
 
     self.naredbe_btns_frame = customtkinter.CTkFrame(self)
     self.naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 5), sticky="ew")
