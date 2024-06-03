@@ -1202,7 +1202,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Odluka o godišnjem odmoru")
 
-    self.geometry("600x308+300+250")
+    # self.geometry("600x308+300+250")
+    self.geometry("600x308+400+180")
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
 
@@ -1226,58 +1227,60 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
       puno_ime_N = " ".join(row)
       popis_zaposlenika_N.append(puno_ime_N)
 
-    # Odluka widgets frame
-    self.odluka_widgets_frame = customtkinter.CTkFrame(self)
-    self.odluka_widgets_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
+    # Odluka widgets frames
+    self.odluka_widgets_frame1 = customtkinter.CTkFrame(self)
+    self.odluka_widgets_frame1.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
+    self.odluka_widgets_frame2 = customtkinter.CTkFrame(self)
+    self.odluka_widgets_frame2.grid(row=1, column=0, padx=10, pady=(10, 0), sticky="new")
 
-    self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Prezime i ime zaposlenika")
-    self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(8, 0), pady=(0, 0))
+    self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame1, text="Prezime i ime zaposlenika")
+    self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(20, 0), pady=(0, 0))
 
-    self.prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, values=popis_zaposlenika_N,
+    self.prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=popis_zaposlenika_N,
                                                   state="normal", button_hover_color=("plum"), width=300)
     self.prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
-    self.prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=39, pady=(10, 10), columnspan=2)
+    self.prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=2)
     self.prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
 
-    self.trajanje_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Trajanje godišnjeg odmora")
-    self.trajanje_god_odmora_label.grid(row=1, column=0, padx=12, pady=(10, 10))
+    self.trajanje_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame1, text="Trajanje godišnjeg odmora")
+    self.trajanje_god_odmora_label.grid(row=1, column=0, padx=(14, 0), pady=(10, 10))
 
-    self.trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, values=trajanje_god_dani_str,
+    self.trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=trajanje_god_dani_str,
                                                       state="normal", button_hover_color=("plum"), width=120)
-    self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(10, 0), pady=10, columnspan=1)
+    self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(2, 0), pady=(10, 10), columnspan=1)
     self.trajanje_god_odmora_combo.set("koliko dana")
 
     # Pocetak god. odmora
-    self.pocetak_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Početak godišnjeg odmora")
-    self.pocetak_god_odmora_label.grid(row=2, column=0, padx=0, pady=(10, 10))
+    self.pocetak_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame2, text="Početak godišnjeg odmora")
+    self.pocetak_god_odmora_label.grid(row=0, column=0, padx=(13, 0), pady=(10, 10))
 
-    self.dan_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+    self.dan_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.dan_god_odmora_combo.set("dan")
-    self.dan_god_odmora_combo.grid(row=2, column=1, padx=(10, 0), pady=10, columnspan=1)
+    self.dan_god_odmora_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    self.mjesec_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+    self.mjesec_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_god_odmora_combo.set("mjesec")
-    self.mjesec_god_odmora_combo.grid(row=2, column=2, padx=(0, 10), pady=10, columnspan=1)
+    self.mjesec_god_odmora_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     # Povratak na rad
-    self.povratak_na_rad_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Povratak na rad")
-    self.povratak_na_rad_label.grid(row=3, column=0, padx=(66, 0), pady=(10, 10))
+    self.povratak_na_rad_label = customtkinter.CTkLabel(self.odluka_widgets_frame2, text="Povratak na rad")
+    self.povratak_na_rad_label.grid(row=1, column=0, padx=(81, 0), pady=(10, 10))
 
-    self.dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+    self.dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.dan_povratak_na_rad_combo.set("dan")
-    self.dan_povratak_na_rad_combo.grid(row=3, column=1, padx=(10, 0), pady=10, columnspan=1)
+    self.dan_povratak_na_rad_combo.grid(row=1, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    self.mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+    self.mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_povratak_na_rad_combo.set("mjesec")
-    self.mjesec_povratak_na_rad_combo.grid(row=3, column=2, padx=(0, 10), pady=10, columnspan=1)
+    self.mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     # Odluka naredbe_btns frame
     self.odluka_naredbe_btns_frame = customtkinter.CTkFrame(self)
-    self.odluka_naredbe_btns_frame.grid(row=1, column=0, padx=(10, 10), pady=10, sticky="e")
+    self.odluka_naredbe_btns_frame.grid(row=2, column=0, padx=(10, 10), pady=10, sticky="e")
     self.odluka_naredbe_btns_frame.grid_columnconfigure(3, weight=1)
 
 
