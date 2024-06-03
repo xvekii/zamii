@@ -1234,6 +1234,14 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(0, 54), pady=(10, 10), columnspan=1)
     self.trajanje_god_odmora_combo.set("koliko dana")
 
+    self.pocetak_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Početak godišnjeg odmora")
+    self.pocetak_god_odmora_label.grid(row=2, column=0, padx=(38, 0), pady=(10, 10))
+
+    self.pocetak_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+                                                  state="normal", button_hover_color=("plum"), width=120)
+    self.pocetak_god_odmora_combo.set("dan")
+    self.pocetak_god_odmora_combo.grid(row=2, column=1, padx=(0, 54), pady=(10, 10), columnspan=1)
+
 def get_radna_mjesta(radna_mj_tree):
   db_connection = sqlite3.connect(db_path)
   db = db_connection.cursor()
