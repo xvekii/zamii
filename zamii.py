@@ -1214,6 +1214,22 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
 
+    popis_zaposlenika_N = []
+    popis_zaposlenika_D = []
+    popis_zaposlenika_N_dict = {}
+    popis_zaposlenika_D_dict = {}
+
+    db_connection = sqlite3.connect(db_path)
+    db = db_connection.cursor()
+
+    # Get the names of employees from db
+    db.execute("SELECT prezime_N, ime_N FROM svi_zaposlenici_N ORDER BY prezime_N")
+    rows = db.fetchall()
+
+    for row in rows:
+      puno_ime_N = " ".join(row)
+      popis_zaposlenika_N.append(puno_ime_N)
+
     # Odluka widgets frame
     self.odluka_widgets_frame = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
@@ -1221,7 +1237,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Prezime i ime zaposlenika")
     self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(8, 0), pady=(0, 0))
 
-    self.prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+    self.prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, values=popis_zaposlenika_N,
                                                   state="normal", button_hover_color=("plum"), width=300)
     self.prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
     self.prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=39, pady=(10, 10), columnspan=2)
@@ -1257,6 +1273,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.odluka_primijeni_btn = customtkinter.CTkButton(self.odluka_naredbe_btns_frame, text="Primijeni", fg_color="#4A4E69", 
                                             width=165, hover_color=("#38A282"))
     self.odluka_primijeni_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
+
+    
 
 
 def get_radna_mjesta(radna_mj_tree):
