@@ -95,8 +95,8 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     super().__init__(master)
 
     prezime_ime_zamjene_label = customtkinter.CTkLabel(self, text="Prezime i ime zamjene", fg_color="transparent")
-    prezime_ime_zamjene_label.grid(row=0, column=0, padx=(42, 0), pady=(0, 0)
-)
+    prezime_ime_zamjene_label.grid(row=0, column=0, padx=(42, 0), pady=(0, 0))
+
     global prezime_ime_combo
     prezime_ime_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja, command=self.combo_prezime_ime_callback, 
                                                   state="normal", button_hover_color=("plum"), width=300)
@@ -1213,6 +1213,11 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.geometry("935x605+300+100")
     self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii)
+
+    self.odluka_widgets_frame = customtkinter.CTkFrame(self)
+    self.odluka_widgets_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
+
+
 
 
 def get_radna_mjesta(radna_mj_tree):
