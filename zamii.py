@@ -1205,6 +1205,16 @@ class PopisImenaGiDToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(3, weight=1)
 
 
+class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
+  def __init__(self):
+    super().__init__()
+    self.title("Odluka o godišnjem odmoru")
+
+    self.geometry("935x605+300+100")
+    self.grid_columnconfigure(3, weight=1)
+    self.wm_transient(zamii)
+
+
 def get_radna_mjesta(radna_mj_tree):
   db_connection = sqlite3.connect(db_path)
   db = db_connection.cursor()
@@ -1283,7 +1293,7 @@ class App(customtkinter.CTk):
     self.naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 5), sticky="ew")
 
     odluka_godisnji_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Odluka godišnji", fg_color="#B5838D", 
-                                                  width=120)
+                                                  width=120, command=self.otvori_odluka_godisnji_toplevel)
     odluka_godisnji_btn.grid(row=3, column=0, padx=(5, 10), pady=(5, 5), sticky="ew")
     
     baza_podataka_btn = customtkinter.CTkButton(self.naredbe_btns_frame, text="Baza podataka", fg_color="#9A8C98",
@@ -1299,7 +1309,15 @@ class App(customtkinter.CTk):
     primijeni_btn.grid(row=3, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
 
     self.baza_toplevel_window = None
+    self.odluka_godisnji_toplevel_window = None
   
+
+  def otvori_odluka_godisnji_toplevel(self):
+    if self.odluka_godisnji_toplevel_window is None or not self.odluka_godisnji_toplevel_window.winfo_exists():
+      self.odluka_godisnji_toplevel_window = OdlukaGodisnjiToplevelWindow()
+    else:
+      self.odluka_godisnji_toplevel_window.focus()
+
 
   def otvori_bazu_toplevel(self):
     if self.baza_toplevel_window is None or not self.baza_toplevel_window.winfo_exists():
