@@ -1202,8 +1202,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Odluka o godišnjem odmoru")
 
-    # self.geometry("600x308+300+250")
-    self.geometry("600x308+400+180")
+    self.geometry("600x265+300+250")
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
 
