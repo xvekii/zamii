@@ -1214,7 +1214,11 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     trajanje_god_dani = list(range(23, 31))
     trajanje_god_dani_str = [str(dan) for dan in trajanje_god_dani]
 
-    
+    dani_god = list(range(1,32))
+    dani_god_str = [str(dan) for dan in dani_god]
+    mjeseci_god = list(range(1, 13))
+    mjeseci_god_str = [str(mjesec) for mjesec in mjeseci_god]
+
     db_connection = sqlite3.connect(db_path)
     db = db_connection.cursor()
 
@@ -1253,12 +1257,12 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.pocetak_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame2, text="Početak godišnjeg odmora")
     self.pocetak_god_odmora_label.grid(row=0, column=0, padx=(13, 0), pady=(10, 10))
 
-    self.dan_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
+    self.dan_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str,
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.dan_god_odmora_combo.set("dan")
     self.dan_god_odmora_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    self.mjesec_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
+    self.mjesec_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_god_odmora_combo.set("mjesec")
     self.mjesec_god_odmora_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
@@ -1267,12 +1271,12 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.povratak_na_rad_label = customtkinter.CTkLabel(self.odluka_widgets_frame2, text="Povratak na rad")
     self.povratak_na_rad_label.grid(row=1, column=0, padx=(81, 0), pady=(10, 10))
 
-    self.dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
+    self.dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.dan_povratak_na_rad_combo.set("dan")
     self.dan_povratak_na_rad_combo.grid(row=1, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    self.mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, 
+    self.mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_povratak_na_rad_combo.set("mjesec")
     self.mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
