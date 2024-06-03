@@ -1217,7 +1217,14 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.odluka_widgets_frame = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
 
+    self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Prezime i ime zaposlenika")
+    self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(42, 0), pady=(0, 0))
 
+    prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+                                                  state="normal", button_hover_color=("plum"), width=300)
+    prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
+    prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=60, pady=(10, 5), columnspan=2)
+    prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
 
 
 def get_radna_mjesta(radna_mj_tree):
