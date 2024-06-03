@@ -1214,7 +1214,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
 
-
+    # Odluka widgets frame
     self.odluka_widgets_frame = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
 
@@ -1247,6 +1247,16 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_god_odmora_combo.set("mjesec")
     self.mjesec_god_odmora_combo.grid(row=2, column=2, padx=(0, 10), pady=10, columnspan=1)
+
+    # Odluka naredbe_btns frame
+    self.odluka_naredbe_btns_frame = customtkinter.CTkFrame(self)
+    self.odluka_naredbe_btns_frame.grid(row=1, column=0, padx=(10, 10), pady=10, sticky="e")
+    self.odluka_naredbe_btns_frame.grid_columnconfigure(3, weight=1)
+
+
+    self.odluka_primijeni_btn = customtkinter.CTkButton(self.odluka_naredbe_btns_frame, text="Primijeni", fg_color="#110329", 
+                                            width=165, hover_color=("#38A282"))
+    self.odluka_primijeni_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
 
 
 def get_radna_mjesta(radna_mj_tree):
