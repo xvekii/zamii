@@ -679,17 +679,6 @@ def render_document():
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
 
 
-# def render_godisnji():
-#   context_godisnji = {}
-#   doc_godisnji = DocxTemplate("godisnji.docx")
-#   context_godisnji["test_ime"] = "Karlucci"
-#   doc_godisnji.render(context_godisnji)
-#   doc_godisnji.save("god_new.docx")
-  
-
-# render_godisnji()
-
-
 class BazaToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
     super().__init__()
@@ -1205,6 +1194,9 @@ class PopisImenaGiDToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(3, weight=1)
 
 
+context_godisnji = {}
+
+
 class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
     super().__init__()
@@ -1219,6 +1211,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     popis_zaposlenika_N_dict = {}
     popis_zaposlenika_D_dict = {}
 
+    
     db_connection = sqlite3.connect(db_path)
     db = db_connection.cursor()
 
@@ -1274,7 +1267,14 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
                                             width=165, hover_color=("#38A282"))
     self.odluka_primijeni_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
 
-    
+  
+  def render_godisnji():
+    doc_godisnji = DocxTemplate("godisnji.docx")
+    context_godisnji["test_ime"] = "Karlucci"
+    doc_godisnji.render(context_godisnji)
+    doc_godisnji.save("god_new.docx")
+  
+  render_godisnji()
 
 
 def get_radna_mjesta(radna_mj_tree):
