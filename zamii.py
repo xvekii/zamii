@@ -1202,7 +1202,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Odluka o godišnjem odmoru")
 
-    self.geometry("600x208+300+250")
+    self.geometry("600x308+300+250")
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
 
@@ -1247,6 +1247,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(10, 0), pady=10, columnspan=1)
     self.trajanje_god_odmora_combo.set("koliko dana")
 
+    # Pocetak god. odmora
     self.pocetak_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Početak godišnjeg odmora")
     self.pocetak_god_odmora_label.grid(row=2, column=0, padx=0, pady=(10, 10))
 
@@ -1259,6 +1260,20 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_god_odmora_combo.set("mjesec")
     self.mjesec_god_odmora_combo.grid(row=2, column=2, padx=(0, 10), pady=10, columnspan=1)
+
+    # Povratak na rad
+    self.povratak_na_rad_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Povratak na rad")
+    self.povratak_na_rad_label.grid(row=3, column=0, padx=(66, 0), pady=(10, 10))
+
+    self.dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+                                                  state="normal", button_hover_color=("plum"), width=120)
+    self.dan_povratak_na_rad_combo.set("dan")
+    self.dan_povratak_na_rad_combo.grid(row=3, column=1, padx=(10, 0), pady=10, columnspan=1)
+
+    self.mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+                                                  state="normal", button_hover_color=("plum"), width=120)
+    self.mjesec_povratak_na_rad_combo.set("mjesec")
+    self.mjesec_povratak_na_rad_combo.grid(row=3, column=2, padx=(0, 10), pady=10, columnspan=1)
 
     # Odluka naredbe_btns frame
     self.odluka_naredbe_btns_frame = customtkinter.CTkFrame(self)
@@ -1277,7 +1292,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     doc_godisnji.render(context_godisnji)
     doc_godisnji.save("god_new.docx")
   
-  render_godisnji()
+  # Add custom name + check
+  # render_godisnji()
 
 
 def get_radna_mjesta(radna_mj_tree):
