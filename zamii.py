@@ -1210,7 +1210,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Odluka o godišnjem odmoru")
 
-    self.geometry("600x252+500+300")
+    self.geometry("600x208+300+250")
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
 
@@ -1254,7 +1254,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.odluka_naredbe_btns_frame.grid_columnconfigure(3, weight=1)
 
 
-    self.odluka_primijeni_btn = customtkinter.CTkButton(self.odluka_naredbe_btns_frame, text="Primijeni", fg_color="#110329", 
+    self.odluka_primijeni_btn = customtkinter.CTkButton(self.odluka_naredbe_btns_frame, text="Primijeni", fg_color="#4A4E69", 
                                             width=165, hover_color=("#38A282"))
     self.odluka_primijeni_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
 
