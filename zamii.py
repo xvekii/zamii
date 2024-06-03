@@ -1220,12 +1220,19 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Prezime i ime zaposlenika")
     self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(42, 0), pady=(0, 0))
 
-    prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+    self.prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
                                                   state="normal", button_hover_color=("plum"), width=300)
-    prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
-    prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=60, pady=(10, 5), columnspan=2)
-    prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
+    self.prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
+    self.prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=60, pady=(10, 10), columnspan=2)
+    self.prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
 
+    self.trajanje_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Trajanje godišnjeg odmora")
+    self.trajanje_god_odmora_label.grid(row=1, column=0, padx=(38, 0), pady=(10, 10))
+
+    self.trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+                                                      state="normal", button_hover_color=("plum"), width=120)
+    self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(0, 54), pady=(10, 10), columnspan=1)
+    self.trajanje_god_odmora_combo.set("koliko dana")
 
 def get_radna_mjesta(radna_mj_tree):
   db_connection = sqlite3.connect(db_path)
