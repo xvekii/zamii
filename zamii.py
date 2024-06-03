@@ -1211,6 +1211,9 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     popis_zaposlenika_N_dict = {}
     popis_zaposlenika_D_dict = {}
 
+    trajanje_god_dani = list(range(23, 31))
+    trajanje_god_dani_str = [str(dan) for dan in trajanje_god_dani]
+
     
     db_connection = sqlite3.connect(db_path)
     db = db_connection.cursor()
@@ -1239,7 +1242,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.trajanje_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame, text="Trajanje godišnjeg odmora")
     self.trajanje_god_odmora_label.grid(row=1, column=0, padx=12, pady=(10, 10))
 
-    self.trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, 
+    self.trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame, values=trajanje_god_dani_str,
                                                       state="normal", button_hover_color=("plum"), width=120)
     self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(10, 0), pady=10, columnspan=1)
     self.trajanje_god_odmora_combo.set("koliko dana")
