@@ -1306,15 +1306,19 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.klasa_odluke_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
     
 
-    # Odluka naredbe_btns frame
-    self.odluka_naredbe_btns_frame = customtkinter.CTkFrame(self)
-    self.odluka_naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="e")
-    self.odluka_naredbe_btns_frame.grid_columnconfigure(3, weight=1)
+    # Naredbe_odluka_btns frame
+    self.naredbe_odluka_btns_frame = customtkinter.CTkFrame(self)
+    self.naredbe_odluka_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="e")
+    self.naredbe_odluka_btns_frame.grid_columnconfigure(3, weight=1)
 
 
-    self.odluka_primijeni_btn = customtkinter.CTkButton(self.odluka_naredbe_btns_frame, text="Primijeni", fg_color="#4A4E69", 
+    self.primijeni_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
                                             width=165, hover_color=("#38A282"))
-    self.odluka_primijeni_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
+    self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
+
+    self.očisti_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
+                                            width=165, hover_color=("#38A282"))
+    self.očisti_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
 
   
   def render_godisnji():
