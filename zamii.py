@@ -377,8 +377,8 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
 
     global obrazl_textbox
-    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=40, corner_radius=0, border_width=1, 
-                                              wrap="word", border_color=("black"))
+    obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=40, corner_radius=0, border_width=2, 
+                                              wrap="word", border_color=("grey"))
     obrazl_textbox.grid(row=0, column=1, padx=60, pady=(10, 5), sticky="e")
     
     očisti_btn = customtkinter.CTkButton(self, text="Očisti", width=56, fg_color="#6C757D", command=clear_obrazl_textbox_callback)
@@ -401,8 +401,8 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     klasa_label.grid(row=3, column=0, padx=(132, 0), pady=(10, 10))
 
     global klasa_textbox
-    klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=1, 
-                                            border_color=("black"))
+    klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=2, 
+                                            border_color=("grey"))
     klasa_textbox.grid(row=3, column=1, padx=(0, 240), pady=(10, 10), sticky="e")
   
   
@@ -1301,8 +1301,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.klasa_odluke_label = customtkinter.CTkLabel(self.odluka_widgets_frame3, text="KLASA", fg_color="transparent")
     self.klasa_odluke_label.grid(row=1, column=0, padx=(134, 0), pady=(10, 10))
     
-    self.klasa_odluke_textbox = customtkinter.CTkTextbox(self.odluka_widgets_frame3, width=120, height=10, corner_radius=0, border_width=1, 
-                                            border_color=("black"))
+    self.klasa_odluke_textbox = customtkinter.CTkTextbox(self.odluka_widgets_frame3, width=120, height=10, corner_radius=0, border_width=2, 
+                                            border_color=("grey"))
     self.klasa_odluke_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
     
 
@@ -1318,7 +1318,6 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.primijeni_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
                                             width=165, hover_color=("#38A282"))
     self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
-
 
   
   def render_godisnji():
