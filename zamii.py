@@ -1311,14 +1311,14 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.naredbe_odluka_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="e")
     self.naredbe_odluka_btns_frame.grid_columnconfigure(3, weight=1)
 
+    self.očisti_sve_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Očisti sve", fg_color="#4A4E69", 
+                                            width=120, hover_color=("#6d6875"))
+    self.očisti_sve_odluka_btn.grid(row=0, column=2, padx=(5, 10), pady=(5, 5), sticky="ew")
 
     self.primijeni_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
                                             width=165, hover_color=("#38A282"))
-    self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
+    self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
 
-    self.očisti_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
-                                            width=165, hover_color=("#38A282"))
-    self.očisti_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="e")
 
   
   def render_godisnji():
