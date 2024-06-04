@@ -1222,14 +1222,31 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     db_connection = sqlite3.connect(db_path)
     db = db_connection.cursor()
 
-    # Get the names of employees from db
+    # Get the names of employees from db in Nominative
     db.execute("SELECT prezime_N, ime_N FROM svi_zaposlenici_N ORDER BY prezime_N")
-    rows = db.fetchall()
-
-    for row in rows:
+    for row in db.fetchall():
       puno_ime_N = " ".join(row)
       popis_zaposlenika_N.append(puno_ime_N)
 
+    # Get prezime_ime from svi_zaposlenici_N and store into a dictionary with prezime_ime_zaposlenika_N key and surname, name tuples
+    db.execute("SELECT prezime_N, ime_N FROM svi_zaposlenici_N ORDER BY prezime_N")
+    for row in db.fetchall():
+      prezime_ime_zaposlenika_N = f"{row[0]} {row[1]}"
+      popis_zaposlenika_N_dict[prezime_ime_zaposlenika_N] = (row[0], row[1])
+
+    # Get the names of employees from db in Dative
+    db.execute("SELECT prezime_D, ime_D FROM svi_zaposlenici_D ORDER BY prezime_D")
+    for row in db.fetchall():   
+      puno_ime_D = " ".join(row)
+      popis_zaposlenika_D.append(puno_ime_D)
+
+    # Get prezime_ime from svi_zaposlenici_D and store into a dictionary with prezime_ime_zaposlenika_D key and surname, name tuples
+    db.execute("SELECT prezime_D, ime_D FROM svi_zaposlenici_D ORDER BY prezime_D")
+    for row in db.fetchall():
+      prezime_ime_zaposlenika_D = f"{row[0]} {row[1]}"
+      popis_zaposlenika_D_dict[prezime_ime_zaposlenika_D] = (row[0], row[1])
+    
+    
     # Odluka widgets frames
     self.odluka_widgets_frame1 = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame1.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
@@ -1238,11 +1255,12 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.odluka_widgets_frame3 = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame3.grid(row=2, column=0, padx=10, pady=(10, 0), sticky="new")
 
+    # Prezime, ime, trajanje god. odmora
     self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame1, text="Prezime i ime zaposlenika")
     self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(20, 0), pady=(0, 0))
 
     self.prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=popis_zaposlenika_N,
-                                                  state="normal", button_hover_color=("plum"), width=300)
+                                                  command=self.combo_prez_ime_zaposlenika, state="normal", button_hover_color=("plum"), width=300)
     self.prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
     self.prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=2)
     self.prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
@@ -1320,6 +1338,18 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
 
   
+  def combo_prez_ime_zaposlenika(self, izbor_N):
+    ime_prezime_zaposlenika = ""
+    ime_zaposlenika_N = ""
+    prezime_zaposlenika_N = ""
+
+    print(f"izbor zaposlenika: {izbor_N}")
+
+    if izbor_N == "":
+      unesi_prezime_ime_alert()
+      return
+
+
   def render_godisnji():
     doc_godisnji = DocxTemplate("godisnji.docx")
     context_godisnji["test_ime"] = "Karlucci"
