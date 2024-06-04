@@ -156,9 +156,6 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     print(ime_N, prezime_N)
 
     get_ime_ucitelja_D(prezime_N, ime_N)
-    # prezime_ime_N = ""
-    # prezime_N = ""
-    # ime_N = ""
     
 
   # Use prezime_ime tuples for check and reverse to ime i prezime instead of splitting 
@@ -1194,8 +1191,13 @@ class PopisImenaGiDToplevelWindow(customtkinter.CTkToplevel):
     self.grid_columnconfigure(3, weight=1)
 
 
+popis_zaposlenika_N = []
+popis_zaposlenika_D = []
+popis_zaposlenika_N_dict = {}
+popis_zaposlenika_D_dict = {}
 context_godisnji = {}
 klasa_odluke_textbox = None
+
 
 class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
@@ -1205,11 +1207,6 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.geometry("600x380+300+250")
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
-
-    popis_zaposlenika_N = []
-    popis_zaposlenika_D = []
-    popis_zaposlenika_N_dict = {}
-    popis_zaposlenika_D_dict = {}
 
     trajanje_god_dani = list(range(23, 31))
     trajanje_god_dani_str = [str(dan) for dan in trajanje_god_dani]
@@ -1337,17 +1334,25 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
                                             width=165, hover_color=("#38A282"))
     self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
 
-  
+
   def combo_prez_ime_zaposlenika(self, izbor_N):
-    ime_prezime_zaposlenika = ""
-    ime_zaposlenika_N = ""
-    prezime_zaposlenika_N = ""
+    global ime_prezime_zaposlenika
+    global ime_zaposlenika_N
+    global prezime_zaposlenika_N
 
     print(f"izbor zaposlenika: {izbor_N}")
 
     if izbor_N == "":
       unesi_prezime_ime_alert()
       return
+
+    prezime_ime_zaposlenika_N = izbor_N
+    prezime_ime_zaposlenika_N_tuples = find_prezime_ime_zaposlenika_N(prezime_ime_zaposlenika_N)
+    prezime_zaposlenika_N = prezime_ime_zaposlenika_N_tuples[0]
+    ime_zaposlenika_N = prezime_ime_zaposlenika_N_tuples[1]
+    ime_prezime_zaposlenika = " ".join([ime_zaposlenika_N, prezime_zaposlenika_N])
+
+    print(ime_zaposlenika_N, prezime_zaposlenika_N)
 
 
   def render_godisnji():
@@ -1358,6 +1363,10 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
   
   # Add custom name + check
   # render_godisnji()
+
+
+def find_prezime_ime_zaposlenika_N(prezime_ime_zaposlenika_N):
+    return popis_zaposlenika_N_dict.get(prezime_ime_zaposlenika_N)
 
 
 def get_radna_mjesta(radna_mj_tree):
