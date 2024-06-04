@@ -1284,7 +1284,19 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     
-    
+    # Nadnevak Odluke i klasa
+    self.nadnevak_odluke_label = customtkinter.CTkLabel(self.odluka_widgets_frame3, text="Nadnevak Odluke")
+    self.nadnevak_odluke_label.grid(row=0, column=0, padx=(69, 0), pady=(10, 10))
+
+    self.dan_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=dani_god_str, 
+                                                  state="normal", button_hover_color=("plum"), width=120)
+    self.dan_odluke_combo.set("dan")
+    self.dan_odluke_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
+
+    self.mjesec_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=mjeseci_god_str,
+                                                  state="normal", button_hover_color=("plum"), width=120)
+    self.mjesec_odluke_combo.set("mjesec")
+    self.mjesec_odluke_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
     
     
     # Odluka naredbe_btns frame
