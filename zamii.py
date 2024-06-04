@@ -1348,6 +1348,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
 
     prezime_ime_zaposlenika_N = izbor_N
     prezime_ime_zaposlenika_N_tuples = find_prezime_ime_zaposlenika_N(prezime_ime_zaposlenika_N)
+    
+    # Reversing selected employee's name and surname for the .docx
     prezime_zaposlenika_N = prezime_ime_zaposlenika_N_tuples[0]
     ime_zaposlenika_N = prezime_ime_zaposlenika_N_tuples[1]
     ime_prezime_zaposlenika = " ".join([ime_zaposlenika_N, prezime_zaposlenika_N])
@@ -1355,11 +1357,11 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     print(ime_zaposlenika_N, prezime_zaposlenika_N)
 
 
-  def render_godisnji():
-    doc_godisnji = DocxTemplate("godisnji.docx")
-    context_godisnji["test_ime"] = "Karlucci"
-    doc_godisnji.render(context_godisnji)
-    doc_godisnji.save("god_new.docx")
+def render_godisnji():
+  doc_godisnji = DocxTemplate("godisnji.docx")
+  context_godisnji["im_pr"] = ime_prezime_zaposlenika
+  doc_godisnji.render(context_godisnji)
+  doc_godisnji.save("god_new.docx")
   
   # Add custom name + check
   # render_godisnji()
