@@ -1235,6 +1235,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.odluka_widgets_frame1.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
     self.odluka_widgets_frame2 = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame2.grid(row=1, column=0, padx=10, pady=(10, 0), sticky="new")
+    self.odluka_widgets_frame3 = customtkinter.CTkFrame(self)
+    self.odluka_widgets_frame3.grid(row=2, column=0, padx=10, pady=(10, 0), sticky="new")
 
     self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame1, text="Prezime i ime zaposlenika")
     self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(20, 0), pady=(0, 0))
@@ -1281,6 +1283,10 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.mjesec_povratak_na_rad_combo.set("mjesec")
     self.mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
+    
+    
+    
+    
     # Odluka naredbe_btns frame
     self.odluka_naredbe_btns_frame = customtkinter.CTkFrame(self)
     self.odluka_naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="e")
