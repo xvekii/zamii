@@ -1195,7 +1195,7 @@ class PopisImenaGiDToplevelWindow(customtkinter.CTkToplevel):
 
 
 context_godisnji = {}
-
+klasa_odluke_textbox = None
 
 class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
   def __init__(self):
@@ -1234,7 +1234,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.odluka_widgets_frame1 = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame1.grid(row=0, column=0, padx=10, pady=(10, 0), sticky="new")
     self.odluka_widgets_frame2 = customtkinter.CTkFrame(self)
-    self.odluka_widgets_frame2.grid(row=1, column=0, padx=10, pady=(10, 0), sticky="new")
+    self.odluka_widgets_frame2.grid(row=1, column=0, padx=10, pady=(10, 5), sticky="new")
     self.odluka_widgets_frame3 = customtkinter.CTkFrame(self)
     self.odluka_widgets_frame3.grid(row=2, column=0, padx=10, pady=(10, 0), sticky="new")
 
@@ -1283,7 +1283,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.mjesec_povratak_na_rad_combo.set("mjesec")
     self.mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    
+
     # Nadnevak Odluke i klasa
     self.nadnevak_odluke_label = customtkinter.CTkLabel(self.odluka_widgets_frame3, text="Nadnevak Odluke")
     self.nadnevak_odluke_label.grid(row=0, column=0, padx=(69, 0), pady=(10, 10))
@@ -1297,8 +1297,15 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
                                                   state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_odluke_combo.set("mjesec")
     self.mjesec_odluke_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
+
+    self.klasa_odluke_label = customtkinter.CTkLabel(self.odluka_widgets_frame3, text="KLASA", fg_color="transparent")
+    self.klasa_odluke_label.grid(row=1, column=0, padx=(134, 0), pady=(10, 10))
     
+    self.klasa_odluke_textbox = customtkinter.CTkTextbox(self.odluka_widgets_frame3, width=120, height=10, corner_radius=0, border_width=1, 
+                                            border_color=("black"))
+    self.klasa_odluke_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
     
+
     # Odluka naredbe_btns frame
     self.odluka_naredbe_btns_frame = customtkinter.CTkFrame(self)
     self.odluka_naredbe_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="e")
