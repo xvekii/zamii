@@ -1290,12 +1290,12 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.povratak_na_rad_label.grid(row=1, column=0, padx=(81, 0), pady=(10, 10))
 
     self.dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str, 
-                                                  state="normal", button_hover_color=("plum"), width=120)
+                                                  command=self.get_povratak_na_rad_dan, state="normal", button_hover_color=("plum"), width=120)
     self.dan_povratak_na_rad_combo.set("dan")
     self.dan_povratak_na_rad_combo.grid(row=1, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     self.mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
-                                                  state="normal", button_hover_color=("plum"), width=120)
+                                                  command=self.get_povratak_na_rad_mjesec ,state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_povratak_na_rad_combo.set("mjesec")
     self.mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
@@ -1376,6 +1376,19 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     global mjesec_godisnjeg_odmora
     mjesec_godisnjeg_odmora = izbor
     context_godisnji["mg"] = mjesec_godisnjeg_odmora
+
+
+  def get_povratak_na_rad_dan(self, izbor):
+    global dan_povratak_na_rad
+    dan_povratak_na_rad = izbor
+    context_godisnji["dpnr"] = dan_povratak_na_rad
+  
+  
+  def get_povratak_na_rad_mjesec(self, izbor):
+    global mjesec_povratak_na_rad
+    mjesec_povratak_na_rad = izbor
+    context_godisnji["mjpnr"] = mjesec_povratak_na_rad
+
 
 
 def render_godisnji():
