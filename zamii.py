@@ -38,8 +38,10 @@ klasa_odluke_textbox = None
 šk_sat_z_chckbxes_clean = []
 
 # Name and surname of the replacement teacher
+# Name and surname of the employee
 # Name and surname of the replaced teacher (Genitive)
 ime_i_prezime_zamjene = ""
+ime_prezime_zaposlenika = ""
 ime_i_prezime_zamijenjenog_G = ""
 
 # Day of replacement
@@ -1346,7 +1348,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     print(f"izbor zaposlenika: {izbor_N}")
 
     if izbor_N == "":
-      unesi_prezime_ime_alert()
+      odaberi_zaposlenika_alert()
       return
 
     prezime_ime_zaposlenika_N = izbor_N
@@ -1423,12 +1425,22 @@ def get_klasa_odluke_textbox():
 
 
 def primijeni_odluka_godisnji_btn():
+  check_ime_zaposlenika()
+  
   get_klasa_odluke_textbox()
   render_godisnji()
   print(klasa_odluke_textbox)
 # def update_context_godisnji():
   
 
+def check_ime_zaposlenika():
+  if ime_prezime_zaposlenika == "":
+    odaberi_zaposlenika_alert()
+    return
+
+def odaberi_zaposlenika_alert():
+  CTkMessagebox(title="Pogreška!", message="Odaberi zaposlenika!", icon="warning", bg_color="orange",
+                  button_color="black", sound=True)
 
 
 def find_prezime_ime_zaposlenika_N(prezime_ime_zaposlenika_N):
