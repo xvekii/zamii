@@ -203,6 +203,7 @@ def get_radno_mjesto_zamijenjenog(prezime_G, ime_G):
     context["r_mj_zamijenj_G"] = radno_mj
     print(radno_mj)
 
+
 # Time of replacement frame
 class VrijemeZamjeneFrame(customtkinter.CTkFrame):
   def __init__(self, master):
@@ -1266,7 +1267,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.trajanje_god_odmora_label.grid(row=1, column=0, padx=(14, 0), pady=(10, 10))
 
     self.trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=trajanje_god_dani_str,
-                                                      state="normal", button_hover_color=("plum"), width=120)
+                                                      command=self.get_trajanje_god_odmora, state="normal", button_hover_color=("plum"), width=120)
     self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(2, 0), pady=(10, 10), columnspan=1)
     self.trajanje_god_odmora_combo.set("koliko dana")
 
@@ -1353,15 +1354,20 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     prezime_zaposlenika_N = prezime_ime_zaposlenika_N_tuples[0]
     ime_zaposlenika_N = prezime_ime_zaposlenika_N_tuples[1]
     ime_prezime_zaposlenika = " ".join([ime_zaposlenika_N, prezime_zaposlenika_N])
+    context_godisnji["im_pr"] = ime_prezime_zaposlenika
 
     print(ime_zaposlenika_N, prezime_zaposlenika_N)
-
     get_ime_zaposlenika_D(ime_zaposlenika_N, prezime_zaposlenika_N)
+
+
+  def get_trajanje_god_odmora(self, izbor):
+    trajanje_god_odmora = izbor
+    context_godisnji["tr"] = trajanje_god_odmora
+    print(f"trajanje godišnjeg: {trajanje_god_odmora}")
 
 
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
-  context_godisnji["im_pr"] = ime_prezime_zaposlenika
   doc_godisnji.render(context_godisnji)
   doc_godisnji.save("god_new.docx")
   
