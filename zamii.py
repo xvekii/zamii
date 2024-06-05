@@ -1406,6 +1406,12 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     print(nadnevak_odluke_mjesec)
 
 
+  def get_klasa_odluke_textbox():
+    global klasa_odluke_textbox
+    klasa_odl_txt = klasa_odluke_textbox.get("0.0", "end-1c")
+    context_godisnji["klasa_god"] = klasa_odl_txt
+    print(klasa_odl_txt)
+    
 
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
