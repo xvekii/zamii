@@ -1281,7 +1281,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.dan_god_odmora_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     self.mjesec_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
-                                                  state="normal", button_hover_color=("plum"), width=120)
+                                                  command=self.get_mjesec_pocetak_god_odmora, state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_god_odmora_combo.set("mjesec")
     self.mjesec_god_odmora_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
@@ -1370,7 +1370,13 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     global dan_godisnjeg_odmora
     dan_godisnjeg_odmora = izbor
     context_godisnji["dg"] = dan_godisnjeg_odmora
-    
+
+
+  def get_mjesec_pocetak_god_odmora(self, izbor):
+    global mjesec_godisnjeg_odmora
+    mjesec_godisnjeg_odmora = izbor
+    context_godisnji["mg"] = mjesec_godisnjeg_odmora
+
 
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
