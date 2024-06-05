@@ -89,6 +89,7 @@ for row in db.fetchall():
   prezime_ime_G = f"{row[0]} {row[1]}"
   popis_ucitelja_G_dict[prezime_ime_G] = (row[0], row[1])
 
+
 # Replacement and replaced teachers frame
 class ZamjenaFrame(customtkinter.CTkFrame):
   def __init__(self, master):
@@ -616,7 +617,6 @@ def primijeni_izjavu(spol_zaposlen_a):
   print(suglasan_na)
 
 
-
 def get_obrazl_textbox():
   global obrazl_textbox
   obrazl_txt = obrazl_textbox.get("0.0", "end-1c")
@@ -640,7 +640,7 @@ def get_radno_mjesto(ime, prezime):
     context["radno_mj"] = res[0]
     print(res[0])
 
-# Refactor to use dictionary of tuples with prezime_ime
+
 def get_gender_zaposlen_a(ime_N, prezime_N):
   print(ime_N, prezime_N)
   
@@ -1356,6 +1356,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
 
     print(ime_zaposlenika_N, prezime_zaposlenika_N)
 
+    get_ime_zaposlenika_D(ime_zaposlenika_N, prezime_zaposlenika_N)
+
 
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
@@ -1369,6 +1371,17 @@ def render_godisnji():
 
 def find_prezime_ime_zaposlenika_N(prezime_ime_zaposlenika_N):
     return popis_zaposlenika_N_dict.get(prezime_ime_zaposlenika_N)
+
+
+def get_ime_zaposlenika_D(ime, prezime):
+  db.execute("SELECT ime_D, prezime_D FROM svi_zaposlenici_D WHERE id_zaposlenika_D = ( \
+             SELECT id_zaposlenika_N FROM svi_zaposlenici_N WHERE prezime_N = ? AND ime_N = ?)", (prezime, ime))
+  rows_D = db.fetchone()
+  ime_zaposl_D = rows_D[0]
+  prezime_zaposl_D = rows_D[1]
+  ime_prez_zaposl_D = " ".join([ime_zaposl_D, prezime_zaposl_D])
+  print(ime_prez_zaposl_D)
+  context_godisnji["im_pr_D"] = ime_prez_zaposl_D
 
 
 def get_radna_mjesta(radna_mj_tree):
