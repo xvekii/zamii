@@ -1305,12 +1305,12 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.nadnevak_odluke_label.grid(row=0, column=0, padx=(69, 0), pady=(10, 10))
 
     self.dan_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=dani_god_str, 
-                                                  state="normal", button_hover_color=("plum"), width=120)
+                                                  command=self.get_nadnevak_odluke_dan, state="normal", button_hover_color=("plum"), width=120)
     self.dan_odluke_combo.set("dan")
     self.dan_odluke_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     self.mjesec_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=mjeseci_god_str,
-                                                  state="normal", button_hover_color=("plum"), width=120)
+                                                  command=self.get_nadnevak_odluke_mjesec, state="normal", button_hover_color=("plum"), width=120)
     self.mjesec_odluke_combo.set("mjesec")
     self.mjesec_odluke_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
@@ -1382,12 +1382,28 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     global dan_povratak_na_rad
     dan_povratak_na_rad = izbor
     context_godisnji["dpnr"] = dan_povratak_na_rad
-  
+    print(dan_povratak_na_rad)
+
   
   def get_povratak_na_rad_mjesec(self, izbor):
     global mjesec_povratak_na_rad
     mjesec_povratak_na_rad = izbor
     context_godisnji["mjpnr"] = mjesec_povratak_na_rad
+    print(mjesec_povratak_na_rad)
+
+
+  def get_nadnevak_odluke_dan(self, izbor):
+    global nadnevak_odluke_dan
+    nadnevak_odluke_dan = izbor
+    context_godisnji["dod"] = nadnevak_odluke_dan
+    print(nadnevak_odluke_dan)
+  
+  
+  def get_nadnevak_odluke_mjesec(self, izbor):
+    global nadnevak_odluke_mjesec
+    nadnevak_odluke_mjesec = izbor
+    context_godisnji["domj"] = nadnevak_odluke_mjesec
+    print(nadnevak_odluke_mjesec)
 
 
 
