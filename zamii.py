@@ -31,6 +31,7 @@ trajanje_sati_z_str = [str(sat) for sat in trajanje_sati_z]
 
 obrazl_textbox = None
 klasa_textbox = None
+klasa_odluke_textbox = None
 
 # For storing school class(es) the replacement is needed for
 šk_sat_z_chckbxes = []
@@ -1197,7 +1198,7 @@ popis_zaposlenika_D = []
 popis_zaposlenika_N_dict = {}
 popis_zaposlenika_D_dict = {}
 context_godisnji = {}
-klasa_odluke_textbox = None
+
 
 
 class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
@@ -1317,9 +1318,10 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.klasa_odluke_label = customtkinter.CTkLabel(self.odluka_widgets_frame3, text="KLASA", fg_color="transparent")
     self.klasa_odluke_label.grid(row=1, column=0, padx=(134, 0), pady=(10, 10))
     
-    self.klasa_odluke_textbox = customtkinter.CTkTextbox(self.odluka_widgets_frame3, width=120, height=10, corner_radius=0, border_width=2, 
+    global klasa_odluke_textbox
+    klasa_odluke_textbox = customtkinter.CTkTextbox(self.odluka_widgets_frame3, width=120, height=10, corner_radius=0, border_width=2, 
                                             border_color=("grey"))
-    self.klasa_odluke_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
+    klasa_odluke_textbox.grid(row=1, column=1, padx=(0, 0), pady=(10, 10), sticky="e")
     
 
     # Naredbe_odluka_btns frame
@@ -1332,7 +1334,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.očisti_sve_odluka_btn.grid(row=0, column=2, padx=(5, 10), pady=(5, 5), sticky="ew")
 
     self.primijeni_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
-                                            width=165, hover_color=("#38A282"))
+                                            command=primijeni_odluka_godisnji_btn, width=165, hover_color=("#38A282"))
     self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
 
 
@@ -1406,22 +1408,24 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     print(nadnevak_odluke_mjesec)
 
 
-  def get_klasa_odluke_textbox():
-    global klasa_odluke_textbox
-    klasa_odl_txt = klasa_odluke_textbox.get("0.0", "end-1c")
-    context_godisnji["klasa_god"] = klasa_odl_txt
-    print(klasa_odl_txt)
-    
-
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
   doc_godisnji.render(context_godisnji)
   doc_godisnji.save("god_new.docx")
   
   # Add custom name + check
-  # render_godisnji()
+  
+def get_klasa_odluke_textbox():
+    global klasa_odluke_textbox
+    klasa_odl_txt = klasa_odluke_textbox.get("0.0", "end-1c")
+    context_godisnji["klasa_god"] = klasa_odl_txt
+    print(klasa_odl_txt)
 
 
+def primijeni_odluka_godisnji_btn():
+  get_klasa_odluke_textbox()
+  render_godisnji()
+  print(klasa_odluke_textbox)
 # def update_context_godisnji():
   
 
