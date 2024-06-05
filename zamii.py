@@ -1402,7 +1402,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
   def get_nadnevak_odluke_mjesec(self, izbor):
     global nadnevak_odluke_mjesec
     nadnevak_odluke_mjesec = izbor
-    context_godisnji["domj"] = nadnevak_odluke_mjesec
+    context_godisnji["mjod"] = nadnevak_odluke_mjesec
     print(nadnevak_odluke_mjesec)
 
 
