@@ -1362,6 +1362,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
 
     print(ime_zaposlenika_N, prezime_zaposlenika_N)
     get_ime_zaposlenika_D(ime_zaposlenika_N, prezime_zaposlenika_N)
+    get_spol_zaposlenika_god(ime_zaposlenika_N, prezime_zaposlenika_N)
 
 
   def get_trajanje_god_odmora(self, izbor):
@@ -1422,6 +1423,26 @@ def get_klasa_odluke_textbox():
     klasa_odl_txt = klasa_odluke_textbox.get("0.0", "end-1c")
     context_godisnji["klasa_god"] = klasa_odl_txt
     print(klasa_odl_txt)
+
+
+def get_spol_zaposlenika_god(ime, prezime):
+  db.execute("SELECT spol FROM svi_zaposlenici_N WHERE ime_N = ? AND prezime_N = ?", (ime, prezime))
+  res = db.fetchone()
+
+  if res is not None:
+    spol = res[0]
+    if spol == "m":
+      context_godisnji["obv"] = "obvezan"
+      context_godisnji["radn"] = "radnik"
+      context_godisnji["Rdn"] = "Radniku"
+      context_godisnji["prim"] = "primio"
+    elif spol == "ž":
+      context_godisnji["obv"] = "obvezna"
+      context_godisnji["radn"] = "radnica"
+      context_godisnji["Rdn"] = "Radnici"
+      context_godisnji["prim"] = "primila"
+    
+    print(res[0])
 
 
 def primijeni_odluka_godisnji_btn():
