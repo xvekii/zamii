@@ -1276,7 +1276,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.pocetak_god_odmora_label.grid(row=0, column=0, padx=(13, 0), pady=(10, 10))
 
     self.dan_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str,
-                                                  state="normal", button_hover_color=("plum"), width=120)
+                                                  command=self.get_dan_pocetak_god_odmora, state="normal", button_hover_color=("plum"), width=120)
     self.dan_god_odmora_combo.set("dan")
     self.dan_god_odmora_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
@@ -1366,6 +1366,12 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     print(f"trajanje godišnjeg: {trajanje_god_odmora}")
 
 
+  def get_dan_pocetak_god_odmora(self, izbor):
+    global dan_godisnjeg_odmora
+    dan_godisnjeg_odmora = izbor
+    context_godisnji["dg"] = dan_godisnjeg_odmora
+    
+
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
   doc_godisnji.render(context_godisnji)
@@ -1373,6 +1379,11 @@ def render_godisnji():
   
   # Add custom name + check
   # render_godisnji()
+
+
+# def update_context_godisnji():
+  
+
 
 
 def find_prezime_ime_zaposlenika_N(prezime_ime_zaposlenika_N):
