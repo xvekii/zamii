@@ -674,7 +674,7 @@ def generate_unique_file_name(file_name):
 def render_document():
   doc = DocxTemplate("word.docx")
   doc.render(context)
-  file_name = f"{ime_i_prezime_zamjene}.docx"
+  file_name = f"{ime_i_prezime_zamjene}_zamjena.docx"
   new_file_name = generate_unique_file_name(file_name)
   doc.save(new_file_name)
   print(f"Naslov dokumenta (ime i pr.) {ime_i_prezime_zamjene}")
