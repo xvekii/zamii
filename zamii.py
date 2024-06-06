@@ -1422,9 +1422,10 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
   doc_godisnji.render(context_godisnji)
-  doc_godisnji.save("god_new.docx")
+  file_name = f"{ime_prezime_zaposlenika}_godišnji.docx"
+  new_file_name = generate_unique_file_name(file_name)
+  doc_godisnji.save(new_file_name)
   
-  # Add custom name + check
   
 def get_klasa_odluke_textbox():
     global klasa_odluke_textbox
