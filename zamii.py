@@ -1260,62 +1260,70 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.prezime_ime_zaposlenika_label = customtkinter.CTkLabel(self.odluka_widgets_frame1, text="Prezime i ime zaposlenika")
     self.prezime_ime_zaposlenika_label.grid(row=0, column=0, padx=(20, 0), pady=(0, 0))
 
-    self.prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=popis_zaposlenika_N,
+    global prezime_ime_zaposlenika_combo
+    prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=popis_zaposlenika_N,
                                                   command=self.combo_prez_ime_zaposlenika, state="normal", button_hover_color=("plum"), width=300)
-    self.prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
-    self.prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=2)
-    self.prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
+    prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
+    prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=2)
+    prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
 
     self.trajanje_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame1, text="Trajanje godišnjeg odmora")
     self.trajanje_god_odmora_label.grid(row=1, column=0, padx=(14, 0), pady=(10, 10))
 
-    self.trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=trajanje_god_dani_str,
+    global trajanje_god_odmora_combo
+    trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=trajanje_god_dani_str,
                                                       command=self.get_trajanje_god_odmora, state="normal", button_hover_color=("plum"), width=120)
-    self.trajanje_god_odmora_combo.grid(row=1, column=1, padx=(2, 0), pady=(10, 10), columnspan=1)
-    self.trajanje_god_odmora_combo.set("koliko dana")
+    trajanje_god_odmora_combo.grid(row=1, column=1, padx=(2, 0), pady=(10, 10), columnspan=1)
+    trajanje_god_odmora_combo.set("koliko dana")
 
     # Pocetak god. odmora
     self.pocetak_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame2, text="Početak godišnjeg odmora")
     self.pocetak_god_odmora_label.grid(row=0, column=0, padx=(13, 0), pady=(10, 10))
 
-    self.dan_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str,
+    global dan_god_odmora_combo
+    dan_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str,
                                                   command=self.get_dan_pocetak_god_odmora, state="normal", button_hover_color=("plum"), width=120)
-    self.dan_god_odmora_combo.set("dan")
-    self.dan_god_odmora_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
+    dan_god_odmora_combo.set("dan")
+    dan_god_odmora_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    self.mjesec_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
+    global mjesec_god_odmora_combo
+    mjesec_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
                                                   command=self.get_mjesec_pocetak_god_odmora, state="normal", button_hover_color=("plum"), width=120)
-    self.mjesec_god_odmora_combo.set("mjesec")
-    self.mjesec_god_odmora_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
+    mjesec_god_odmora_combo.set("mjesec")
+    mjesec_god_odmora_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     # Povratak na rad
     self.povratak_na_rad_label = customtkinter.CTkLabel(self.odluka_widgets_frame2, text="Povratak na rad")
     self.povratak_na_rad_label.grid(row=1, column=0, padx=(81, 0), pady=(10, 10))
 
-    self.dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str, 
+    global dan_povratak_na_rad_combo
+    dan_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=dani_god_str, 
                                                   command=self.get_povratak_na_rad_dan, state="normal", button_hover_color=("plum"), width=120)
-    self.dan_povratak_na_rad_combo.set("dan")
-    self.dan_povratak_na_rad_combo.grid(row=1, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
+    dan_povratak_na_rad_combo.set("dan")
+    dan_povratak_na_rad_combo.grid(row=1, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    self.mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
+    global mjesec_povratak_na_rad_combo
+    mjesec_povratak_na_rad_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame2, values=mjeseci_god_str,
                                                   command=self.get_povratak_na_rad_mjesec ,state="normal", button_hover_color=("plum"), width=120)
-    self.mjesec_povratak_na_rad_combo.set("mjesec")
-    self.mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
+    mjesec_povratak_na_rad_combo.set("mjesec")
+    mjesec_povratak_na_rad_combo.grid(row=1, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
 
     # Nadnevak Odluke i klasa
     self.nadnevak_odluke_label = customtkinter.CTkLabel(self.odluka_widgets_frame3, text="Nadnevak Odluke")
     self.nadnevak_odluke_label.grid(row=0, column=0, padx=(69, 0), pady=(10, 10))
 
-    self.dan_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=dani_god_str, 
+    global dan_odluke_combo
+    dan_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=dani_god_str, 
                                                   command=self.get_nadnevak_odluke_dan, state="normal", button_hover_color=("plum"), width=120)
-    self.dan_odluke_combo.set("dan")
-    self.dan_odluke_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
+    dan_odluke_combo.set("dan")
+    dan_odluke_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
 
-    self.mjesec_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=mjeseci_god_str,
+    global mjesec_odluke_combo
+    mjesec_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=mjeseci_god_str,
                                                   command=self.get_nadnevak_odluke_mjesec, state="normal", button_hover_color=("plum"), width=120)
-    self.mjesec_odluke_combo.set("mjesec")
-    self.mjesec_odluke_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
+    mjesec_odluke_combo.set("mjesec")
+    mjesec_odluke_combo.grid(row=0, column=2, padx=(62, 0), pady=(10, 10), columnspan=1)
 
     self.klasa_odluke_label = customtkinter.CTkLabel(self.odluka_widgets_frame3, text="KLASA", fg_color="transparent")
     self.klasa_odluke_label.grid(row=1, column=0, padx=(134, 0), pady=(10, 10))
@@ -1332,7 +1340,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.naredbe_odluka_btns_frame.grid_columnconfigure(3, weight=1)
 
     self.očisti_sve_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Očisti sve", fg_color="#4A4E69", 
-                                            width=120, hover_color=("#6d6875"))
+                                            command=očisti_odluka_widgets_btn, width=120, hover_color=("#6d6875"))
     self.očisti_sve_odluka_btn.grid(row=0, column=2, padx=(5, 10), pady=(5, 5), sticky="ew")
 
     self.primijeni_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
@@ -1450,9 +1458,27 @@ def primijeni_odluka_godisnji_btn():
   
   get_klasa_odluke_textbox()
   render_godisnji()
+  
+  
   print(klasa_odluke_textbox)
 # def update_context_godisnji():
   
+
+def očisti_odluka_widgets_btn():
+  prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
+  trajanje_god_odmora_combo.set("koliko dana")
+
+  dan_god_odmora_combo.set("dan")
+  mjesec_god_odmora_combo.set("mjesec")
+
+  dan_povratak_na_rad_combo.set("dan")
+  mjesec_povratak_na_rad_combo.set("mjesec")
+
+  dan_odluke_combo.set("dan")
+  mjesec_odluke_combo.set("mjesec")
+  klasa_odluke_textbox.delete("0.0", "end-1c")
+
+
 
 def check_ime_zaposlenika():
   if ime_prezime_zaposlenika == "":
