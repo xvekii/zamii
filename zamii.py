@@ -1455,18 +1455,25 @@ def get_spol_zaposlenika_god(ime, prezime):
 
 def primijeni_odluka_godisnji_btn():
   check_ime_zaposlenika()
-  
   get_klasa_odluke_textbox()
   render_godisnji()
+  
   očisti_prezime_ime_zaposlenika()
-  
-  očisti_context_godisnji()
-  print(klasa_odluke_textbox)
-# def update_context_godisnji():
-  
+  očisti_često_mijenjane_widgete()
+
 
 def očisti_context_godisnji():
   context_godisnji.clear()
+
+
+def očisti_često_mijenjane_widgete():
+  prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
+  trajanje_god_odmora_combo.set("koliko dana")
+
+  dan_god_odmora_combo.set("dan")
+  dan_povratak_na_rad_combo.set("dan")
+
+  očisti_prezime_ime_zaposlenika()
 
 
 def očisti_odluka_widgets_btn():
@@ -1495,6 +1502,7 @@ def očisti_prezime_ime_zaposlenika():
   ime_prezime_zaposlenika = ""
   ime_zaposlenika_N = ""
   prezime_zaposlenika_N = ""
+  context_godisnji["im_pr"] = ""
 
 
 def check_ime_zaposlenika():
