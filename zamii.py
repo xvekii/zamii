@@ -1458,11 +1458,16 @@ def primijeni_odluka_godisnji_btn():
   
   get_klasa_odluke_textbox()
   render_godisnji()
+  očisti_prezime_ime_zaposlenika()
   
-  
+  očisti_context_godisnji()
   print(klasa_odluke_textbox)
 # def update_context_godisnji():
   
+
+def očisti_context_godisnji():
+  context_godisnji.clear()
+
 
 def očisti_odluka_widgets_btn():
   prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
@@ -1478,12 +1483,27 @@ def očisti_odluka_widgets_btn():
   mjesec_odluke_combo.set("mjesec")
   klasa_odluke_textbox.delete("0.0", "end-1c")
 
+  očisti_prezime_ime_zaposlenika()
+  očisti_context_godisnji()
+
+
+def očisti_prezime_ime_zaposlenika():
+  global ime_prezime_zaposlenika
+  global ime_zaposlenika_N
+  global prezime_zaposlenika_N
+  
+  ime_prezime_zaposlenika = ""
+  ime_zaposlenika_N = ""
+  prezime_zaposlenika_N = ""
 
 
 def check_ime_zaposlenika():
+  global ime_prezime_zaposlenika
   if ime_prezime_zaposlenika == "":
     odaberi_zaposlenika_alert()
     return
+
+
 
 def odaberi_zaposlenika_alert():
   CTkMessagebox(title="Pogreška!", message="Odaberi zaposlenika!", icon="warning", bg_color="orange",
