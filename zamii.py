@@ -120,10 +120,10 @@ class ZamjenaFrame(customtkinter.CTkFrame):
     
     radnog_vremena_radio2 = customtkinter.CTkRadioButton(self, text="nepunog", command=self.radiobtn_event, 
                                                         variable=self.radio_rad_vrem_var, value="nepunog")
-    radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 60), pady=(10, 5))
+    radnog_vremena_radio2.grid(row=1, column=2, padx=(0, 61), pady=(10, 5))
 
     umjesto_label = customtkinter.CTkLabel(self, text="Umjesto", fg_color="transparent")
-    umjesto_label.grid(row=3, column=0, padx=(128, 0), pady=(10, 5))
+    umjesto_label.grid(row=3, column=0, padx=(127, 0), pady=(10, 5))
     
     global umjesto_combo
     umjesto_combo = customtkinter.CTkComboBox(self, values=popis_ucitelja_G, command=self.combo_umjesto_callback_G, 
@@ -213,7 +213,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     super().__init__(master)
 
     nadnevak_zamjene_label = customtkinter.CTkLabel(self, text="Nadnevak zamjene", fg_color="transparent")
-    nadnevak_zamjene_label.grid(row=0, column=0, padx=(62, 0), pady=0)
+    nadnevak_zamjene_label.grid(row=0, column=0, padx=(63, 0), pady=0)
 
     dan_zamjene_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_z_callback, 
                                                   state="normal", button_hover_color=("plum"), width=120)
@@ -226,7 +226,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     mjesec_zamjene_combo.grid(row=0, column=2, padx=0, pady=10, columnspan=1)
 
     trajanje_zamjene_label = customtkinter.CTkLabel(self, text="Trajanje zamjene", fg_color="transparent")
-    trajanje_zamjene_label.grid(row=1, column=0, padx=(76, 0), pady=0)
+    trajanje_zamjene_label.grid(row=1, column=0, padx=(75, 0), pady=0)
 
     global trajanje_zamjene_combo
     trajanje_zamjene_combo = customtkinter.CTkComboBox(self, values=trajanje_sati_z_str, 
@@ -236,7 +236,7 @@ class VrijemeZamjeneFrame(customtkinter.CTkFrame):
     trajanje_zamjene_combo.set("koliko sati")
 
     šk_sat_zamjene_label = customtkinter.CTkLabel(self, text="Školski sat zamjene", fg_color="transparent")
-    šk_sat_zamjene_label.grid(row=2, column=0, padx=(60, 0), pady=(10, 0))
+    šk_sat_zamjene_label.grid(row=2, column=0, padx=(58, 0), pady=(10, 0))
 
     # šk_sat_zamjene checkboxes - first 4, first column
     global šk_sat_zamjene_checkbox1
@@ -376,7 +376,7 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     super().__init__(master)
 
     obrazl_label = customtkinter.CTkLabel(self, text="Obrazloženje", fg_color="transparent")
-    obrazl_label.grid(row=0, column=0, padx=(98, 0), pady=0)
+    obrazl_label.grid(row=0, column=0, padx=(97, 0), pady=0)
 
     global obrazl_textbox
     obrazl_textbox = customtkinter.CTkTextbox(self, width=300, height=40, corner_radius=0, border_width=2, 
@@ -387,20 +387,20 @@ class ObrazloženjeFrame(customtkinter.CTkFrame):
     očisti_btn.grid(row=1, column=1, padx=60, pady=(0, 15), sticky="e")
 
     nadnevak_naloga_label = customtkinter.CTkLabel(self, text="Nadnevak naloga", fg_color="transparent")
-    nadnevak_naloga_label.grid(row=2, column=0, padx=(72, 0), pady=(0, 10))
+    nadnevak_naloga_label.grid(row=2, column=0, padx=(73, 0), pady=(0, 10))
 
     dan_naloga_combo = customtkinter.CTkComboBox(self, values=dani_str, command=self.combo_dani_n_callback, 
                                                   state="normal", button_hover_color=("plum"), width=120)
     dan_naloga_combo.set("dan")
-    dan_naloga_combo.grid(row=2, column=1, padx=(0, 182), pady=(0, 10))
+    dan_naloga_combo.grid(row=2, column=1, padx=(0, 180), pady=(0, 10))
 
     mjesec_naloga_combo = customtkinter.CTkComboBox(self, values=mjeseci_z_str, command=self.combo_mjeseci_n_callback, 
                                                     state="normal", button_hover_color=("plum"), width=120)
     mjesec_naloga_combo.set("mjesec")
-    mjesec_naloga_combo.grid(row=2, column=1, padx=(180, 0), pady=(0, 10))
+    mjesec_naloga_combo.grid(row=2, column=1, padx=(181, 0), pady=(0, 10))
 
     klasa_label = customtkinter.CTkLabel(self, text="KLASA", fg_color="transparent")
-    klasa_label.grid(row=3, column=0, padx=(132, 0), pady=(10, 10))
+    klasa_label.grid(row=3, column=0, padx=(136, 0), pady=(10, 10))
 
     global klasa_textbox
     klasa_textbox = customtkinter.CTkTextbox(self, width=120, height=10, corner_radius=0, border_width=2, 
