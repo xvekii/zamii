@@ -813,7 +813,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                                                   command = self.dodaj_unos)
     self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
 
-    self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69")
+    self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69",
+                                                    command=self.izbriši_unos_baza)
     self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
     
     self.popis_radnih_mj_btn = customtkinter.CTkButton(self.naredbe_frame, text="Popis radnih mjesta", fg_color="#4a4e69",
@@ -885,6 +886,36 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.ime_G_entry.delete(0, END)
     self.prezime_ime_D_entry.delete(0, END)
     self.ime_D_entry.delete(0, END)
+
+
+  def izbriši_unos_baza(self):
+    selected = self.baza_tree.focus()
+    if not selected:
+      return
+    
+    self.baza_tree.item(selected, text="", values=(self.ID_entry.get()))
+    ID_ucitelja = self.ID_entry.get()
+
+    if not ID_ucitelja:
+      return
+    
+    try: 
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("DELETE FROM ucitelji WHERE id_ucitelja_N = ?", (ID_ucitelja,))
+      db.execute("DELETE FROM ucitelji_G WHERE id_ucitelja_G = ?", (ID_ucitelja,))
+      db.execute("DELETE FROM ucitelji_D WHERE id_ucitelja_D = ?", (ID_ucitelja,))
+
+      db_connection.commit()
+      db_connection.close()
+
+      self.baza_tree.delete(selected)
+    
+    except Exception as e:
+      print("Error deleting ucitelj N, G, D", e)
+
+    self.očisti_obrasce()
 
 
   def otvori_popis_radnih_mj_toplevel_window(self):
