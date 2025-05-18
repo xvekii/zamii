@@ -1524,11 +1524,113 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     self.ID_entry = customtkinter.CTkEntry(self.obrasci_frame, width=35)
     self.ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
 
-    self.radno_mjesto_label = customtkinter.CTkLabel(self.obrasci_frame, text="Radno mjesto")
-    self.radno_mjesto_label.grid(row=1, column=2, padx=(5, 15), pady=10)
+    self.spol_label = customtkinter.CTkLabel(self.obrasci_frame, text="Spol")
+    self.spol_label.grid(row=1, column=2, padx=(5, 15), pady=10)
+
+    self.spol_entry = customtkinter.CTkEntry(self.obrasci_frame, width=26)
+    self.spol_entry.grid(row=1, column=3, padx=(5, 15), pady=10)
+
+    # Input forms1
+    self.obrasci_frame1 = LabelFrame(self, text="")
+    self.obrasci_frame1.grid(row=2, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+    
+    self.prezime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime")
+    self.prezime_label.grid(row=2, column=4, padx=(5, 15), pady=10)
+    
+    self.prezime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
+    self.prezime_entry.grid(row=2, column=5, padx=(5, 15), pady=10)
+    
+    self.ime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime")
+    self.ime_label.grid(row=2, column=6, padx=(5, 15), pady=10)
+    
+    self.ime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
+    self.ime_entry.grid(row=2, column=7, padx=(5, 15), pady=10)
+
+    self.prezime_ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime D")
+    self.prezime_ime_D_label.grid(row=3, column=4, padx=(5, 15), pady=(10, 10))
+
+    self.prezime_ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
+    self.prezime_ime_D_entry.grid(row=3, column=5, padx=(5, 15), pady=(10, 10))
+
+    self.ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime D")
+    self.ime_D_label.grid(row=3, column=6, padx=(5, 15), pady=(10, 10))
+
+    self.ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
+    self.ime_D_entry.grid(row=3, column=7, padx=(5, 15), pady=(10, 10))
+
+       # Buttons
+    self.naredbe_frame = LabelFrame(self, text="Naredbe")
+    self.naredbe_frame.grid(row=3, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+
+    self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
+                                                     command=self.izmijeni_unos)
+    self.izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
+
+    self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69",
+                                                  command = self.dodaj_unos)
+    self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
+
+    self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69",
+                                                    command=self.izbriši_unos_baza)
+    self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
+    
+    self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
+                                                      width=110, command=self.očisti_obrasce)
+    self.očisti_obrasce_btn.grid(row=1, column=5, padx=(5, 5), pady=10)
+
+    self.popis_svih_zaposl_tree.bind("<ButtonRelease-1>", self.select_db_data)
+
+    get_svi_zaposl_db_data(self.popis_svih_zaposl_tree);
 
 
+  def select_db_data(self, event):
+    self.ID_entry.delete(0, END)
+    self.prezime_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
 
+    selected = self.popis_svih_zaposl_tree.focus()
+    values = self.popis_svih_zaposl_tree.item(selected, "values")
+
+    self.ID_entry.insert(0, values[0])
+    self.prezime_entry.insert(0, values[1])
+    self.ime_entry.insert(0, values[2])
+    self.spol_entry.insert(0, values[3])
+
+    db_connection = sqlite3.connect(db_path)
+    db = db_connection.cursor()
+
+    db.execute("SELECT prezime_D, ime_D FROM svi_zaposlenici_D WHERE id_zaposlenika_D = ?", (values[0],))
+    rows_D = db.fetchall()
+    self.prezime_ime_D_entry.insert(0, rows_D[0][0])
+    self.ime_D_entry.insert(0, rows_D[0][1])
+
+
+def get_svi_zaposl_db_data(popis_svih_zaposl_tree):
+  db_connection = sqlite3.connect(db_path)
+  db = db_connection.cursor()
+
+  # Get all employee names from db
+  db.execute("SELECT svi_zaposlenici_N.id_zaposlenika_N, svi_zaposlenici_N.prezime_N, \
+            svi_zaposlenici_N.ime_N, svi_zaposlenici_N.spol FROM svi_zaposlenici_N \
+            ORDER BY prezime_N")
+  rows = db.fetchall()
+
+  global count_svi_zap
+  count_svi_zap = 0
+
+  for row in rows:
+    if count_svi_zap % 2 == 0:
+      popis_svih_zaposl_tree.insert(parent="", index="end", iid=count_svi_zap, text="", values=(row[0], row[1], row[2], row[3]), tags=("evenrow",))
+    else: 
+      popis_svih_zaposl_tree.insert(parent="", index="end", iid=count_svi_zap, text="", values=(row[0], row[1], row[2], row[3]), tags=("oddrow",))
+    count_svi_zap += 1
+
+  print(f"counter: {count_svi_zap}")
+  db_connection.commit()
+  db_connection.close() 
 
 
 def render_godisnji():
