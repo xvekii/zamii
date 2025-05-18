@@ -1581,6 +1581,120 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     self.popis_svih_zaposl_tree.bind("<ButtonRelease-1>", self.select_db_data)
 
     get_svi_zaposl_db_data(self.popis_svih_zaposl_tree);
+  
+
+  def očisti_obrasce(self):
+    self.ID_entry.delete(0, END)
+    self.prezime_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
+    
+  
+  def izmijeni_unos(self):
+    selected = self.popis_svih_zaposl_tree.focus()
+    if not selected:
+      return
+    
+    self.popis_svih_zaposl_tree.item(selected, text="", values=(self.ID_entry.get(),
+                                                   self.prezime_entry.get(), self.ime_entry.get(), self.spol_entry.get()))
+    ID = self.ID_entry.get()
+    prezime = self.prezime_entry.get()
+    ime = self.ime_entry.get()
+    prezime_D = self.prezime_ime_D_entry.get()
+    ime_D = self.ime_D_entry.get()
+    spol = self.spol_entry.get()
+
+    if not ime or not prezime or not ime_D or not prezime_D or not ID:
+      return
+
+    try:
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("UPDATE svi_zaposlenici SET ime_N = ?, prezime_N = ?, spol = ? WHERE id_zaposlenika_N = ?", (ime, prezime, spol, ID))
+      db.execute("UPDATE svi_zaposlenici_D SET ime_D = ?, prezime_D = ? WHERE id_zaposlenika_D = ?", (ime_D, prezime_D, ID))
+
+      db_connection.commit()
+      db_connection.close()
+    except Exception as e:
+      print("Error updating zaposlenici db ", e)
+
+    self.ID_entry.delete(0, END)
+    self.prezime_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
+    
+  
+  def izbriši_unos_baza(self):
+    selected = self.popis_svih_zaposl_tree.focus()
+    if not selected:
+      return
+    
+    self.popis_svih_zaposl_tree.item(selected, text="", values=(self.ID_entry.get()))
+    ID_zaposl = self.ID_entry.get()
+
+    if not ID_zaposl:
+      return
+    
+    try: 
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("DELETE FROM svi_zaposlenici_N WHERE id_zaposlenika_N = ?", (ID_zaposl,))
+      db.execute("DELETE FROM svi_zaposlenici_D WHERE id_zaposlenika_D = ?", (ID_zaposl,))
+
+      db_connection.commit()
+      db_connection.close()
+
+      self.popis_svih_zaposl_tree.delete(selected)
+    
+    except Exception as e:
+      print("Error deleting ucitelj N, G, D", e)
+
+    self.očisti_obrasce()
+
+
+  def dodaj_unos(self):
+    count_dodaj_zap
+
+    prezime = self.prezime_entry.get()
+    ime = self.ime_entry.get()
+    spol = self.spol_entry.get()
+    prezime_D = self.prezime_ime_D_entry.get()
+    ime_D = self.ime_D_entry.get()
+
+    try:
+      db_connection = sqlite3.connect(db_path)
+      db = db_connection.cursor()
+
+      db.execute("INSERT INTO svi_zaposlenici_N (prezime_N, ime_N, spol) VALUES(?, ?, ?, ?)", (prezime, ime, spol))
+      db.execute("INSERT INTO svi_zaposlenici_D (prezime_D, ime_D) VALUES(?, ?)", (prezime_D, ime_D))
+
+      db_connection.commit()
+
+      db.execute("SELECT id_zaposlenika_N, prezime_N, ime_N, spol FROM svi_zaposlenici_N WHERE prezime_N = ? AND ime_N = ?", (prezime, ime))
+      rows_zaposlenici = db.fetchall()
+
+
+      if count_dodaj_zap % 2 == 0:
+        self.popis_svih_zaposl_tree.insert(parent="", index="end", iid=count_dodaj_zap, text="", values=(rows_zaposlenici[0][0], rows_zaposlenici[0][1], rows_zaposlenici[0][2], rows_zaposlenici[0][3]), tags=("evenrow",))
+      else:  
+        self.popis_svih_zaposl_tree.insert(parent="", index="end", iid=count_dodaj_zap, text="", values=(rows_zaposlenici[0][0], rows_zaposlenici[0][1], rows_zaposlenici[0][2], rows_zaposlenici[0][3]), tags=("oddrow",))
+      count_dodaj_zap += 1
+
+    except Exception as e:
+      print("Error updating db - dodaj novog zaposlenika", e)
+
+    # Delete entry boxes
+    self.prezime_entry.delete(0, END)
+    self.ime_entry.delete(0, END)
+    self.spol_entry.delete(0, END)
+    self.prezime_ime_D_entry.delete(0, END)
+    self.ime_D_entry.delete(0, END)
 
 
   def select_db_data(self, event):
