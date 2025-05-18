@@ -1370,6 +1370,10 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.naredbe_odluka_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="e")
     self.naredbe_odluka_btns_frame.grid_columnconfigure(3, weight=1)
 
+    self.popis_svih_zaposlenika_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Popis svih zaposlenika", fg_color="#4A4E69", 
+                                             command=self.otvori_popis_svih_zaposl_toplevel, width=120, hover_color=("#6d6875"))
+    self.popis_svih_zaposlenika_btn.grid(row=0, column=1, padx=(5, 10), pady=(5, 5), sticky="ew")
+
     self.očisti_sve_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Očisti sve", fg_color="#4A4E69", 
                                             command=očisti_odluka_widgets_btn, width=120, hover_color=("#6d6875"))
     self.očisti_sve_odluka_btn.grid(row=0, column=2, padx=(5, 10), pady=(5, 5), sticky="ew")
@@ -1377,6 +1381,17 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.primijeni_odluka_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Primijeni", fg_color="#4A4E69", 
                                             command=primijeni_odluka_godisnji_btn, width=165, hover_color=("#38A282"))
     self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
+
+
+    self.popis_svih_zaposl_toplevel_window = None
+    
+  
+
+  def otvori_popis_svih_zaposl_toplevel(self): 
+    if self.popis_svih_zaposl_toplevel_window is None or not self.popis_svih_zaposl_toplevel_window.winfo_exists():
+      self.popis_svih_zaposl_toplevel_window = PopisSvihZaposlenikaToplevelWindow()
+    else:
+      self.popis_svih_zaposl_toplevel_window.focus()
 
 
   def combo_prez_ime_zaposlenika(self, izbor_N):
@@ -1448,6 +1463,25 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     nadnevak_odluke_mjesec = izbor
     context_godisnji["mjod"] = nadnevak_odluke_mjesec
     print(nadnevak_odluke_mjesec)
+
+
+class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
+  def __init__(self):
+    super().__init__()
+    self.title("Popis svih zaposlenika")
+
+    self.geometry("613x468+300+100")
+    self.grid_columnconfigure(3, weight=1)
+    self.wm_transient(zamii.odluka_godisnji_toplevel_window)
+    
+    self.radna_mj_frame = customtkinter.CTkFrame(self)
+    self.radna_mj_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
+
+    style = ttk.Style()
+    style.theme_use("default")
+
+    
+
 
 
 def render_godisnji():
