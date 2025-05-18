@@ -1382,11 +1382,8 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
                                             command=primijeni_odluka_godisnji_btn, width=165, hover_color=("#38A282"))
     self.primijeni_odluka_btn.grid(row=0, column=3, padx=(5, 5), pady=(5, 5), sticky="ew")
 
-
     self.popis_svih_zaposl_toplevel_window = None
     
-  
-
   def otvori_popis_svih_zaposl_toplevel(self): 
     if self.popis_svih_zaposl_toplevel_window is None or not self.popis_svih_zaposl_toplevel_window.winfo_exists():
       self.popis_svih_zaposl_toplevel_window = PopisSvihZaposlenikaToplevelWindow()
@@ -1470,19 +1467,49 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Popis svih zaposlenika")
 
-    self.geometry("613x468+300+100")
+    self.geometry("465x468+300+100")
     self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii.odluka_godisnji_toplevel_window)
     
-    self.radna_mj_frame = customtkinter.CTkFrame(self)
-    self.radna_mj_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
+    self.popis_svih_zaposl_frame = customtkinter.CTkFrame(self)
+    self.popis_svih_zaposl_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
 
     style = ttk.Style()
     style.theme_use("default")
 
-    
+    style.configure("Treeview", 
+                  background="D3D3D3",
+                  foreground="black",
+                  rowheight=25,
+                  fieldbackground="D3D3D3",
+                  font=(None, 13))
+    style.configure("Treeview.Heading", font=(None, 13))
 
+    style.map("Treeview", background=[("selected", "#4a4e69")])
 
+    popis_svih_zaposl_scroll = Scrollbar(self.popis_svih_zaposl_frame)
+    popis_svih_zaposl_scroll.pack(side=RIGHT, fill=Y)
+
+    self.popis_svih_zaposl_tree = ttk.Treeview(self.popis_svih_zaposl_frame, yscrollcommand=popis_svih_zaposl_scroll.set, selectmode="extended")
+    self.popis_svih_zaposl_tree.pack(fill="both", expand=True)
+
+    popis_svih_zaposl_scroll.config(command=self.popis_svih_zaposl_tree.yview)
+
+    self.popis_svih_zaposl_tree["columns"] = ("ID", "Prezime", "Ime", "Spol")
+    self.popis_svih_zaposl_tree.column("#0", stretch=NO, width=0)
+    self.popis_svih_zaposl_tree.column("ID", anchor=CENTER, width=40)
+    self.popis_svih_zaposl_tree.column("Prezime", anchor=W, width=200)
+    self.popis_svih_zaposl_tree.column("Ime", anchor=W, width=140)
+    self.popis_svih_zaposl_tree.column("Spol", anchor=CENTER, width=40)
+
+    self.popis_svih_zaposl_tree.heading("#0", text="", anchor=W)
+    self.popis_svih_zaposl_tree.heading("ID", text="ID", anchor=CENTER)
+    self.popis_svih_zaposl_tree.heading("Prezime", text="Prezime", anchor=W)
+    self.popis_svih_zaposl_tree.heading("Ime", text="Ime", anchor=W)
+    self.popis_svih_zaposl_tree.heading("Spol", text="Spol", anchor=CENTER)
+
+    self.popis_svih_zaposl_tree.tag_configure("oddrow", background="#FBFBFB")
+    self.popis_svih_zaposl_tree.tag_configure("evenrow", background="#f2e9e4")
 
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
