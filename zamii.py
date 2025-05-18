@@ -1467,12 +1467,15 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Popis svih zaposlenika")
 
-    self.geometry("465x468+300+100")
-    self.grid_columnconfigure(3, weight=1)
+    # self.geometry("465x468+300+100")
+    self.grid_rowconfigure(0, weight=1)
+    self.grid_columnconfigure(0, weight=1)
+
+    # self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii.odluka_godisnji_toplevel_window)
     
     self.popis_svih_zaposl_frame = customtkinter.CTkFrame(self)
-    self.popis_svih_zaposl_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="new")
+    self.popis_svih_zaposl_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="nsew")
 
     style = ttk.Style()
     style.theme_use("default")
@@ -1510,6 +1513,23 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
 
     self.popis_svih_zaposl_tree.tag_configure("oddrow", background="#FBFBFB")
     self.popis_svih_zaposl_tree.tag_configure("evenrow", background="#f2e9e4")
+
+    # Employees input forms
+    self.obrasci_frame = LabelFrame(self, text="Obrasci za unos")
+    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+  
+    self.ID_label = customtkinter.CTkLabel(self.obrasci_frame, text="ID")
+    self.ID_label.grid(row=1, column=0, padx=(10, 15), pady=10)
+
+    self.ID_entry = customtkinter.CTkEntry(self.obrasci_frame, width=35)
+    self.ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
+
+    self.radno_mjesto_label = customtkinter.CTkLabel(self.obrasci_frame, text="Radno mjesto")
+    self.radno_mjesto_label.grid(row=1, column=2, padx=(5, 15), pady=10)
+
+
+
+
 
 def render_godisnji():
   doc_godisnji = DocxTemplate("godisnji.docx")
