@@ -1576,11 +1576,11 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     
     self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
                                                       width=110, command=self.očisti_obrasce)
-    self.očisti_obrasce_btn.grid(row=1, column=5, padx=(5, 5), pady=10)
+    self.očisti_obrasce_btn.grid(row=1, column=5, padx=(5, 12), pady=10)
 
     self.popis_svih_zaposl_tree.bind("<ButtonRelease-1>", self.select_db_data)
 
-    get_svi_zaposl_db_data(self.popis_svih_zaposl_tree);
+    get_svi_zaposl_db_data(self.popis_svih_zaposl_tree)
   
 
   def očisti_obrasce(self):
@@ -1613,7 +1613,7 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
       db_connection = sqlite3.connect(db_path)
       db = db_connection.cursor()
 
-      db.execute("UPDATE svi_zaposlenici SET ime_N = ?, prezime_N = ?, spol = ? WHERE id_zaposlenika_N = ?", (ime, prezime, spol, ID))
+      db.execute("UPDATE svi_zaposlenici_N SET ime_N = ?, prezime_N = ?, spol = ? WHERE id_zaposlenika_N = ?", (ime, prezime, spol, ID))
       db.execute("UPDATE svi_zaposlenici_D SET ime_D = ?, prezime_D = ? WHERE id_zaposlenika_D = ?", (ime_D, prezime_D, ID))
 
       db_connection.commit()
@@ -1659,7 +1659,7 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
 
 
   def dodaj_unos(self):
-    count_dodaj_zap
+    count_dodaj_zap = 0
 
     prezime = self.prezime_entry.get()
     ime = self.ime_entry.get()
@@ -1671,7 +1671,7 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
       db_connection = sqlite3.connect(db_path)
       db = db_connection.cursor()
 
-      db.execute("INSERT INTO svi_zaposlenici_N (prezime_N, ime_N, spol) VALUES(?, ?, ?, ?)", (prezime, ime, spol))
+      db.execute("INSERT INTO svi_zaposlenici_N (prezime_N, ime_N, spol) VALUES(?, ?, ?)", (prezime, ime, spol))
       db.execute("INSERT INTO svi_zaposlenici_D (prezime_D, ime_D) VALUES(?, ?)", (prezime_D, ime_D))
 
       db_connection.commit()
@@ -1681,9 +1681,9 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
 
 
       if count_dodaj_zap % 2 == 0:
-        self.popis_svih_zaposl_tree.insert(parent="", index="end", iid=count_dodaj_zap, text="", values=(rows_zaposlenici[0][0], rows_zaposlenici[0][1], rows_zaposlenici[0][2], rows_zaposlenici[0][3]), tags=("evenrow",))
+        self.popis_svih_zaposl_tree.insert(parent="", index="end", text="", values=(rows_zaposlenici[0][0], rows_zaposlenici[0][1], rows_zaposlenici[0][2], rows_zaposlenici[0][3]), tags=("evenrow",))
       else:  
-        self.popis_svih_zaposl_tree.insert(parent="", index="end", iid=count_dodaj_zap, text="", values=(rows_zaposlenici[0][0], rows_zaposlenici[0][1], rows_zaposlenici[0][2], rows_zaposlenici[0][3]), tags=("oddrow",))
+        self.popis_svih_zaposl_tree.insert(parent="", index="end", text="", values=(rows_zaposlenici[0][0], rows_zaposlenici[0][1], rows_zaposlenici[0][2], rows_zaposlenici[0][3]), tags=("oddrow",))
       count_dodaj_zap += 1
 
     except Exception as e:
