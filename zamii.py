@@ -685,8 +685,6 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Baza podataka")
 
-    # self.geometry("935x605+300+100")
-    # self.grid_columnconfigure(3, weight=1)
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
 
@@ -1034,7 +1032,6 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Popis radnih mjesta")
 
-    # self.geometry("613x468+300+100")
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii.baza_toplevel_window)
@@ -1243,7 +1240,6 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Odluka o godišnjem odmoru")
 
-    # self.geometry("600x376+300+250")
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
@@ -1472,11 +1468,9 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     super().__init__()
     self.title("Popis svih zaposlenika")
 
-    # self.geometry("465x468+300+100")
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
 
-    # self.grid_columnconfigure(3, weight=1)
     self.wm_transient(zamii.odluka_godisnji_toplevel_window)
     
     self.popis_svih_zaposl_frame = customtkinter.CTkFrame(self)
