@@ -50,14 +50,19 @@ The main window of the application is divided into several sections:
 
 ## Yearly Leave Management Window
 
-![Yearly-leave-window](https://github.com/user-attachments/assets/f8163b54-1d50-4a4d-acd1-faf372264914)
+![Yearly-leave-window](https://github.com/user-attachments/assets/d7123376-56e4-4405-b942-a4ac253d44ac)
 
+The yearly leave management window provides functionality for managing yearly leave requests. It includes dropdowns for selecting employees, specifying the duration of leave, opening all employees management window and entering relevant dates.
 
-The yearly leave management window provides functionality for managing yearly leave requests. It includes dropdowns for selecting employees, specifying the duration of leave, and entering relevant dates.
+## All Employees Management Window (for yearly leave document printing)
+
+![All-employees-window](https://github.com/user-attachments/assets/f3f8c173-a4b4-4f03-9296-515144d00ccd)
+
 
 ## Database Management Window
 
-![Database-window](https://github.com/user-attachments/assets/b0fe43a6-9c5b-4ccc-ad3a-54a50266a1ba)
+![Database-window](https://github.com/user-attachments/assets/88acf3b3-0487-437f-ab34-1dd4766f811b)
+
 
 The database management window allows administrators to view, add, modify, and delete teacher records. It includes a tree view for displaying records and input forms for managing data.
 
@@ -73,6 +78,10 @@ The database management window allows administrators to view, add, modify, and d
 ## Yearly Leave Template Document
 
 ![Yearly-leave-template](https://github.com/user-attachments/assets/2fef2cf5-4635-40c4-95ac-188f6c995346)
+
+## Teacher Position Window
+
+![Teacher-position-window](https://github.com/user-attachments/assets/4ad361ff-bee0-4d61-9e37-1125746b80b4)
 
 
 ## Zamii Desktop Icon (Designed in Figma)
@@ -95,6 +104,7 @@ The database management window allows administrators to view, add, modify, and d
 2. **Managing Yearly Leave**:
    - Open the yearly leave management window.
    - Select an employee and specify the duration and dates of the leave.
+   - Manage all employees
    - Click  "**Primijeni**" (Apply) to generate the yearly leave document that will be printed.
 
 3. **Managing the Database**:
