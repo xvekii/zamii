@@ -805,34 +805,34 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     # Buttons
     self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
     self.naredbe_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 10), sticky="ew")
+    self.naredbe_frame.columnconfigure(0, weight=1)
+    self.naredbe_frame.columnconfigure(1, weight=1)
+    self.naredbe_frame.columnconfigure(2, weight=1)
+    self.naredbe_frame.columnconfigure(3, weight=1)
+    self.naredbe_frame.columnconfigure(4, weight=1)
 
     self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
                                                      command=self.izmijeni_unos)
-    self.izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10)
+    self.izmijeni_unos_btn.grid(row=1, column=0, padx=(10, 15), pady=10, sticky="ew")
     
     self.dodaj_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Dodaj unos", fg_color="#4a4e69",
                                                   command = self.dodaj_unos)
-    self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10)
+    self.dodaj_unos_btn.grid(row=1, column=1, padx=(5, 15), pady=10, sticky="ew")
 
     self.izbriši_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izbriši unos", fg_color="#4a4e69",
                                                     command=self.izbriši_unos_baza)
-    self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10)
+    self.izbriši_unos_btn.grid(row=1, column=2, padx=(5, 15), pady=10, sticky="ew")
     
     self.popis_radnih_mj_btn = customtkinter.CTkButton(self.naredbe_frame, text="Popis radnih mjesta", fg_color="#4a4e69",
                                                        command=self.otvori_popis_radnih_mj_toplevel_window)
-    self.popis_radnih_mj_btn.grid(row=1, column=3, padx=(5, 15), pady=10)
-
-    self.prikaži_G_i_D_btn = customtkinter.CTkButton(self.naredbe_frame, text="Prikaži G i D", fg_color="#4a4e69",
-                                                       width=110, command=self.otvori_G_i_D_toplevel_window)
-    self.prikaži_G_i_D_btn.grid(row=1, column=4, padx=(5, 15), pady=10)
+    self.popis_radnih_mj_btn.grid(row=1, column=3, padx=(5, 15), pady=10, sticky="ew")
     
     self.očisti_obrasce_btn = customtkinter.CTkButton(self.naredbe_frame, text="Očisti obrasce", fg_color="#4a4e69",
                                                       width=110, command=self.očisti_obrasce)
-    self.očisti_obrasce_btn.grid(row=1, column=5, padx=(5, 5), pady=10)
+    self.očisti_obrasce_btn.grid(row=1, column=4, padx=(5, 10), pady=10, sticky="ew")
 
     self.baza_tree.bind("<ButtonRelease-1>", self.select_db_data)
     
-    self.popis_imena_N_i_G_toplevel_window = None
     self.popis_radnih_mj_toplevel_window = None
 
     get_db_data(self.baza_tree)
@@ -924,13 +924,6 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
       self.popis_radnih_mj_toplevel_window = PopisRadnihMjToplevelWindow()
     else: 
       self.popis_radnih_mj_toplevel_window.focus()
-
-
-  def otvori_G_i_D_toplevel_window(self):
-    if self.popis_imena_N_i_G_toplevel_window is None or not self.popis_imena_N_i_G_toplevel_window.winfo_exists():
-      self.popis_imena_N_i_G_toplevel_window = PopisImenaGiDToplevelWindow()
-    else:
-      self.popis_imena_N_i_G_toplevel_window.focus()
 
 
   def očisti_obrasce(self):
@@ -1216,15 +1209,6 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
     self.radna_mj_ID_entry.insert(0, values[0])
     self.na_radnom_mjestu_entry.insert(0, values[1])
-
-
-class PopisImenaGiDToplevelWindow(customtkinter.CTkToplevel):
-  def __init__(self):
-    super().__init__()
-    self.title("Popis imena u genitivu i dativu")
-
-    self.geometry("613x468+300+100")
-    self.grid_columnconfigure(3, weight=1)
 
 
 popis_zaposlenika_N = []
