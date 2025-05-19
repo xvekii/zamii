@@ -67,6 +67,11 @@ The yearly leave management window provides functionality for managing yearly le
 The database management window allows administrators to view, add, modify, and delete teacher records. It includes a tree view for displaying records and input forms for managing data.
 
 
+## Teacher Position Window
+
+![Teacher-position-window](https://github.com/user-attachments/assets/4ad361ff-bee0-4d61-9e37-1125746b80b4)
+
+
 ## Relational Database Diagram
 
 ![Relational-database-diagram](https://github.com/user-attachments/assets/28baec48-cd4b-488e-bf60-0d6e439372a0)
@@ -79,15 +84,10 @@ The database management window allows administrators to view, add, modify, and d
 
 ![Yearly-leave-template](https://github.com/user-attachments/assets/2fef2cf5-4635-40c4-95ac-188f6c995346)
 
-## Teacher Position Window
-
-![Teacher-position-window](https://github.com/user-attachments/assets/4ad361ff-bee0-4d61-9e37-1125746b80b4)
-
 
 ## Zamii Desktop Icon (Designed in Figma)
 
 ![zamii-taskbar](https://github.com/user-attachments/assets/a112f07f-72c3-434c-b55d-d2e979c79cac)
-
 
 
 
@@ -113,7 +113,3 @@ The database management window allows administrators to view, add, modify, and d
    - View the list of teacher positions "**Popis radnih mjesta**" - all of the positions are under a certain ID in order to facilitate database operations and avoid repetition.
    - View the records in the tree view.
    - Clear the forms "**Očisti obrasce**"
-
-
-
-
