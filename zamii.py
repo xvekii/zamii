@@ -687,8 +687,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
-
     self.wm_transient(zamii)
+    self.resizable(width=0, height=1)
 
     self.baza_frame = customtkinter.CTkFrame(self)
     self.baza_frame.grid(row=0, column=0, padx=(10, 10), pady=(10, 10), sticky="nsew")
@@ -701,8 +701,8 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
                   foreground="black",
                   rowheight=25,
                   fieldbackground="D3D3D3",
-                  font=(None, 13))
-    style.configure("Treeview.Heading", font=(None, 13))
+                  font=tree_font_14)
+    style.configure("Treeview.Heading", font=tree_font_14)
     
     style.map("Treeview", background=[("selected", "#4a4e69")])
 
@@ -718,7 +718,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.baza_tree.column("#0", stretch=NO, width=0)
     self.baza_tree.column("ID", anchor=CENTER, width=40)
     self.baza_tree.column("Radno mjesto", anchor=CENTER, width=120)
-    self.baza_tree.column("Na radnom mjestu", anchor=W, width=350)
+    self.baza_tree.column("Na radnom mjestu", anchor=W, width=365)
     self.baza_tree.column("Prezime", anchor=W, width=200)
     self.baza_tree.column("Ime", anchor=W, width=140)
     self.baza_tree.column("Spol", anchor=CENTER, width=40)
@@ -1028,6 +1028,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii.baza_toplevel_window)
+    self.resizable(width=0, height=0)
     
     self.radna_mj_frame = customtkinter.CTkFrame(self)
     self.radna_mj_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="nsew")
@@ -1040,8 +1041,8 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
                   foreground="black",
                   rowheight=25,
                   fieldbackground="D3D3D3",
-                  font=(None, 13))
-    style.configure("Treeview.Heading", font=(None, 13))
+                  font=(tree_font_14))
+    style.configure("Treeview.Heading", font=(tree_font_14))
 
     style.map("Treeview", background=[("selected", "#4a4e69")])
 
@@ -1227,6 +1228,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
     self.wm_transient(zamii)
+    self.resizable(width=0, height=0)
 
     trajanje_god_dani = list(range(23, 31))
     trajanje_god_dani_str = [str(dan) for dan in trajanje_god_dani]
@@ -1454,8 +1456,8 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
 
     self.grid_rowconfigure(0, weight=1)
     self.grid_columnconfigure(0, weight=1)
-
     self.wm_transient(zamii.odluka_godisnji_toplevel_window)
+    self.resizable(width=0, height=0)
     
     self.popis_svih_zaposl_frame = customtkinter.CTkFrame(self)
     self.popis_svih_zaposl_frame.grid(row=0, column=0, padx=(10, 10), pady=(10, 15), sticky="nsew")
@@ -1468,8 +1470,8 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
                   foreground="black",
                   rowheight=25,
                   fieldbackground="D3D3D3",
-                  font=(None, 13))
-    style.configure("Treeview.Heading", font=(None, 13))
+                  font=(tree_font_14))
+    style.configure("Treeview.Heading", font=(tree_font_14))
 
     style.map("Treeview", background=[("selected", "#4a4e69")])
 
@@ -1960,4 +1962,6 @@ print(f"counter: {count_rm}")
 context = {}
 
 zamii = App()
+import tkinter.font as tkfont
+tree_font_14 = tkfont.Font(family="Segoe UI", size=14)
 zamii.mainloop()
