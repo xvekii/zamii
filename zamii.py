@@ -693,7 +693,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.wm_transient(zamii)
 
     self.baza_frame = customtkinter.CTkFrame(self)
-    self.baza_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="nsew")
+    self.baza_frame.grid(row=0, column=0, padx=(10, 10), pady=(10, 10), sticky="nsew")
 
     style = ttk.Style()
     style.theme_use("default")
@@ -738,7 +738,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
   
     # Input forms
     self.obrasci_frame = LabelFrame(self, text="Obrasci za unos")
-    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+    self.obrasci_frame.grid(row=1, column=0, padx=(10, 10), pady=(0, 10), sticky="ew")
   
     self.ID_label = customtkinter.CTkLabel(self.obrasci_frame, text="ID")
     self.ID_label.grid(row=1, column=0, padx=(10, 15), pady=10)
@@ -760,16 +760,16 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     # Input forms1
     self.obrasci_frame1 = LabelFrame(self, text="")
-    self.obrasci_frame1.grid(row=2, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+    self.obrasci_frame1.grid(row=2, column=0, padx=(10, 10), pady=(0, 10), sticky="ew")
     
     self.prezime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime")
-    self.prezime_label.grid(row=2, column=4, padx=(5, 15), pady=10)
+    self.prezime_label.grid(row=2, column=4, padx=(23, 15), pady=10)
     
     self.prezime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_entry.grid(row=2, column=5, padx=(5, 15), pady=10)
     
     self.ime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime")
-    self.ime_label.grid(row=2, column=6, padx=(5, 15), pady=10)
+    self.ime_label.grid(row=2, column=6, padx=(16, 15), pady=10)
     
     self.ime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
     self.ime_entry.grid(row=2, column=7, padx=(5, 15), pady=10)
@@ -781,7 +781,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.spol_entry.grid(row=2, column=9, padx=(5, 15), pady=10)
 
     self.prezime_ime_G_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime G")
-    self.prezime_ime_G_label.grid(row=3, column=4, padx=(5, 15), pady=10)
+    self.prezime_ime_G_label.grid(row=3, column=4, padx=(10, 15), pady=10)
 
     self.prezime_ime_G_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_ime_G_entry.grid(row=3, column=5, padx=(5, 15), pady=10)
@@ -793,7 +793,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
     self.ime_G_entry.grid(row=3, column=7, padx=(5, 15), pady=10)
 
     self.prezime_ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime D")
-    self.prezime_ime_D_label.grid(row=4, column=4, padx=(5, 15), pady=(10, 10))
+    self.prezime_ime_D_label.grid(row=4, column=4, padx=(10, 15), pady=(10, 10))
 
     self.prezime_ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_ime_D_entry.grid(row=4, column=5, padx=(5, 15), pady=(10, 10))
@@ -806,7 +806,7 @@ class BazaToplevelWindow(customtkinter.CTkToplevel):
 
     # Buttons
     self.naredbe_frame = LabelFrame(self, text="Naredbe", width=900)
-    self.naredbe_frame.grid(row=3, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+    self.naredbe_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 10), sticky="ew")
 
     self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
                                                      command=self.izmijeni_unos)
@@ -1080,7 +1080,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
     self.radna_mj_obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
 
     self.radna_mj_ID_label = customtkinter.CTkLabel(self.radna_mj_obrasci_frame, text="ID")
-    self.radna_mj_ID_label.grid(row=1, column=0, padx=(5, 15), pady=10)
+    self.radna_mj_ID_label.grid(row=1, column=0, padx=(10, 15), pady=10)
 
     self.radna_mj_ID_entry = customtkinter.CTkEntry(self.radna_mj_obrasci_frame, width=35)
     self.radna_mj_ID_entry.grid(row=1, column=1, padx=(5, 15), pady=10)
@@ -1093,7 +1093,7 @@ class PopisRadnihMjToplevelWindow(customtkinter.CTkToplevel):
 
     # Radna mjesta buttons
     self.radna_mj_naredbe_frame = LabelFrame(self, text="Naredbe", width=485)
-    self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 10), sticky=EW)
+    self.radna_mj_naredbe_frame.grid(row=2, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
 
     self.radna_mj_izmijeni_unos_btn = customtkinter.CTkButton(self.radna_mj_naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
                                                               width=100, command=self.izmijeni_radna_mj_unos)
@@ -1300,7 +1300,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     prezime_ime_zaposlenika_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=popis_zaposlenika_N,
                                                   command=self.combo_prez_ime_zaposlenika, state="normal", button_hover_color=("plum"), width=300)
     prezime_ime_zaposlenika_combo.set("odaberi prezime i ime")
-    prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=2)
+    prezime_ime_zaposlenika_combo.grid(row=0, column=1, padx=(62, 20), pady=(10, 10), columnspan=2)
     prezime_ime_zaposlenika_combo.grid_columnconfigure(0, weight=1)
 
     self.trajanje_god_odmora_label = customtkinter.CTkLabel(self.odluka_widgets_frame1, text="Trajanje godišnjeg odmora")
@@ -1309,7 +1309,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     global trajanje_god_odmora_combo
     trajanje_god_odmora_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame1, values=trajanje_god_dani_str,
                                                       command=self.get_trajanje_god_odmora, state="normal", button_hover_color=("plum"), width=120)
-    trajanje_god_odmora_combo.grid(row=1, column=1, padx=(2, 0), pady=(10, 10), columnspan=1)
+    trajanje_god_odmora_combo.grid(row=1, column=1, padx=(0, 11), pady=(10, 10), columnspan=1)
     trajanje_god_odmora_combo.set("koliko dana")
 
     # Pocetak god. odmora
@@ -1353,7 +1353,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
     dan_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=dani_god_str, 
                                                   command=self.get_nadnevak_odluke_dan, state="normal", button_hover_color=("plum"), width=120)
     dan_odluke_combo.set("dan")
-    dan_odluke_combo.grid(row=0, column=1, padx=(62, 0), pady=(10, 10), columnspan=1)
+    dan_odluke_combo.grid(row=0, column=1, padx=(63, 0), pady=(10, 10), columnspan=1)
 
     global mjesec_odluke_combo
     mjesec_odluke_combo = customtkinter.CTkComboBox(self.odluka_widgets_frame3, values=mjeseci_god_str,
@@ -1372,7 +1372,7 @@ class OdlukaGodisnjiToplevelWindow(customtkinter.CTkToplevel):
 
     # Naredbe_odluka_btns frame
     self.naredbe_odluka_btns_frame = customtkinter.CTkFrame(self)
-    self.naredbe_odluka_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="e")
+    self.naredbe_odluka_btns_frame.grid(row=3, column=0, padx=(10, 10), pady=10, sticky="ew")
     self.naredbe_odluka_btns_frame.grid_columnconfigure(3, weight=1)
 
     self.popis_svih_zaposlenika_btn = customtkinter.CTkButton(self.naredbe_odluka_btns_frame, text="Popis svih zaposlenika", fg_color="#4A4E69", 
@@ -1480,7 +1480,7 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     self.wm_transient(zamii.odluka_godisnji_toplevel_window)
     
     self.popis_svih_zaposl_frame = customtkinter.CTkFrame(self)
-    self.popis_svih_zaposl_frame.grid(row=0, column=0, padx=(15, 15), pady=(10, 15), sticky="nsew")
+    self.popis_svih_zaposl_frame.grid(row=0, column=0, padx=(10, 10), pady=(10, 15), sticky="nsew")
 
     style = ttk.Style()
     style.theme_use("default")
@@ -1521,7 +1521,7 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
 
     # Employees input forms
     self.obrasci_frame = LabelFrame(self, text="Obrasci za unos")
-    self.obrasci_frame.grid(row=1, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+    self.obrasci_frame.grid(row=1, column=0, padx=(10, 10), pady=(0, 10), sticky="ew")
   
     self.ID_label = customtkinter.CTkLabel(self.obrasci_frame, text="ID")
     self.ID_label.grid(row=1, column=0, padx=(10, 15), pady=10)
@@ -1537,22 +1537,22 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
 
     # Input forms1
     self.obrasci_frame1 = LabelFrame(self, text="")
-    self.obrasci_frame1.grid(row=2, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+    self.obrasci_frame1.grid(row=2, column=0, padx=(10, 10), pady=(0, 10), sticky="ew")
     
     self.prezime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime")
-    self.prezime_label.grid(row=2, column=4, padx=(5, 15), pady=10)
+    self.prezime_label.grid(row=2, column=4, padx=(23, 15), pady=10)
     
     self.prezime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_entry.grid(row=2, column=5, padx=(5, 15), pady=10)
     
     self.ime_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime")
-    self.ime_label.grid(row=2, column=6, padx=(5, 15), pady=10)
+    self.ime_label.grid(row=2, column=6, padx=(16, 15), pady=10)
     
-    self.ime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
+    self.ime_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=212)
     self.ime_entry.grid(row=2, column=7, padx=(5, 15), pady=10)
 
     self.prezime_ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Prezime D")
-    self.prezime_ime_D_label.grid(row=3, column=4, padx=(5, 15), pady=(10, 10))
+    self.prezime_ime_D_label.grid(row=3, column=4, padx=(10, 15), pady=(10, 10))
 
     self.prezime_ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=220)
     self.prezime_ime_D_entry.grid(row=3, column=5, padx=(5, 15), pady=(10, 10))
@@ -1560,12 +1560,12 @@ class PopisSvihZaposlenikaToplevelWindow(customtkinter.CTkToplevel):
     self.ime_D_label = customtkinter.CTkLabel(self.obrasci_frame1, text="Ime D")
     self.ime_D_label.grid(row=3, column=6, padx=(5, 15), pady=(10, 10))
 
-    self.ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=200)
+    self.ime_D_entry = customtkinter.CTkEntry(self.obrasci_frame1, width=212)
     self.ime_D_entry.grid(row=3, column=7, padx=(5, 15), pady=(10, 10))
 
        # Buttons
     self.naredbe_frame = LabelFrame(self, text="Naredbe")
-    self.naredbe_frame.grid(row=3, column=0, padx=(15, 15), pady=(0, 10), sticky="ew")
+    self.naredbe_frame.grid(row=3, column=0, padx=(10, 10), pady=(0, 10), sticky="ew")
 
     self.izmijeni_unos_btn = customtkinter.CTkButton(self.naredbe_frame, text="Izmijeni unos", fg_color="#4a4e69",
                                                      command=self.izmijeni_unos)
@@ -1924,7 +1924,7 @@ class App(customtkinter.CTk):
     self.wm_iconbitmap()
     self.iconphoto(False, self.iconpath)
 
-    self.geometry("600x652+400+10")
+    self.geometry("600x657+400+10")
     self.grid_columnconfigure(0, weight=1)
 
     self.grid_rowconfigure(0, weight=0)
